@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 
 let caminho = path.resolve(__dirname + "app/views");
 
-caminho = caminho.replace("app/app/app/", "app/app/");
+//caminho = caminho.replace("app/app/app/", "app/app/");
 
 app.set("views", caminho);
 console.log(caminho);
