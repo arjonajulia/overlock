@@ -17,10 +17,10 @@ var mysql = require("mysql");
 
 module.exports = function(){
  return mysql.createConnection({
-    host: "localhost",
-    user: "MoreicMK",
-    password: "rcap3682",
-    database: "overlock",
+    host: "ckshdphy86qnz0bj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "lxghkc0szbjxyvub",
+    password: "fq8red65wqjy390v",
+    database: "qisqc2f96l12tarm",
     port: 3306
   });
 }
