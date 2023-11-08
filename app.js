@@ -1,15 +1,19 @@
 const express = require("express");
 const app = express();
 const port = 3000; 
-const bodyParse = require("body-parser")
+const bodyParse = require("body-parser");
+const path = require("path");
 
 var session = require("express-session");
 
 app.use(express.static("./app/public"));
 
 app.set("view engine", "ejs");
-app.set("views", "./app/views");
+//app.set("views", "./app/views");
 app.set('views', path.join(__dirname, "./app/views"));
+
+
+//path.resolve(__dirname + "/../public/img/fotos_propostas/" + usuario + "-" + id_projeto + ".jpg");
 //app.use(bodyParse.urlencoded({extends: false}));
 
 app.use(express.json({limit: '50mb' }));
