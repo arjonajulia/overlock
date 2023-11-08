@@ -16,8 +16,8 @@ app.set("views", "./app/views");
 
 //caminho = caminho.replace("app/app/app/", "app/app/");
 
-app.set("views", caminho);
-console.log(caminho);
+//app.set("views", caminho);
+//console.log(caminho);
 //app.use(bodyParse.urlencoded({extends: false}));
 
 app.use(express.json({limit: '50mb' }));
