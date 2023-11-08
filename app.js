@@ -9,10 +9,10 @@ var session = require("express-session");
 app.use(express.static("./app/public"));
 
 app.set("view engine", "ejs");
-//app.set("views", "./app/views");
+app.set("views", "./app/views");
 //app.set('views', path.join(__dirname, "./app/views"));
 
-let caminho = path.resolve(__dirname + "app/views");
+//let caminho = path.resolve(__dirname + "app/views");
 
 //caminho = caminho.replace("app/app/app/", "app/app/");
 
