@@ -42,7 +42,7 @@ router.get("/index", function (req, res) {
 
 router.get("/CadastroUni", function (req, res) {
   res.locals.erroLogin = null
-  res.render("pages/CadastroUni", { listaErros: null, dadosNotificacao: null, valores: { user_name: "" , nome: "" ,dataNaci: "" , tel: "" , end: "" , city: "" , nul: "" , cep: "" , cep: "" , cpf: "" , email: "" , senha: "" , senha: "" } });
+  res.render("pages/CadastroUni", { listaErros: null, dadosNotificacao: null, valores: { user_name: "" , nome: "" ,dataNaci: "" , tel: "" , end: "" , city: "" , nul: "" , cep: "" , cep: "" , cpf: "" , email: "" , senha: "" , senha: "", tipo_usuario: req.query.id } });
 });
 
 /*
@@ -392,9 +392,9 @@ router.post(
         final.toFixed(2)
         let resutado = final.toFixed(2).slice(0,2)
         if( resutado >= 18 ){
-          if(usuarioDAL.SalvarProfissional(dadosForm) != null){
+            await usuarioDAL.SalvarProfissional(dadosForm)
             return res.render("pages/index", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}});
-          }
+         
           //return res.render("pages/Cadastro_Profissional_mais_18", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}})
         } else if( resutado < 18 ){
           return res.render("pages/Cadastro_profissional_menos_18")
@@ -410,7 +410,7 @@ router.post(
         let resutado = final.toFixed(2).slice(0,2)
         if( resutado >= 18 ){
           req.session.dados = dadosForm;
-        res.render("pages/Cadastro_profissional_mais_18");
+          res.render("pages/Cadastro_profissional_mais_18");
         } else if( resutado < 18 ){
           return res.render("pages/Cadastro_profissional_menos_18")
         }
@@ -468,9 +468,11 @@ router.get("/sair", limparSessao, function (req, res) {
 router.post("/Tipo_Usuario", (req, res) =>{
       var id = req.session.id_u;
       if(req.body.tipo_usuario == 1){
+        res.redirect("/CadastroUni?id="+id)
         console.log(1);
       }
       if(req.body.tipo_usuario == 2){
+        res.redirect("/CadastroUni?id="+id)
         console.log(2);
       }
       

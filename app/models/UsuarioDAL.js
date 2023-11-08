@@ -23,7 +23,7 @@ module.exports = class UsuarioDAL {
     };
 
     AdmUsuarios(id){
-        const tipo_usuario = this.conexao.query("SELECT id_tipo_usuario FROM usuario WHERE id_usuario = ? and ", parseInt(id));
+        const tipo_usuario = this.conexao.query("SELECT id_tipo_usuario FROM usuario WHERE id_usuario = ? and status_usuario <> 0  ", parseInt(id));
         if(tipo_usuario.values == 3){
             return new Promise((resolve, reject) =>{
                   this.conexao.query("SELECT id_usuario, foto_perfil_pasta, user_name, nome, cpf, tu.nome_tipo FROM usuario AS u " +
