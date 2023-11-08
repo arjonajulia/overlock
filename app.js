@@ -45,6 +45,6 @@ app.use("/", rotas);
 
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Servidor ouvindo na porta ${port}\nSite On Page:${port}`);
 });
