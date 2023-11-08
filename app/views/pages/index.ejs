@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+        <head>
+
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+            <link rel="stylesheet" href="css/mainC.css">
+            <script src="js/script.js" defer ></script>
+            <title> Over-Lock </title>
+
+        </head>
+
+
+        <body>
+
+            <header>
+
+                <div id="submenu">
+                    
+                    <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                    <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+                    <a onclick.window.location="/index">
+                                    
+                        <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                    </a>
+
+                    <img src="img/paula/icone login.svg" id="log" onclick="login()">
+
+                </div>
+
+            </header>
+
+            <main>
+
+                <nav id="menu">
+
+                    <ul>
+
+                        <a onclick="window.location='/index'">
+                            <li class="pri lli" > <p> início </p> </li>
+                        </a>
+
+                        <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                            <li class="lli" > <p> configurações </p> </li>
+                        </a>
+
+                        <a onclick="window.location='/EditarUsuario?id=<%= id_user %>'">
+                            <li class="lli" > <p> meu perfil </p> </li>
+                        </a>
+
+                        <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                            <li class="ulti" > <p> denúncia </p> </li>
+                        </a>
+
+                    </ul>
+
+                </nav>
+
+                <% 
+                    let avisoErro = {"user_login":"", "senha_login":""}
+                    let msgErro =   {"user_login":"", "senha_login":""}
+                        if(listaErros){
+                            listaErros.errors.forEach(function(itemErro){
+                                if(itemErro.path == "user_login"){
+                                    avisoErro.user_login = "erro";
+                                    msgErro.user_login = itemErro.msg
+                                }
+                                if(itemErro.path == "senha_login"){
+                                    avisoErro.senha_login = "erro";
+                                    msgErro.senha_login = itemErro.msg
+                                }
+                            })
+                        }
+                %>
+                
+                <form method="post" action="/login" id="login_x">
+
+                    <div class="fund">
+
+                        <div class="sti">
+
+                            <img src="img/paula/variações logo/manequim 511555.svg"> 
+    
+                        </div>
+
+                        <br>
+                        <br>
+    
+                        <img src="img/paula/variações logo/overlock - tipografia - escuro.svg" id="over">
+
+                        <br>
+
+    
+                        <label for="user_login">user name</label> <br>
+                        <input type="text" name="user_login" id="email" placeholder="   digite seu user name"
+                            class="<%= avisoErro.user_login %>" ><br>
+                        <span>
+                            <%= msgErro.user_login %>
+                        <span>
+    
+                        <label for="senha_login">senha</label> <br>
+                        <input type="password" name="senha_login" id="senha" placeholder="   digite sua senha"
+                            class="<%= avisoErro.senha_login %>" ><br>
+                        <span>
+                            <%= msgErro.senha_login %>
+                        <span>
+    
+                        <a id="email2" href="mailto:">esqueceu a senha ?</a> <br>
+    
+                        <input type="submit" name="enviar" id="enviar">
+    
+                        <div class="hr2"></div>
+    
+                        <p class="ult"> ainda não tem uma conta ? </p>
+                        <a id="cont" onclick="window.location='/CadastroUni'">crie uma conta </a>
+
+                    </div>
+
+                </form>
+
+
+                <div class="xs">
+
+                    <img src="img/icons/usuario-main.svg">
+    
+                    <a href=""> <strong> Anna_lívia </strong> </a>
+    
+                </div>
+                
+    
+                <section>
+    
+                    <div class="galeria">
+                        
+                            <img class="foto" src="img/Imagens Antes do Cadastro (slide)/1.png">
+                        
+                            <img class="foto" src="img/Imagens Antes do Cadastro (slide)/2.png">
+                        
+                            <img class="foto" src="img/Imagens Antes do Cadastro (slide)/3.png">
+
+                    </div>
+    
+    
+                </section>
+
+            
+                <h1>
+
+                    Projetos feitos com <br>
+                    <span> OVERLOCK </span>
+
+                </h1>
+
+                <div id="men">
+
+                    <section id="cadss">
+
+                        <p>
+        
+                            Já tem uma conta ? <span onclick="login()"> <strong> Entre </strong> </span> <br>
+                                        ou <a href="#cad"> <strong> Cadastre-se  </strong> </a>
+                                                    
+        
+                        </p>
+
+                    </section>
+        
+                    <section id="cad">
+        
+                        <div>
+
+                            <img src="img/Imagens Antes do Cadastro (Img redondas)/1.png">
+
+                            <br>
+
+                            <a onclick="window.location='/CadastroUni?id=2'"> Perfil Profissional </strong> </a>
+
+                        </div>
+
+                        <div>
+                            
+                            <img src="img/Imagens Antes do Cadastro (Img redondas)/2.png">
+
+                            <br>
+
+                            <a onclick="window.location='/CadastroUni?id=1'"> Perfil Cliente </strong> </a>
+
+                        </div>
+        
+                    </section>
+        
+                    <section>
+        
+                        <div class="sli">
+                            
+                            <div class="hp">
+
+                                <p>
+    
+                                    nosso projeto reune costureiros que possuem ou não seu próprio espaço, dando a oportunidade de trabalho através de propostas de peças de roupas ou a personalização de peças de seus clientes.
+                                
+                                </p>
+        
+                            </div>
+                            
+                            <div class="hp">
+
+                                <p>
+
+                                    essas propostas serão personalizados de acordo com o tipo de pacote que o costureiro assinar, sendo caracterizados por localização, quantidade de propostas e meios de transportes das peças de roupa.
+                                
+                                </p>
+        
+                            </div>
+        
+                            <div class="hp">
+
+                                <p>
+
+                                    dentro da plataforma o cliente poderá enviar propostas de peças de roupas ou personalização das que ele já possui, estipulando medida, tecido, caracterização e valor que ele estará disposto a pagar.
+                                    
+                                </p>
+
+                            </div>
+        
+                            <div class="hp">
+        
+                                <p>
+
+                                    a negociação será realizada através do nosso chat, caso o cliente permita o costureiro poderá adicionar fotos da peça que ele produziu em seu portifólio, que será exposto para outros usuários.
+                                    
+                                </p>
+        
+                            </div>
+        
+                        </div>
+        
+        
+                    </section>
+
+                </div>
+             
+            </main>
+
+            <footer>
+
+                <h3> NAVEGAÇÃO </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="">Inicio</a>
+                    </li>
+
+                    <li>
+                        <a href="">configurações</a>
+                    </li>
+
+                    <li>
+                        <a href="/app/view/Perfil_Cliente_Profissional.html">meu perfil</a>
+                    </li>
+
+                    <li>
+                        <a href="">denuncia</a>
+                    </li>
+                    
+                </ul>
+
+                <address>
+
+                    <h3> CONTATO </h3>
+
+                    <div class="con">
+
+                        <img src="img/paula/telefone.svg">
+
+                        <a href="tel:+5511999999999">(11) 99999-9999</a>
+
+                    </div>
+
+                    <div class="con">
+
+                        <img src="img/paula/email.svg">
+
+                        <a href="mailto:overlock.site@gmail.com">overlock.site@gmail.com</a>
+
+                    </div>
+
+                    <h3> REDES SOCIAIS </h3>
+
+                    <div class="rede">
+
+                        <img src="img/paula/instagram.svg" alt="">
+                        <img src="img/paula/pinterest.svg" alt="">
+                        <img src="img/paula/twitter.svg" alt="">
+
+                    </div>
+
+                    <div class="empre">
+
+                        <h3> OUTROS SERVIÇOS </h3> <br>
+
+                        <a href="" class="transpor" > Cadastrar como transportadora </a>
+
+                    </div>
+
+                </address>
+
+                <a href="#logo">
+
+                    <img  id="inicio" src="img/paula/variações logo/overlock - tipografia.svg">
+
+                </a>
+                
+                <!--
+
+                <address>
+
+                    <div>
+
+                        <a href="embreve.html">SOBRE NÓS</a> <br>
+
+                        <br>
+
+                        <a href="embreve.html">AJUDA</a> <br>
+
+                        <br>
+
+                        <a href="embreve.html">POÍTICA DE PRIVACIDADE</a> <br>
+
+                        <br>
+
+                        <a href="embreve.html">ENTRAR EM CONTATO</a>
+
+                    </div>
+
+                    <div>
+
+                        <a href="embreve.html">
+
+                            <img src="pinterest-footer.svg" alt="">
+
+                        </a>
+
+                        <a href="https://instagram.com/overlock_tca?igshid=YmMyMTA2M2Y=">
+
+                            <img src="instagram-footer.svg" alt="">
+
+                        </a>
+
+                        <a href="https://twitter.com/OVERLOC10909202?t=dRmEJ4CVN3JdyrCI231uzA&s=09">
+
+                            <img src="twiter-footer.svg" alt="">
+
+                        </a>
+
+                    </div>
+                    
+                </address>
+
+                -->
+            </footer>
+
+        </body>
+
+</html>
+

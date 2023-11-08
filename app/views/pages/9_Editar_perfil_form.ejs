@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="css/Editar_perfil_home.css">
+        <script src="js/script.js" defer ></script>
+        <script src="js/file.js" defer ></script>
+        <title> Editar Perfil </title>
+
+        <style>
+
+            .btn-a-inital {
+                background-color: #511555;
+                height: 49px ;
+                width: 150px;
+                color: #EEEBE8;
+                font-family: 'Quicksand', sans-serif;
+                padding: 10px;
+                border-radius: 10px;
+                margin: 0 auto;
+                display: block;
+                text-align: center;
+                font-weight: 600;
+
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div id="submenu">
+                
+                <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+                <a onclick.window.location="/index">
+                                
+                    <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                </a>
+
+            </div>
+
+        </header>
+
+        <main>
+            
+            <nav id="menu">
+
+                <ul>
+
+                    <a onclick="window.location='/index'">
+                        <li class="pri lli" > <p> Início </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/13_Meus_pedidos'">
+                        <li class="lli" > <p> Meus pedidos </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/18_Notificacao_geral'">
+                        <li class="lli" > <p> Notificações </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/19_Chat'">
+                        <li class="lli" > <p> Chat </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/10_Perfil'">
+                        <li class="lli" > <p> Meu perfil </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/'">
+                        <li class="lli" > <p> Configurações </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/22_Politica_de_privacidade_cliente'">
+                        <li class="lli" > <p> Política de Privacidade </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/20_Denuncia_cliente'">
+                        <li class="lli" > <p> Denúncia </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/21_Sair_cliente'">
+                        <li class="ulti" > <p> Sair </p> </li>
+                    </a>
+
+                </ul>
+
+            </nav>
+            <article>
+
+                <form method="post" action="/Editar_Perfil" id="cadastro_Cliente">
+
+                    <% const usuario = JSON.parse(valores)[0] %>
+
+                    <div class="container">
+    
+                        <h1> CADASTRO </h1>
+    
+                        <hr>
+        
+                            <input required type="text" name="user_name" id="user_name" placeholder="User name" value="<% usuario.user_name %>"> 
+        
+                            <input required type="text" name="nome" id="name" placeholder="Nome" value="<% usuario.nome %>" > 
+                                     
+                            <input required type="date" name="dataNaci" id="dataNaci" placeholder="data de nacimento" value="<% usuario.data_naci %>"> 
+        
+                            <input required type="text" name="tel" id="tel" placeholder="Telefone" onclick="formatarTelefone()" maxlength="14" value="<% usuario.telefone %>"> 
+                                    
+                            <input required type="text" name="end" id="end" placeholder="Endereço" value="<% usuario.rua %>"> 
+                                    
+                            <input required type="text" name="city" id="city" placeholder="Cidade" value="<% usuario.cidade %>"> 
+                                     
+                            <input required type="text" name="nul" id="nul" placeholder="Número" value="<% usuario.numero %>">  
+                                    
+                            <input required type="text" name="cep" id="cep" placeholder="Cep" onclick="formatarCep()" maxlength="10" value="<% usuario.cep %>"> 
+
+                            <input required type="text" name="email" id="email" placeholder="Email" value="<% usuario.email %>"> 
+                                      
+                            <input required type="password" name="senha" id="senha" placeholder="Senha" value="<% usuario.senha %>"> 
+                                  
+                        <!--
+    
+                        <input required type="submit" value="cadastrar" id="cadastrar">
+                        
+                        <button id="cadastrar" onclick="window.location='/index'">
+                            Enviar
+                        </button>
+                        -->
+    
+                        <input required type="submit" value="cadastrar" id="cadastrar">
+    
+                    </div>
+    
+                </form>
+    
+
+            </article>
+
+                <h5> Preferência de roupas </h5>
+
+                <div class="ips pli">
+                    <input type="checkbox" name="aju" id="aju">
+                    <label for="aju"> Feminina </label>
+                </div>
+
+                <div class="ips">
+                    <input type="checkbox" name="personalização" id="per">
+                    <label for="per"> Masculino </label>
+                </div>
+
+                <div class="ips">
+                    <input type="checkbox" name="criação" id="cri">
+                    <label for="cri"> Infantil </label>
+                </div>
+                <!-- onclick="window.location='/inicial_feed'" -->
+
+                <div id="btn-a-inital-grid">
+                    <a href="/inicial_feed" id="certo" class="btn-a-inital">
+                        carregar
+                     </a>
+                     <a href="/DeletarPerfil?id=<%= usuario.id_usuario %>" id="delete" class="btn-a-inital">
+                        Deletar
+                     </a>
+     
+                </div>
+                
+            </form>
+
+        </main>
+
+        <footer>
+
+            <h3> Navegação </h3>
+
+            <ul>
+
+                <li>
+                    <a href="/index">Início</a>
+                </li>
+                <li>
+                    <a href="/13_Meus_pedidos">Meus Pedidos</a>
+                </li>
+                <li>
+                    <a href="/18_Notificacao_geral">Notificações</a>
+                </li>
+                <li>
+                    <a href="/19_Chat">Chat</a>
+                </li>
+                <li>
+                    <a href="/10_Perfil">Meu Perfil</a>
+                </li>
+                <li>
+                    <a href="/">Configurações</a>
+                </li>
+                <li>
+                    <a href="/22_Politica_de_privacidade_cliente">Política de Privacidade</a>
+                </li>
+                <li>
+                    <a href="/20_Denuncia_cliente">Denúncia</a>
+                </li>
+                <li>
+                    <a href="/21_Sair_cliente">Sair</a>
+                </li>
+                
+            </ul>
+
+            <address>
+
+                <h3> Contato </h3>
+
+                <div class="con">
+
+                    <img src="img/paula/telefone.svg">
+
+                    <a href="tel:+5511999999999">(11) 99999-9999</a>
+
+                </div>
+
+                <div class="con">
+
+                    <img src="img/paula/email.svg">
+
+                    <a href="mailto:overlock.site@gmail.com">overlock.site@gmail.com</a>
+
+                </div>
+
+                <h3> REDES SOCIAIS </h3>
+
+                <div class="rede">
+
+                    <img src="img/paula/instagram.svg" alt="">
+                    <img src="img/paula/pinterest.svg" alt="">
+                    <img src="img/paula/twitter.svg" alt="">
+
+                </div>
+
+                <div class="empre">
+
+                    <h3> OUTROS SERVIÇOS </h3> <br>
+
+                    <a href="" class="transpor" > Cadastrar como transportadora </a>
+
+                </div>
+
+            </address>
+
+            <a href="#logo">
+
+                <img  id="inicio" src="img/paula/variações logo/overlock - tipografia.svg">
+
+            </a>
+            
+        </footer>
+    </body>
+</html>

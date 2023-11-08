@@ -1,0 +1,1770 @@
+* {
+margin: 0 auto;
+padding: 0 auto;
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+/*
+
+color: #cfa2f6
+font - font-family: 'Montserrat', sans-serif;
+font - font-family: 'Quicksand', sans-serif;
+*/
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+
+body {
+    width: 100%;
+    background-size: 100%;
+    background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+header, main, footer {
+overflow: hidden;
+}
+
+header {
+position: relative;
+z-index: 1;
+background-color: #551555;
+height: 80px;
+}
+
+
+#submenu {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+}
+
+#logo {
+margin-top: 16px;
+width: 94px;
+}
+
+#log {
+width: 64px;
+margin-top: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////*/
+
+#menuA {
+width: 64px;
+opacity: 1;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuAx {
+width: 64px;
+opacity: 0;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuF {
+top: 30px;
+left: 0px; 
+width: 10%;
+opacity: 0;
+position: absolute;
+transform: rotate(90deg);
+transition-duration: 0.5s;
+}
+
+#menuFx{
+top: 22px;
+left: 90px; 
+width: 45px;
+opacity: 1;
+position: absolute;
+transition-duration: 0.2s;
+}
+
+#menu_x {
+top: 0px;
+width: 90%;
+z-index: 4;
+margin: 5%;
+transition-duration: 1s;
+position: absolute;
+}
+
+#menu {
+top: -500px;
+width: 90%;
+z-index: 4;
+margin: 5%;
+transition-duration: 1s;
+position: absolute;
+}
+
+#menu ul {
+padding: 0px;
+}
+
+#menu ul a {
+font-size: 18px;
+font-weight: 900;
+}
+
+#menu ul a li {
+padding: 5%;
+text-align: left;
+border: 1px solid #551555;
+background-color: #BD81F3;
+}
+
+#menu_x ul {
+padding: 0px;
+}
+
+#menu_x ul a {
+font-size: 18px;
+font-weight: 900;
+}
+
+.lli {
+border-bottom: none;
+}
+
+#menu_x ul a li {
+padding: 5%;
+text-align: left;
+border: 1px solid #551555;
+background-color: #BD81F3;
+}
+
+#menu_x ul a li:hover {
+padding: 5%;
+text-align: left;
+border: 1px solid #551555;
+background-color: #551555;
+}
+
+.pri {
+border-radius: 25px 25px 0px 0px;
+}
+
+.ulti {
+border-radius: 0px 0px 25px 25px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////////////*/
+ul {
+list-style: none;
+padding: 0px;
+}
+
+a {
+text-decoration: none;
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////*/
+
+#login_x {
+left: 500px;
+z-index: 2;
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+background-size: 140%;
+transition-duration: 1s;
+background-repeat: no-repeat;
+background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+}
+
+#login {
+left: 0px;
+z-index: 2;
+width: 100%;
+height: 100%;
+position: absolute;
+background-size: 140%;
+transition-duration: 1s;
+background-repeat: no-repeat;
+background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+}
+
+.fund {
+margin: 15% 8%;
+padding-top: 6%;
+padding: 5%;
+border-radius: 40px;
+background-color: white;
+}
+
+.sti {
+width: 100px;
+border-radius: 60px;
+background-color: #BD81F3;
+}
+
+.sti img {
+width: 90%;
+margin: 3px 5px;
+}
+
+#over {
+margin-bottom: 10%;
+}
+
+.hr{
+text-align: center;
+}
+
+.hr p {
+top: -20px;
+width: 40px;
+font-size: 18px;
+color: #551555;
+padding: 2%;
+position: relative;
+background-color: #fff;
+}
+
+.hr2 {
+height: 2px;
+background-color: #551555;
+}
+
+.fund a, p {
+font-weight: 300;
+color: #551555;
+text-align: center;
+}
+
+.fund label {
+font-size: 18px;
+font-weight: 900;
+color: #551555;
+}
+
+.fund input {
+margin: 4% 0%;
+width: 100%;
+height: 45px;
+outline: #BD81F3;
+border-radius: 15px;
+border: 2px solid #551555;
+}
+
+.fund input::placeholder {
+color: #551555;
+font-size: 17px;
+font-weight: 400;
+font-family: 'Quicksand', sans-serif;
+}
+
+#enviar {
+color: white;
+font-size: 16px;
+margin-bottom: 20px;
+font-weight: bolder;
+background-color: #551555;
+font-family: 'Quicksand', sans-serif;
+}
+#email2 {
+left: 25%;
+position: relative;
+}
+
+#cont {
+left: 29%;
+position: relative;
+}
+
+.ult {
+margin-top: 10px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+main {
+position: relative;
+background-size: 150%;
+background-repeat: no-repeat;
+background-image: url(/app/public/img/tela\ de\ fundo\ coringa.png);
+}
+
+.container {
+margin: 5%;
+padding: 5%;
+border-radius: 25px;
+background-color: #fff;
+}
+
+.container div:first-child img:first-child {
+width: 35%;
+display: flex;
+}
+
+.container div:nth-child(3) img:first-child {
+width: 60%;
+display: flex;
+}
+
+.container article {
+padding: 5%;
+margin-top: 5%;
+margin-bottom: 5%;
+border-radius: 25px;
+border: 3px solid #BD81F3;
+}
+
+.container article p {
+font-size: 25px;
+color: #BD81F3;
+font-family: 'Montserrat', sans-serif;
+}
+
+.container h2 {
+margin: 10% 3%;
+color: #551555;
+text-align: center;
+font-family: 'Montserrat', sans-serif;
+}
+
+.ips {
+padding: 5%;
+padding-left: 15%;
+}
+
+.ips input[type="checkbox"] {
+width: 30px;
+height: 30px;
+border-radius: 0px;
+background-color: #551555;
+border: 2px solid #551555;
+}
+
+.ips label {
+font-size: 20px;
+margin-left: 6%;
+color: #551555;
+font-family: 'Montserrat', sans-serif;
+}
+
+.ips input {
+display: none;
+}
+
+.ips input + label:before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 2px solid #551555;
+}
+
+.ips input:checked + label:before {
+    background-color: #551555;
+}
+
+#btn {
+width: 90%;
+height: 60px;
+color: #fff;
+margin: 4% 5%;
+font-size: 18px;
+font-weight: 900;
+border-radius: 11px;
+background-color: #551555;
+border: 2px solid #551555;
+font-family: 'Quicksand', sans-serif;
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+footer {
+    padding: 4%;
+    text-align: left;
+    background-color: #551555;
+}
+
+.con img {
+    width: 13%;
+    margin: 2%;
+    margin-left: 2%;
+}
+
+footer ul {
+    padding: 0px;
+}
+
+footer ul li {
+    margin: 2% 3%; 
+}
+
+footer a {
+    color: #BD81F3;
+    text-decoration: none;
+}
+
+footer address {
+    font-style: normal;
+}
+
+footer address a {
+    color: #BD81F3;
+    margin-left: 1%;
+    position: relative;
+    top: -25px;
+}
+
+footer h3 {
+    margin: 3%;
+    color: #BD81F3;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.class {
+    display: flex;
+}
+
+.rede img {
+    width: 15%;
+    margin-left: 2%;
+}
+
+#inicio {
+    display: flex;
+    width: 50%;
+}
+
+.transpor {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 720px) {
+body {
+    width: 100%;
+    background-size: 100%;
+    background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+header, main, footer {
+overflow: hidden;
+}
+
+header {
+position: relative;
+z-index: 1;
+background-color: #551555;
+height: 80px;
+}
+
+
+#submenu {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+}
+
+#logo {
+margin-top: 16px;
+width: 94px;
+}
+
+#log {
+width: 64px;
+margin-top: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////*/
+
+#menuA {
+width: 64px;
+opacity: 1;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuAx {
+width: 64px;
+opacity: 0;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuF {
+top: 30px;
+left: 0px; 
+width: 10%;
+opacity: 0;
+position: absolute;
+transform: rotate(90deg);
+transition-duration: 0.5s;
+}
+
+#menuFx{
+top: 22px;
+left: 90px; 
+width: 45px;
+opacity: 1;
+position: absolute;
+transition-duration: 0.2s;
+}
+
+    #menu_x {
+    top: 0px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+    }
+
+    #menu {
+    top: -500px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+    }
+
+    #menu ul {
+    padding: 0px;
+    }
+
+    #menu ul a {
+    font-size: 18px;
+    font-weight: 900;
+    }
+
+    #menu ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #BD81F3;
+    }
+
+    #menu_x ul {
+    padding: 0px;
+    }
+
+    #menu_x ul a {
+    font-size: 18px;
+    font-weight: 900;
+    }
+
+    .lli {
+    border-bottom: none;
+    }
+
+    #menu_x ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #BD81F3;
+    }
+
+    #menu_x ul a li:hover {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #551555;
+    }
+
+    .pri {
+    border-radius: 25px 25px 0px 0px;
+    }
+
+    .ulti {
+    border-radius: 0px 0px 25px 25px;
+    }
+
+
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    ul {
+    list-style: none;
+    padding: 0px;
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+
+    /*///////////////////////////////////////////////////////////////////////////////////*/
+
+    #login_x {
+    left: 500px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+    
+    #login {
+    left: 0px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+
+    .fund {
+    margin: 15% 8%;
+    padding-top: 6%;
+    padding: 5%;
+    border-radius: 40px;
+    background-color: white;
+    }
+
+    .sti {
+    width: 100px;
+    border-radius: 60px;
+    background-color: #BD81F3;
+    }
+
+    .sti img {
+    width: 90%;
+    margin: 3px 5px;
+    }
+    
+    #over {
+    margin-bottom: 10%;
+    }
+
+    .hr{
+    text-align: center;
+    }
+
+    .hr p {
+    top: -20px;
+    width: 40px;
+    font-size: 18px;
+    color: #551555;
+    padding: 2%;
+    position: relative;
+    background-color: #fff;
+    }
+
+    .hr2 {
+    height: 2px;
+    background-color: #551555;
+    }
+
+    .fund a, p {
+    font-weight: 300;
+    color: #551555;
+    text-align: center;
+    }
+
+    .fund label {
+    font-size: 18px;
+    font-weight: 900;
+    color: #551555;
+    }
+
+    .fund input {
+    margin: 4% 0%;
+    width: 100%;
+    height: 45px;
+    outline: #BD81F3;
+    border-radius: 15px;
+    border: 2px solid #551555;
+    }
+
+    .fund input::placeholder {
+    color: #551555;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    }
+
+    #enviar {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    background-color: #551555;
+    font-family: 'Quicksand', sans-serif;
+    }
+    #email2 {
+    left: 25%;
+    position: relative;
+    }
+
+    #cont {
+    left: 29%;
+    position: relative;
+    }
+
+    .ult {
+    margin-top: 10px;
+    }
+
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    main {
+    position: relative;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/tela\ de\ fundo\ coringa.png);
+    }
+
+    .container {
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    background-color: #fff;
+    }
+
+    .container div:first-child img:first-child {
+    width: 35%;
+    display: flex;
+    }
+
+    .container div:nth-child(3) img:first-child {
+    width: 60%;
+    display: flex;
+    }
+
+    .container article {
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 25px;
+    border: 3px solid #BD81F3;
+    }
+
+    .container article p {
+    font-size: 25px;
+    color: #BD81F3;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .container h2 {
+    margin: 10% 3%;
+    color: #551555;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .ips {
+    padding: 5%;
+    padding-left: 15%;
+    }
+
+    .ips input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: #551555;
+    border: 2px solid #551555;
+    }
+
+    .ips label {
+    font-size: 20px;
+    margin-left: 6%;
+    color: #551555;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .ips input {
+    display: none;
+    }
+
+    .ips input + label:before {
+        content: '';
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+        margin-bottom: 4px;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #fff;
+        border: 2px solid #551555;
+    }
+
+    .ips input:checked + label:before {
+        background-color: #551555;
+    }
+
+    #btn {
+    width: 90%;
+    height: 60px;
+    color: #fff;
+    margin: 4% 5%;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 11px;
+    background-color: #551555;
+    border: 2px solid #551555;
+    font-family: 'Quicksand', sans-serif;
+    }
+    
+    
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    footer {
+        padding: 4%;
+        text-align: left;
+        background-color: #551555;
+    }
+
+    .con img {
+        width: 13%;
+        margin: 2%;
+        margin-left: 2%;
+    }
+
+    footer ul {
+        padding: 0px;
+    }
+
+    footer ul li {
+        margin: 2% 3%; 
+    }
+
+    footer a {
+        color: #BD81F3;
+        text-decoration: none;
+    }
+
+    footer address {
+        font-style: normal;
+    }
+
+    footer address a {
+        color: #BD81F3;
+        margin-left: 1%;
+        position: relative;
+        top: -25px;
+    }
+
+    footer h3 {
+        margin: 3%;
+        color: #BD81F3;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .class {
+        display: flex;
+    }
+
+    .rede img {
+        width: 15%;
+        margin-left: 2%;
+    }
+
+    #inicio {
+        display: flex;
+        width: 50%;
+    }
+
+    .transpor {
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 720px) {
+
+body {
+    width: 100%;
+    background-size: 100%;
+    background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+header, main, footer {
+overflow: hidden;
+}
+
+header {
+position: relative;
+z-index: 1;
+background-color: #551555;
+height: 80px;
+}
+
+
+#submenu {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+}
+
+#logo {
+margin-top: 16px;
+width: 94px;
+}
+
+#log {
+width: 64px;
+margin-top: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////*/
+
+#menuA {
+width: 64px;
+opacity: 1;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuAx {
+width: 64px;
+opacity: 0;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuF {
+top: 30px;
+left: 0px; 
+width: 10%;
+opacity: 0;
+position: absolute;
+transform: rotate(90deg);
+transition-duration: 0.5s;
+}
+
+#menuFx{
+top: 22px;
+left: 90px; 
+width: 45px;
+opacity: 1;
+position: absolute;
+transition-duration: 0.2s;
+}
+
+    #menu_x {
+    top: 0px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+    }
+
+    #menu {
+    top: -500px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+    }
+
+    #menu ul {
+    padding: 0px;
+    }
+
+    #menu ul a {
+    font-size: 18px;
+    font-weight: 900;
+    }
+
+    #menu ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #BD81F3;
+    }
+
+    #menu_x ul {
+    padding: 0px;
+    }
+
+    #menu_x ul a {
+    font-size: 18px;
+    font-weight: 900;
+    }
+
+    .lli {
+    border-bottom: none;
+    }
+
+    #menu_x ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #BD81F3;
+    }
+
+    #menu_x ul a li:hover {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #551555;
+    }
+
+    .pri {
+    border-radius: 25px 25px 0px 0px;
+    }
+
+    .ulti {
+    border-radius: 0px 0px 25px 25px;
+    }
+
+
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    ul {
+    list-style: none;
+    padding: 0px;
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+
+    /*///////////////////////////////////////////////////////////////////////////////////*/
+
+    #login_x {
+    left: 500px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+    
+    #login {
+    left: 0px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+
+    .fund {
+    margin: 15% 8%;
+    padding-top: 6%;
+    padding: 5%;
+    border-radius: 40px;
+    background-color: white;
+    }
+
+    .sti {
+    width: 100px;
+    border-radius: 60px;
+    background-color: #BD81F3;
+    }
+
+    .sti img {
+    width: 90%;
+    margin: 3px 5px;
+    }
+    
+    #over {
+    margin-bottom: 10%;
+    }
+
+    .hr{
+    text-align: center;
+    }
+
+    .hr p {
+    top: -20px;
+    width: 40px;
+    font-size: 18px;
+    color: #551555;
+    padding: 2%;
+    position: relative;
+    background-color: #fff;
+    }
+
+    .hr2 {
+    height: 2px;
+    background-color: #551555;
+    }
+
+    .fund a, p {
+    font-weight: 300;
+    color: #551555;
+    text-align: center;
+    }
+
+    .fund label {
+    font-size: 18px;
+    font-weight: 900;
+    color: #551555;
+    }
+
+    .fund input {
+    margin: 4% 0%;
+    width: 100%;
+    height: 45px;
+    outline: #BD81F3;
+    border-radius: 15px;
+    border: 2px solid #551555;
+    }
+
+    .fund input::placeholder {
+    color: #551555;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    }
+
+    #enviar {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    background-color: #551555;
+    font-family: 'Quicksand', sans-serif;
+    }
+    #email2 {
+    left: 25%;
+    position: relative;
+    }
+
+    #cont {
+    left: 29%;
+    position: relative;
+    }
+
+    .ult {
+    margin-top: 10px;
+    }
+
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    main {
+    position: relative;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/tela\ de\ fundo\ coringa.png);
+    }
+
+    .container {
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    background-color: #fff;
+    }
+
+    .container div:first-child img:first-child {
+    width: 35%;
+    display: flex;
+    }
+
+    .container div:nth-child(3) img:first-child {
+    width: 60%;
+    display: flex;
+    }
+
+    .container article {
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 25px;
+    border: 3px solid #BD81F3;
+    }
+
+    .container article p {
+    font-size: 25px;
+    color: #BD81F3;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .container h2 {
+    margin: 10% 3%;
+    color: #551555;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .ips {
+    padding: 5%;
+    padding-left: 15%;
+    }
+
+    .ips input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: #551555;
+    border: 2px solid #551555;
+    }
+
+    .ips label {
+    font-size: 20px;
+    margin-left: 6%;
+    color: #551555;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .ips input {
+    display: none;
+    }
+
+    .ips input + label:before {
+        content: '';
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+        margin-bottom: 4px;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #fff;
+        border: 2px solid #551555;
+    }
+
+    .ips input:checked + label:before {
+        background-color: #551555;
+    }
+
+    #btn {
+    width: 90%;
+    height: 60px;
+    color: #fff;
+    margin: 4% 5%;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 11px;
+    background-color: #551555;
+    border: 2px solid #551555;
+    font-family: 'Quicksand', sans-serif;
+    }
+    
+    
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    footer {
+        padding: 4%;
+        text-align: left;
+        background-color: #551555;
+    }
+
+    .con img {
+        width: 13%;
+        margin: 2%;
+        margin-left: 2%;
+    }
+
+    footer ul {
+        padding: 0px;
+    }
+
+    footer ul li {
+        margin: 2% 3%; 
+    }
+
+    footer a {
+        color: #BD81F3;
+        text-decoration: none;
+    }
+
+    footer address {
+        font-style: normal;
+    }
+
+    footer address a {
+        color: #BD81F3;
+        margin-left: 1%;
+        position: relative;
+        top: -25px;
+    }
+
+    footer h3 {
+        margin: 3%;
+        color: #BD81F3;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .class {
+        display: flex;
+    }
+
+    .rede img {
+        width: 15%;
+        margin-left: 2%;
+    }
+
+    #inicio {
+        display: flex;
+        width: 50%;
+    }
+
+    .transpor {
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 720px) {
+body {
+    width: 100%;
+    background-size: 100%;
+    background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+header, main, footer {
+overflow: hidden;
+}
+
+header {
+position: relative;
+z-index: 1;
+background-color: #551555;
+height: 80px;
+}
+
+
+#submenu {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+}
+
+#logo {
+margin-top: 16px;
+width: 94px;
+}
+
+#log {
+width: 64px;
+margin-top: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////*/
+
+#menuA {
+width: 64px;
+opacity: 1;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuAx {
+width: 64px;
+opacity: 0;
+margin-top: 10px;
+transition-duration: 0.2s;
+}
+
+#menuF {
+top: 30px;
+left: 0px; 
+width: 10%;
+opacity: 0;
+position: absolute;
+transform: rotate(90deg);
+transition-duration: 0.5s;
+}
+
+#menuFx{
+top: 22px;
+left: 90px; 
+width: 45px;
+opacity: 1;
+position: absolute;
+transition-duration: 0.2s;
+}
+
+    #menu_x {
+    top: 0px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+    }
+
+    #menu {
+    top: -500px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+    }
+
+    #menu ul {
+    padding: 0px;
+    }
+
+    #menu ul a {
+    font-size: 18px;
+    font-weight: 900;
+    }
+
+    #menu ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #BD81F3;
+    }
+
+    #menu_x ul {
+    padding: 0px;
+    }
+
+    #menu_x ul a {
+    font-size: 18px;
+    font-weight: 900;
+    }
+
+    .lli {
+    border-bottom: none;
+    }
+
+    #menu_x ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #BD81F3;
+    }
+
+    #menu_x ul a li:hover {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #551555;
+    }
+
+    .pri {
+    border-radius: 25px 25px 0px 0px;
+    }
+
+    .ulti {
+    border-radius: 0px 0px 25px 25px;
+    }
+
+
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    ul {
+    list-style: none;
+    padding: 0px;
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+
+    /*///////////////////////////////////////////////////////////////////////////////////*/
+
+    #login_x {
+    left: 500px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+    
+    #login {
+    left: 0px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+
+    .fund {
+    margin: 15% 8%;
+    padding-top: 6%;
+    padding: 5%;
+    border-radius: 40px;
+    background-color: white;
+    }
+
+    .sti {
+    width: 100px;
+    border-radius: 60px;
+    background-color: #BD81F3;
+    }
+
+    .sti img {
+    width: 90%;
+    margin: 3px 5px;
+    }
+    
+    #over {
+    margin-bottom: 10%;
+    }
+
+    .hr{
+    text-align: center;
+    }
+
+    .hr p {
+    top: -20px;
+    width: 40px;
+    font-size: 18px;
+    color: #551555;
+    padding: 2%;
+    position: relative;
+    background-color: #fff;
+    }
+
+    .hr2 {
+    height: 2px;
+    background-color: #551555;
+    }
+
+    .fund a, p {
+    font-weight: 300;
+    color: #551555;
+    text-align: center;
+    }
+
+    .fund label {
+    font-size: 18px;
+    font-weight: 900;
+    color: #551555;
+    }
+
+    .fund input {
+    margin: 4% 0%;
+    width: 100%;
+    height: 45px;
+    outline: #BD81F3;
+    border-radius: 15px;
+    border: 2px solid #551555;
+    }
+
+    .fund input::placeholder {
+    color: #551555;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    }
+
+    #enviar {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    background-color: #551555;
+    font-family: 'Quicksand', sans-serif;
+    }
+    #email2 {
+    left: 25%;
+    position: relative;
+    }
+
+    #cont {
+    left: 29%;
+    position: relative;
+    }
+
+    .ult {
+    margin-top: 10px;
+    }
+
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    main {
+    position: relative;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-image: url(/app/public/img/tela\ de\ fundo\ coringa.png);
+    }
+
+    .container {
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    background-color: #fff;
+    }
+
+    .container div:first-child img:first-child {
+    width: 35%;
+    display: flex;
+    }
+
+    .container div:nth-child(3) img:first-child {
+    width: 60%;
+    display: flex;
+    }
+
+    .container article {
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 25px;
+    border: 3px solid #BD81F3;
+    }
+
+    .container article p {
+    font-size: 25px;
+    color: #BD81F3;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .container h2 {
+    margin: 10% 3%;
+    color: #551555;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .ips {
+    padding: 5%;
+    padding-left: 15%;
+    }
+
+    .ips input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+    background-color: #551555;
+    border: 2px solid #551555;
+    }
+
+    .ips label {
+    font-size: 20px;
+    margin-left: 6%;
+    color: #551555;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+    .ips input {
+    display: none;
+    }
+
+    .ips input + label:before {
+        content: '';
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+        margin-bottom: 4px;
+        border-radius: 4px;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #fff;
+        border: 2px solid #551555;
+    }
+
+    .ips input:checked + label:before {
+        background-color: #551555;
+    }
+
+    #btn {
+    width: 90%;
+    height: 60px;
+    color: #fff;
+    margin: 4% 5%;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 11px;
+    background-color: #551555;
+    border: 2px solid #551555;
+    font-family: 'Quicksand', sans-serif;
+    }
+    
+    
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    footer {
+        padding: 4%;
+        text-align: left;
+        background-color: #551555;
+    }
+
+    .con img {
+        width: 13%;
+        margin: 2%;
+        margin-left: 2%;
+    }
+
+    footer ul {
+        padding: 0px;
+    }
+
+    footer ul li {
+        margin: 2% 3%; 
+    }
+
+    footer a {
+        color: #BD81F3;
+        text-decoration: none;
+    }
+
+    footer address {
+        font-style: normal;
+    }
+
+    footer address a {
+        color: #BD81F3;
+        margin-left: 1%;
+        position: relative;
+        top: -25px;
+    }
+
+    footer h3 {
+        margin: 3%;
+        color: #BD81F3;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .class {
+        display: flex;
+    }
+
+    .rede img {
+        width: 15%;
+        margin-left: 2%;
+    }
+
+    #inicio {
+        display: flex;
+        width: 50%;
+    }
+
+    .transpor {
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+}

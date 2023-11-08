@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+
+        <link rel="stylesheet" href="css/Cadastros.css">
+        <script src="js/script.js" defer ></script>
+        <script src="js/mascara.js" defer ></script>
+
+        <title>Cadastro</title>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div id="submenu">
+
+                <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+                
+                <a onclick="window.location='/index'">
+
+                    <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                </a>
+
+                <img src="img/paula/icone login.svg" id="log" onclick="login()">
+
+            </div>
+
+        </header>
+
+         <main>
+
+            <nav id="menu">
+
+                <ul>
+
+                    <a onclick="window.location='/index'">
+                        <li class="pri lli" > <p> início </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="lli" > <p> configurações </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="lli" > <p> meu perfil </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="ulti" > <p> denúncia </p> </li>
+                    </a>
+
+                </ul>
+
+            </nav>
+            
+        <!--==========================================================================-->    
+
+            <form method="post" action="/CadastroUni" id="cadastro_Cliente">
+              <% valores:JSON.parse(valores) %>
+                <div class="container">
+
+                    <h1> CADASTRO </h1>
+
+                    <hr>
+                  
+                    <input required type="text" name="user_name" id="user_name" placeholder="User name" value="<%= valores.user_name %>" > 
+              
+                    <input required type="text" name="nome" id="name" placeholder="Nome" value="<%= valores.nome %>" class=""> 
+              
+                    <input required type="date" name="dataNaci" id="dataNaci" placeholder="data de nacimento" value="<%= valores.dataNaci %>" class=""> 
+              
+                    <input required type="text" name="tel" id="tel" placeholder="Telefone" onclick="formatarTelefone()" maxlength="14" value="<%= valores.tel %>" class=""> 
+              
+                    <input required type="text" name="end" id="end" placeholder="Endereço" value="<%= valores.end %>" class=""> 
+              
+                    <input required type="text" name="city" id="city" placeholder="Cidade" value="<%= valores.city %>" class=""> 
+              
+                    <input required type="text" name="nul" id="nul" placeholder="Número" value="<%= valores.nul %>" class=""> 
+              
+                    <input required type="text" name="cep" id="cep" placeholder="Cep" onclick="formatarCep()" maxlength="10" value="<%= valores.cep %>" class=""> 
+              
+                    <input required type="text" name="cpf" id="cpf" placeholder="Cpf" onclick="formatarCPF()" maxlength="14" value="<%= valores.cpf %>" class=""> 
+              
+ 
+                    <input required type="text" name="email" id="email" placeholder="Email" value="<%= valores.email %>" class=""> 
+                   
+ 
+                    <input required type="password" name="senha" id="senha" placeholder="Senha" value="<%= valores.senha %>" class=""> 
+
+                    <input type="text"  id="tipo_usuario" value="<%= valores.tipo %>" name="tipo_usuario" hidden> 
+ 
+                    <div class="priv">
+
+                        <input type="checkbox" name="checkbox" id="checkbox">
+
+                        <a href="/22_Politica_de_privacidade_cliente"> aceito os termos de serviço e política de privacidade de Overlock </p>
+
+                    </div>
+
+                    <!--
+
+                    <input required type="submit" value="cadastrar" id="cadastrar">
+                    
+                    <button id="cadastrar" onclick="window.location='/index'">
+                        Enviar
+                    </button>
+                    -->
+
+                    <input required type="submit" value="cadastrar" id="cadastrar">
+
+                </div>
+
+            </form>
+
+        </main>
+
+        <footer>
+
+            <h3> NAVEGAÇÃO </h3>
+
+            <ul>
+
+                <li>
+                    <a href="/index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="">configurações</a>
+                </li>
+
+                <li>
+                    <a href="#log">meu perfil</a>
+                </li>
+
+                <li>
+                    <a href="">denuncia</a>
+                </li>
+                
+            </ul>
+
+            <address>
+
+                <h3> CONTATO </h3>
+
+                <div class="con">
+
+                    <img src="img/paula/telefone.svg">
+
+                    <a href="tel:+5511999999999">(11) 99999-9999</a>
+
+                </div>
+
+                <div class="con">
+
+                    <img src="img/paula/email.svg">
+
+                    <a href="mailto:overlock.site@gmail.com">overlock.site@gmail.com</a>
+
+                </div>
+
+                <h3> REDES SOCIAIS </h3>
+
+                <div class="rede">
+
+                    <img src="img/paula/instagram.svg" alt="">
+                    <img src="img/paula/pinterest.svg" alt="">
+                    <img src="img/paula/twitter.svg" alt="">
+
+                </div>
+
+                <div class="empre">
+
+                    <h3> OUTROS SERVIÇOS </h3> <br>
+
+                    <a href="" class="transpor" > Cadastrar como transportadora </a>
+
+                </div>
+
+            </address>
+
+            <a href="/index.html">
+
+                <img  id="inicio" src="img/paula/variações logo/overlock - tipografia.svg">
+
+            </a>
+            
+            <!--
+
+            <address>
+
+                <div>
+
+                    <a href="embreve.html">SOBRE NÓS</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">AJUDA</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">POÍTICA DE PRIVACIDADE</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">ENTRAR EM CONTATO</a>
+
+                </div>
+
+                <div>
+
+                    <a href="embreve.html">
+
+                        <img src="pinterest-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://instagram.com/overlock_tca?igshid=YmMyMTA2M2Y=">
+
+                        <img src="instagram-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://twitter.com/OVERLOC10909202?t=dRmEJ4CVN3JdyrCI231uzA&s=09">
+
+                        <img src="twiter-footer.svg" alt="">
+
+                    </a>
+
+                </div>
+                
+            </address>
+
+            -->
+        </footer>
+
+    </body>
+
+</html>
+<script>
+    
+
+    window.onload = ()=>{
+        var params = window.location.search.substring(1).split('&')[0].split("=");
+        let tipo_pro = document.getElementById('tipo_usuario')
+        tipo_pro.value = params[1];
+    }
+    
+
+</script>

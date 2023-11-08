@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+        <head>
+
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+            <link rel="stylesheet" href="css/mainC.css">
+            <script src="js/script.js" defer ></script>
+            <title> Over-Lock </title>
+
+        </head>
+
+
+        <body>
+
+            <header>
+              
+                <div id="submenu">
+                    
+                    <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                    <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+                    <a onclick.window.location="/index">
+                                    
+                        <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                    </a>
+
+                    <img src="img/paula/icone login.svg" id="log" onclick="login()">
+
+                </div>
+
+            </header>
+
+            <main>
+
+                <nav id="menu">
+
+                    <ul>
+
+                        <a onclick="window.location='/index'">
+                            <li class="pri lli" > <p> início </p> </li>
+                        </a>
+
+                        <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                            <li class="lli" > <p> configurações </p> </li>
+                        </a>
+
+                        <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                            <li class="lli" > <p> meu perfil </p> </li>
+                        </a>
+
+                        <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                            <li class="ulti" > <p> denúncia </p> </li>
+                        </a>
+
+                    </ul>
+
+                </nav>
+
+                    <%- include('11_Pagina_inicial_feed') %>
+        </body>
+
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/FeedInicial.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/Pesquisa.js" defer></script>
+    <title> Inicio </title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div id="submenu">
+
+            <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+            <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+            <a onclick.window.location="/index">
+
+                <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+            </a>
+            
+            <!-- <img src="img/paula/icone login.svg" id="log" onclick="login()"> -->
+            <span id="log" class="logFoto">
+                <%- img %> 
+            </span>
+
+            
+        </div>
+
+    </header>
+
+    <main>
+
+        <nav id="menu">
+
+            <ul>
+
+                <a onclick="window.location='/index'">
+                    <li class="pri lli">
+                        <p> início </p>
+                    </li>
+                </a>
+
+                <a onclick="window.location='/index'">
+                    <li class="lli">
+                        <p> configurações </p>
+                    </li>
+                </a>
+
+                <a onclick="window.location='/EditarUsuario?id=<%= id_user %>'">
+                    <li class="lli">
+                        <p> meu perfil </p>
+                    </li>
+                </a>
+
+                <a onclick="window.location='/index'">
+                    <li class="ulti">
+                        <p> denúncia </p>
+                    </li>
+                </a>
+
+            </ul>
+
+        </nav>
+        
+        <form method="post" action="/login" id="login_x">
+           
+            <div class="fund">
+
+                <div class="sti">
+
+                    <img src="img/paula/variações logo/manequim 511555.svg"> 
+
+                </div>
+                
+                <br>
+                <br>
+
+                <img src="img/paula/variações logo/overlock - tipografia - escuro.svg" id="over">
+
+                <br>
+
+
+                <label for="user_login">user name</label> <br>
+                <input type="text" name="user_login" id="email" placeholder="   digite seu user name" ><br>
+
+
+                <label for="senha_login">senha</label> <br>
+                <input type="password" name="senha_login" id="senha" placeholder="   digite sua senha" ><br>
+
+
+                <a id="email2" href="mailto:">esqueceu a senha ?</a> <br>
+
+                <input type="submit" name="enviar" id="enviar">
+
+                <div class="hr2"></div>
+
+                <p class="ult"> ainda não tem uma conta ? </p>
+                <a id="cont" onclick="window.location='/CadastroUni'">crie uma conta </a>
+
+            </div>
+
+        </form>
+
+
+        <section id="firss">
+
+            <h2>
+
+                Bem-vindo(a) ao <span>OVERLOCK</span>
+
+            </h2>
+
+            <input type="search" class="pesquisa" placeholder="Pesquisa de usúarios">
+            
+            <div id="container">
+                
+                <input type="button" class="filtro" value="camisa">
+
+                <input type="button" class="filtro" value="calça">
+
+                <input type="button" class="filtro" value="blusa">
+
+                <input type="button" class="filtro" value="Bolsa">
+
+                <input type="button" class="filtro" value="tênis">
+
+                <input type="button" class="filtro" value="Camiseta">
+
+                <input type="button" class="filtro" value="Short">
+
+                <input type="button" class="filtro" value="Jaqueta">
+
+                <input type="button" class="filtro" value="Vestido">
+
+                <input type="button" class="filtro" value="Crooped">
+
+            </div>
+
+        </section>
+
+        <section id="pecas">
+
+            <article>
+
+                <a onclick="window.location='/10_perfil'">
+                        
+                    <p class="users"> @Aurora </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.46 (1).jpeg">
+
+                </a>
+
+            </article>
+
+            <article>
+
+                <a onclick="window.location='/index'">
+                        
+                    <p class="users"> @Maya </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.46.jpeg">
+
+                </a>
+
+            </article>
+
+            <article>
+
+                <a onclick="window.location='/index'">
+                        
+                    <p class="users"> @Nicoly_3 </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.47 (1).jpeg">
+
+                </a>
+
+            </article>
+
+            <article>
+
+                <a onclick="window.location='/index'">
+                        
+                    <p class="users"> @Isa_Silva </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.47 (2).jpeg">
+
+                </a>
+
+            </article>
+
+            <article>
+
+                <a onclick="window.location='/index'">
+                        
+                    <p class="users"> @Helena </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.47 (3).jpeg">
+
+                </a>
+
+            </article>
+
+            <article>
+
+                <a onclick="window.location='/index'">
+                        
+                    <p class="users"> @Ivani </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.47.jpeg">
+
+                </a>
+
+            </article>
+
+            <article>
+
+                <a onclick="window.location='/index'">
+                        
+                    <p class="users"> @Laís </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.48 (1).jpeg">
+
+                </a>
+
+            </article>
+
+            <article>
+
+                <a onclick="window.location='/index'">
+                        
+                    <p class="users"> @Lígia </p>
+
+                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.48 (2).jpeg">
+
+                </a>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <h3> NAVEGAÇÃO </h3>
+
+        <ul>
+
+            <li>
+                <a href="">Inicio</a>
+            </li>
+
+            <li>
+                <a href="">configurações</a>
+            </li>
+
+            <li>
+                <a href="/app/view/Perfil_Cliente_Profissional.html">meu perfil</a>
+            </li>
+
+            <li>
+                <a href="">denuncia</a>
+            </li>
+
+        </ul>
+
+        <address>
+
+            <h3> CONTATO </h3>
+
+            <div class="con">
+
+                <img src="img/paula/telefone.svg">
+
+                <a href="tel:+5511999999999">(11) 99999-9999</a>
+
+            </div>
+
+            <div class="con">
+
+                <img src="img/paula/email.svg">
+
+                <a href="mailto:overlock.site@gmail.com">overlock.site@gmail.com</a>
+
+            </div>
+
+            <h3> REDES SOCIAIS </h3>
+
+            <div class="rede">
+
+                <img src="img/paula/instagram.svg" alt="">
+                <img src="img/paula/pinterest.svg" alt="">
+                <img src="img/paula/twitter.svg" alt="">
+
+            </div>
+
+            <!--
+                <div class="empre">
+
+                    <h3> OUTROS SERVIÇOS </h3> <br>
+
+                    <a href="" class="transpor"> Cadastrar como transportadora </a>
+
+                </div>
+            -->
+
+        </address>
+
+        <a href="#logo">
+
+            <img id="inicio" src="img/paula/variações logo/overlock - tipografia.svg">
+
+        </a>
+
+        <!--
+
+            <address>
+
+                <div>
+
+                    <a href="embreve.html">SOBRE NÓS</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">AJUDA</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">POÍTICA DE PRIVACIDADE</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">ENTRAR EM CONTATO</a>
+
+                </div>
+
+                <div>
+
+                    <a href="embreve.html">
+
+                        <img src="pinterest-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://instagram.com/overlock_tca?igshid=YmMyMTA2M2Y=">
+
+                        <img src="instagram-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://twitter.com/OVERLOC10909202?t=dRmEJ4CVN3JdyrCI231uzA&s=09">
+
+                        <img src="twiter-footer.svg" alt="">
+
+                    </a>
+
+                </div>
+                
+            </address>
+
+            -->
+    </footer>
+
+</body>
+
+</html>

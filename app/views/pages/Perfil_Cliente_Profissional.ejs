@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="css/P_C.css">
+        <script src="js/script.js" defer ></script>
+        <script src="js/Default.js" defer></script>
+        <script src="js/TiposUsuario.js" defer></script>
+        <style>
+
+            #voltar {
+                width: 70px;
+                margin: 40px;
+            }
+
+        </style>
+
+        <title> Tipo de usúario </title>
+
+    </head>
+
+    <body>
+        
+        <header>
+
+            <div id="submenu">
+                
+                <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+                <a onclick.window.location="/index">
+                                
+                    <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                </a>
+
+            </div>
+
+        </header>
+
+        <main>
+
+            <nav id="menu">
+
+                <ul>
+
+                    <a onclick="window.location='/index'">
+                        <li class="pri lli" > <p> início </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="lli" > <p> configurações </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="lli" > <p> meu perfil </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="ulti" > <p> denúncia </p> </li>
+                    </a>
+
+                </ul>
+
+            </nav>
+
+            <img src="img/icone de voltar.svg" id="voltar" onclick="addEventListener('click', function() {window.history.back();});">
+
+            <form action="/Tipo_Usuario" method="post">
+
+                <div class="profissional">
+
+                    <img src="img/Imagens Antes do Cadastro (Img redondas)/1.png">
+
+                    <div class="an an-1">
+
+                        <button type="submit" name="tipo_usuario" value="2">Profissional</button>
+
+                    </div>
+
+                </div>
+            
+                <div class="hr3"></div>
+            
+                <div class="hr">
+
+                    <p> ou </p>
+
+                </div>
+            
+                <div class="cliente">
+
+                    <img src="img/Imagens Antes do Cadastro (Img redondas)/2.png">
+
+                    <div class="an">
+
+                        <button type="submit" name="tipo_usuario" value="1">Cliente</button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+        </main>
+
+        
+        <footer>
+
+            <h3> NAVEGAÇÃO </h3>
+
+            <ul>
+
+                <li>
+                    <a href="/index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="">configurações</a>
+                </li>
+
+                <li>
+                    <a href="#log">meu perfil</a>
+                </li>
+
+                <li>
+                    <a href="">denuncia</a>
+                </li>
+                
+            </ul>
+
+            <address>
+
+                <h3> CONTATO </h3>
+
+                <div class="con">
+
+                    <img src="img/paula/telefone.svg">
+
+                    <a href="tel:+5511999999999">(11) 99999-9999</a>
+
+                </div>
+
+                <div class="con">
+
+                    <img src="img/paula/email.svg">
+
+                    <a href="mailto:overlock.site@gmail.com">overlock.site@gmail.com</a>
+
+                </div>
+
+                <h3> REDES SOCIAIS </h3>
+
+                <div class="rede">
+
+                    <img src="img/paula/instagram.svg" alt="">
+                    <img src="img/paula/pinterest.svg" alt="">
+                    <img src="img/paula/twitter.svg" alt="">
+
+                </div>
+
+                <!--
+                    <div class="empre">
+
+                        <h3> OUTROS SERVIÇOS </h3> <br>
+
+                        <a href="" class="transpor" > Cadastrar como transportadora </a>
+
+                    </div>
+                -->
+
+            </address>
+
+            <a href="/index.html">
+
+                <img  id="inicio" src="img/paula/variações logo/overlock - tipografia.svg">
+
+            </a>
+            
+            <!--
+
+            <address>
+
+                <div>
+
+                    <a href="embreve.html">SOBRE NÓS</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">AJUDA</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">POÍTICA DE PRIVACIDADE</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">ENTRAR EM CONTATO</a>
+
+                </div>
+
+                <div>
+
+                    <a href="embreve.html">
+
+                        <img src="pinterest-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://instagram.com/overlock_tca?igshid=YmMyMTA2M2Y=">
+
+                        <img src="instagram-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://twitter.com/OVERLOC10909202?t=dRmEJ4CVN3JdyrCI231uzA&s=09">
+
+                        <img src="twiter-footer.svg" alt="">
+
+                    </a>
+
+                </div>
+                
+            </address>
+
+            -->
+        </footer>
+
+    </body>
+
+</html>

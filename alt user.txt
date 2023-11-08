@@ -1,0 +1,12 @@
+ALTER USER 'root'@'localhost' 
+IDENTIFIED 
+with 
+mysql_native_password 
+BY 'p_grazii';
+
+
+ALTER USER 'root'@'localhost' 
+IDENTIFIED 
+with 
+mysql_native_password 
+BY '@ITB123456';

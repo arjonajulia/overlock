@@ -1,0 +1,871 @@
+* {
+    margin: 0 auto;
+    padding: 0 auto;
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+  font - font-family: 'Montserrat', sans-serif;
+  font - font-family: 'Quicksand', sans-serif;
+*/
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+
+    body {
+      width: 100%;
+      background-color: white;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    header, main, footer {
+      overflow: hidden;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      background-color: #551555;
+      height: 80px;
+    }
+
+
+    #submenu {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+      
+    #logo {
+      margin-top: 16px;
+      width: 94px;
+    }
+  
+    #log {
+      width: 64px;
+      margin-top: 10px;
+    }
+  
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+  
+    #menuA {
+      width: 64px;
+      opacity: 1;
+      margin-top: 10px;
+      transition-duration: 0.2s;
+    }
+      
+    #menuAx {
+      width: 64px;
+      opacity: 0;
+      margin-top: 10px;
+      transition-duration: 0.2s;
+    }
+  
+      #menuF {
+        top: 30px;
+        left: 0px; 
+        width: 10%;
+        opacity: 0;
+        position: absolute;
+        transform: rotate(90deg);
+        transition-duration: 0.5s;
+      }
+  
+      #menuFx{
+        top: 22px;
+        left: 27px; 
+        width: 45px;
+        opacity: 1;
+        position: absolute;
+        transition-duration: 0.2s;
+      }
+
+    #menu_x {
+      top: 0px;
+      width: 90%;
+      z-index: 4;
+      margin: 5%;
+      transition-duration: 1s;
+      position: absolute;
+    }
+
+    #menu {
+      top: -500px;
+      width: 90%;
+      z-index: 4;
+      margin: 5%;
+      transition-duration: 1s;
+      position: absolute;
+    }
+
+    #menu ul {
+      padding: 0px;
+    }
+
+    #menu ul a {
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    #menu ul a li {
+      padding: 5%;
+      text-align: left;
+      border: 1px solid #551555;
+      background-color: #BD81F3;
+    }
+
+    #menu_x ul {
+      padding: 0px;
+    }
+
+    #menu_x ul a {
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .lli {
+      border-bottom: none;
+    }
+
+    #menu_x ul a li {
+      padding: 5%;
+      text-align: left;
+      border: 1px solid #551555;
+      background-color: #BD81F3;
+    }
+
+    #menu_x ul a li:hover {
+      padding: 5%;
+      text-align: left;
+      border: 1px solid #551555;
+      background-color: #551555;
+    }
+
+    .pri {
+      border-radius: 25px 25px 0px 0px;
+    }
+
+    .ulti {
+      border-radius: 0px 0px 25px 25px;
+    }
+
+
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    ul {
+      list-style: none;
+      padding: 0px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    /*///////////////////////////////////////////////////////////////////////////////////*/
+
+    #login_x {
+      left: 500px;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      background-size: 140%;
+      transition-duration: 1s;
+      background-repeat: no-repeat;
+      background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+    
+    #login {
+      left: 0px;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-size: 140%;
+      transition-duration: 1s;
+      background-repeat: no-repeat;
+      background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+    }
+
+    .fund {
+      margin: 15% 8%;
+      padding-top: 6%;
+      padding: 5%;
+      border-radius: 40px;
+      background-color: white;
+    }
+
+    .sti {
+      width: 100px;
+      border-radius: 60px;
+      background-color: #BD81F3;
+    }
+
+    .sti img {
+      width: 90%;
+      margin: 3px 5px;
+    }
+    
+    #over {
+      margin-bottom: 10%;
+    }
+
+    .hr{
+      text-align: center;
+    }
+
+    .hr p {
+      top: -20px;
+      width: 40px;
+      font-size: 18px;
+      color: #551555;
+      padding: 2%;
+      position: relative;
+      background-color: #fff;
+    }
+
+    .hr2 {
+      height: 2px;
+      background-color: #551555;
+    }
+
+    .fund a, p {
+      font-weight: 300;
+      color: #551555;
+      text-align: center;
+    }
+
+    .fund label {
+      font-size: 18px;
+      font-weight: 900;
+      color: #551555;
+    }
+
+    .fund input {
+      margin: 4% 0%;
+      width: 100%;
+      height: 45px;
+      outline: #BD81F3;
+      border-radius: 15px;
+      border: 2px solid #551555;
+    }
+
+    .fund input::placeholder {
+      color: #551555;
+      font-size: 17px;
+      font-weight: 400;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    #enviar {
+      color: white;
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: bolder;
+      background-color: #551555;
+      font-family: 'Quicksand', sans-serif;
+    }
+    #email2 {
+      left: 25%;
+      position: relative;
+    }
+
+    #cont {
+      left: 29%;
+      position: relative;
+    }
+
+    .ult {
+      margin-top: 10px;
+    }
+
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    main {
+      position: relative;
+      background-size: 150%;
+      background-repeat: no-repeat;
+      background-image: url(../img/tela\ de\ fundo\ coringa.png);
+    }
+
+    
+    .container {
+        margin: 17% 5%;
+        padding: 5%;
+        border-radius: 25px;
+        background-color: #fff;
+    }
+
+    .N {
+        margin-top: 5%;
+        font-size: 24px;
+        color: #551555;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .container article {
+        margin: 10% 0%;
+        padding: 3%;
+        border-radius: 30px;
+        border: 3px solid #BD81F3;
+    }
+
+    .container article p {
+        font-size: 20px;
+        color: #BD81F3;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .container p:nth-child(3) {
+        font-size: 16px;
+        margin-bottom: 5%;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .container div:nth-child(4) {
+        display: flex;
+    }
+
+    .container div:nth-child(4) input {
+        display: none;
+    }
+
+    .container div:nth-child(4) input + label img {
+        top: 13px;
+        width: 40px;
+        margin-left: 10px;
+        position: relative;
+    }
+
+    .container div:nth-child(4) input + label {
+        font-size: 20px;
+        padding-top: 0px;
+        color: #551555;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-bottom: 7%;
+        border-radius: 60px;
+        vertical-align: middle;
+        border: 3px solid #551555;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    #res {
+        margin-top: 5%;
+        margin-left: 10%;
+        font-size: 17px;
+        color: #551555;
+        overflow: hidden;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    #enviar {
+        width: 90%;
+        height: 60px;
+        border: none;
+        color: #fff;
+        margin: 10% 5%;
+        font-size: 23px;
+        border-radius: 13px;
+        background-color: #551555;
+    }
+
+
+
+    /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    footer {
+        padding: 4%;
+        text-align: left;
+        background-color: #551555;
+      }
+  
+      .con img {
+        width: 13%;
+        margin: 2%;
+        margin-left: 2%;
+      }
+  
+      footer ul {
+        padding: 0px;
+      }
+  
+      footer ul li {
+        margin: 2% 3%; 
+      }
+  
+      footer a {
+        color: #BD81F3;
+        text-decoration: none;
+      }
+  
+      footer address {
+        font-style: normal;
+      }
+  
+      footer address a {
+        color: #BD81F3;
+        margin-left: 1%;
+        position: relative;
+        top: -25px;
+      }
+  
+      footer h3 {
+        margin: 3%;
+        color: #BD81F3;
+        font-family: 'Montserrat', sans-serif;
+      }
+  
+      .class {
+        display: flex;
+      }
+  
+      .rede img {
+        width: 15%;
+        margin-left: 2%;
+      }
+  
+      #inicio {
+        display: flex;
+        width: 50%;
+      }
+  
+      .transpor {
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 720px) {
+  
+  body {
+    width: 100%;
+    background-color: white;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  header, main, footer {
+    overflow: hidden;
+  }
+
+  header {
+    position: relative;
+    z-index: 1;
+    background-color: #551555;
+    height: 80px;
+  }
+
+  #submenu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #logo {
+    margin-top: 16px;
+    width: 94px;
+  }
+
+  #log {
+    width: 64px;
+    margin-top: 10px;
+  }
+
+  /*//////////////////////////////////////////////////////////////////////////////////////*/
+
+  #menuA {
+    width: 64px;
+    opacity: 1;
+    margin-top: 10px;
+    transition-duration: 0.2s;
+  }
+    
+  #menuAx {
+    width: 64px;
+    opacity: 0;
+    margin-top: 10px;
+    transition-duration: 0.2s;
+  }
+
+  #menuF {
+    top: 22px;
+    left: 0px; 
+    width: 45px;
+    opacity: 0;
+    position: absolute;
+    transform: rotate(90deg);
+    transition-duration: 0.5s;
+  }
+
+  #menuFx{
+    top: 22px;
+    left: 90px; 
+    width: 45px;
+    opacity: 1;
+    position: absolute;
+    transition-duration: 0.2s;
+  }
+
+  #menu_x {
+    top: 0px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+  }
+
+  #menu {
+    top: -500px;
+    width: 90%;
+    z-index: 4;
+    margin: 5%;
+    transition-duration: 1s;
+    position: absolute;
+  }
+
+  #menu ul {
+    padding: 0px;
+  }
+
+  #menu ul a {
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  #menu ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #CFA2F6;
+  }
+
+  #menu_x ul {
+    padding: 0px;
+  }
+
+  #menu_x ul a {
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .lli {
+    border-bottom: none;
+  }
+
+  #menu_x ul a li {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #CFA2F6;
+  }
+
+  #menu_x ul a li:hover {
+    padding: 5%;
+    text-align: left;
+    border: 1px solid #551555;
+    background-color: #551555;
+  }
+
+  .pri {
+    border-radius: 25px 25px 0px 0px;
+  }
+
+  .ulti {
+    border-radius: 0px 0px 25px 25px;
+  }
+
+
+  /*//////////////////////////////////////////////////////////////////////////////////////*/
+  ul {
+    list-style: none;
+    padding: 0px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+
+  /*///////////////////////////////////////////////////////////////////////////////////*/
+
+  #login_x {
+    left: 1000px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+  }
+  
+  #login {
+    left: 0px;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 140%;
+    transition-duration: 1s;
+    background-repeat: no-repeat;
+    background-image: url(../img/paula/imagem\ de\ fundo\ login.jpg);
+  }
+
+  .fund {
+    margin: 15% 8%;
+    padding-top: 6%;
+    padding: 5%;
+    border-radius: 40px;
+    background-color: white;
+  }
+
+  .sti {
+    width: 100px;
+    border-radius: 60px;
+    background-color: #BD81F3;
+  }
+
+  .sti img {
+    width: 90%;
+    margin: 3px 5px;
+  }
+  
+  #over {
+    margin-bottom: 10%;
+  }
+
+  .hr{
+    text-align: center;
+  }
+
+  .hr p {
+    top: -20px;
+    width: 40px;
+    font-size: 18px;
+    color: #551555;
+    padding: 2%;
+    position: relative;
+    background-color: #fff;
+  }
+
+  .hr2 {
+    height: 2px;
+    background-color: #551555;
+  }
+
+  .fund a, p {
+    font-weight: 300;
+    color: #551555;
+    text-align: center;
+  }
+
+  .fund label {
+    font-size: 18px;
+    font-weight: 900;
+    color: #551555;
+  }
+
+  .fund input {
+    margin: 4% 0%;
+    width: 100%;
+    height: 45px;
+    outline: #BD81F3;
+    border-radius: 15px;
+    border: 2px solid #551555;
+  }
+
+  .fund input::placeholder {
+    color: #551555;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  #enviar {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    background-color: #551555;
+    font-family: 'Quicksand', sans-serif;
+  }
+  #email2 {
+    left: 25%;
+    position: relative;
+  }
+
+  #cont {
+    left: 29%;
+    position: relative;
+  }
+
+  .ult {
+    margin-top: 10px;
+  }
+
+  /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+  main {
+    position: relative;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-image: url(../img/tela\ de\ fundo\ coringa.png);
+  }
+
+  
+  .container {
+      margin: 17% 5%;
+      padding: 5%;
+      border-radius: 25px;
+      background-color: #fff;
+  }
+
+  .N {
+      margin-top: 5%;
+      font-size: 24px;
+      color: #551555;
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  .container article {
+      margin: 10% 0%;
+      padding: 3%;
+      border-radius: 30px;
+      border: 3px solid #BD81F3;
+  }
+
+  .container article p {
+      font-size: 20px;
+      color: #BD81F3;
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  .container p:nth-child(3) {
+      font-size: 16px;
+      margin-bottom: 5%;
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  .container div:nth-child(4) {
+      display: flex;
+  }
+
+  .container div:nth-child(4) input {
+      display: none;
+  }
+
+  .container div:nth-child(4) input + label img {
+      top: 13px;
+      width: 40px;
+      margin-left: 10px;
+      position: relative;
+  }
+
+  .container div:nth-child(4) input + label {
+      font-size: 20px;
+      padding-top: 0px;
+      color: #551555;
+      padding-left: 15%;
+      padding-right: 15%;
+      padding-bottom: 7%;
+      border-radius: 60px;
+      vertical-align: middle;
+      border: 3px solid #551555;
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  #res {
+      margin-top: 5%;
+      margin-left: 10%;
+      font-size: 17px;
+      color: #551555;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  #enviar {
+      width: 90%;
+      height: 60px;
+      border: none;
+      color: #fff;
+      margin: 10% 5%;
+      font-size: 23px;
+      border-radius: 13px;
+      background-color: #551555;
+  }
+
+
+
+  /*///////////////////////////////////////////////////////////////////////////////////////////////*/
+
+  footer {
+      padding: 4%;
+      text-align: left;
+      background-color: #551555;
+    }
+
+    .con img {
+      width: 13%;
+      margin: 2%;
+      margin-left: 2%;
+    }
+
+    footer ul {
+      padding: 0px;
+    }
+
+    footer ul li {
+      margin: 2% 3%; 
+    }
+
+    footer a {
+      color: #BD81F3;
+      text-decoration: none;
+    }
+
+    footer address {
+      font-style: normal;
+    }
+
+    footer address a {
+      color: #BD81F3;
+      margin-left: 1%;
+      position: relative;
+      top: -25px;
+    }
+
+    footer h3 {
+      margin: 3%;
+      color: #BD81F3;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .class {
+      display: flex;
+    }
+
+    .rede img {
+      width: 15%;
+      margin-left: 2%;
+    }
+
+    #inicio {
+      display: flex;
+      width: 50%;
+    }
+
+    .transpor {
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+
+}
+

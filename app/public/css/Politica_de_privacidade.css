@@ -1,0 +1,301 @@
+* {
+    margin: 0 auto;
+    padding: 0 auto;
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+
+ color: #cfa2f6
+  font - font-family: 'Montserrat', sans-serif;
+  font - font-family: 'Quicksand', sans-serif;
+*/
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+
+    body {
+        width: 100%;
+        background-size: 100%;
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    header, main, footer {
+      overflow: hidden;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      background-color: #551555;
+      height: 80px;
+    }
+
+    #submenu {
+      position: relative;
+      top: -12px;
+      display: flex;
+    }
+
+    #logo {
+      margin-top: 30px;
+      margin-left: 10%;
+      width: 94px;
+    }
+
+    #log {
+      width: 64px;
+      margin-top: 20px;
+      margin-right: 5%;
+    }
+
+    #menuA {
+      top: 23px;
+      left: 15px; 
+      width: 64px;
+      opacity: 1;
+      position: absolute;
+      transition-duration: 0.2s;
+    }
+      
+    #menuAx {
+      top: 23px;
+      left: 0px; 
+      width: 64px;
+      opacity: 0;
+      position: absolute;
+      transition-duration: 0.5s;
+    }
+
+    #menuF {
+      top: 30px;
+      left: 0px; 
+      width: 10%;
+      opacity: 0;
+      position: absolute;
+      transform: rotate(90deg);
+      transition-duration: 0.5s;
+    }
+
+    #menuFx{
+      top: 33px;
+      left: 27px; 
+      width: 11%;
+      opacity: 1;
+      position: absolute;
+      transition-duration: 0.2s;
+    }
+
+    #menu_x {
+      top: 65px;
+      width: 90%;
+      z-index: 4;
+      margin: 5%;
+      transition-duration: 1s;
+      position: absolute;
+    }
+
+    #menu {
+      top: -800px;
+      width: 90%;
+      z-index: 4;
+      margin: 5%;
+      transition-duration: 1s;
+      position: absolute;
+    }
+
+    #menu ul {
+      padding: 0px;
+    }
+
+    #menu ul a {
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    #menu ul a li {
+      padding: 5%;
+      text-align: left;
+      border: 1px solid #551555;
+      background-color: #CFA2F6;
+    }
+
+    #menu_x ul {
+      padding: 0px;
+    }
+
+    #menu_x ul a {
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .lli {
+      border-bottom: none;
+    }
+
+    #menu_x ul a li {
+      padding: 5%;
+      text-align: left;
+      border: 1px solid #551555;
+      background-color: #CFA2F6;
+    }
+
+    #menu_x ul a li:active {
+      padding: 5%;
+      color: #CFA2F6;
+      text-align: left;
+      transition: 300ms ease-in-out;
+      border: 1px solid #551555;
+      background-color: #551555;
+    }
+
+    .pri {
+      border-radius: 25px 25px 0px 0px;
+    }
+
+    .ulti {
+      border-radius: 0px 0px 25px 25px;
+    }
+
+
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    
+    ul {
+      list-style: none;
+      padding: 0px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+ 
+    main {
+        background-color: white;
+    }
+  
+    main h3 {
+        margin: 8% 5%;
+        font-size: 30px;
+        font-weight: 900;
+        color: #551555;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    main p {
+      color: black;
+      margin: 0px 30px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+    /*//////////////////////////////////////////////////////////////////////////////////////*/
+ 
+
+    footer {
+        margin-top: 30px;
+        padding: 4%;
+        text-align: left;
+        background-color: #551555;
+      }
+  
+      .con img {
+        width: 13%;
+        margin: 2%;
+        margin-left: 2%;
+      }
+  
+      footer ul {
+        padding: 0px;
+      }
+  
+      footer ul li {
+        margin: 2% 3%; 
+      }
+  
+      footer a {
+        color: #CFA2F6;
+        text-decoration: none;
+      }
+  
+      footer address {
+        font-style: normal;
+      }
+  
+      footer address a {
+        color: #CFA2F6;
+        margin-left: 1%;
+        position: relative;
+        top: -25px;
+      }
+  
+      footer h3 {
+        margin: 3%;
+        color: #CFA2F6;
+        font-family: 'Montserrat', sans-serif;
+      }
+  
+      .class {
+        display: flex;
+      }
+  
+      .rede img {
+        width: 15%;
+        margin-left: 2%;
+      }
+  
+      #inicio {
+        display: flex;
+        width: 50%;
+      }
+  
+      .transpor {
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

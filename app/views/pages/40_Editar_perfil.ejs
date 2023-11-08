@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="css/Editar_perfil_home.css">
+        <script src="js/script.js" defer ></script>
+        <script src="js/file.js" defer ></script>
+        <title> Editar Perfil </title>
+
+    </head>
+
+    <body>
+
+        <!--Inicio-->
+
+        <header>
+
+            <div id="submenu">
+                
+                <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+                <a onclick.window.location="/index">
+                                
+                    <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                </a>
+
+            </div>
+
+        </header>
+
+        <main>
+            
+            <nav id="menu">
+
+                <ul>
+
+                    <a onclick="window.location='/54_Pagina_inicial_feed'">
+                        <li class="pri lli" > <p> Início </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/46_Propostas_em_andamento'">
+                        <li class="lli" > <p> Minhas Propostas </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/31_Pacotes_geral'">
+                        <li class="lli" > <p> Pacotes </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/53_Notificacao_geral'">
+                        <li class="lli" > <p> Notificações </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/51_Chat'">
+                        <li class="lli" > <p> Chat </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/42_Perfil'">
+                        <li class="lli" > <p> Meu perfil </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/'">
+                        <li class="lli" > <p> Configurações </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/48_Politica_de_privacidade'">
+                        <li class="lli" > <p> Política de Privacidade </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/52_Denuncia_profissional'">
+                        <li class="lli" > <p> Denúncia </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/49_Sair_profissional'">
+                        <li class="ulti" > <p> Sair </p> </li>
+                    </a>
+
+                </ul>
+
+            </nav>
+
+        <!--Fim-->
+
+            <section id="sec">
+
+                <h3> EDITAR PERFIL </h3>
+
+                <hr>
+
+                <label class="picture" for="imagemInput" tabindex="0">
+
+                    <img id="imagemExibida" src="img/icone de voltar.svg" alt="Imagem Exibida">
+
+                </label>
+
+                <h4> Editar Foto </h4>
+                
+                <input type="file" id="imagemInput">
+
+                <hr>
+
+                <article>
+
+                    <label for="namemc">
+                        Nome
+                    </label>
+
+                    <input type="text" name="namemc" id="namemc" placeholder="Name">
+
+                    <br>
+
+                    <label for="usermc">
+                        Usuário
+                    </label>
+
+                    <input type="text" name="usermc" id="usermc" placeholder="User">
+
+                    <br>
+
+                    <label for="biomc">
+                        Biografia
+                    </label>
+
+                    <input type="text" name="biomc" id="biomc" placeholder="Bio">
+
+                </article>
+
+                <h5> Preferência de roupas </h5>
+
+                <div class="ips pli">
+                    <input type="checkbox" name="aju" id="aju">
+                    <label for="aju"> Feminina </label>
+                </div>
+
+                <div class="ips">
+                    <input type="checkbox" name="personalização" id="per">
+                    <label for="per"> Masculino </label>
+                </div>
+
+                <div class="ips">
+                    <input type="checkbox" name="criação" id="cri">
+                    <label for="cri"> Infantil </label>
+                </div>
+
+                <input type="submit" name="enviar" id="envia">
+
+            </section>
+
+        </main>
+
+        <!--Inicio-->
+
+        <footer>
+
+            <h3> Navegação </h3>
+
+            <ul>
+
+                <li>
+                    <a href="/54_Pagina_inicial_feed">Início</a>
+                </li>
+                <li>
+                    <a href="/46_Propostas_em_andamento">Minhas Propostas</a>
+                </li>
+                <li>
+                    <a href="/53_Notificacao_geral">Notificações</a>
+                </li>
+                <li>
+                    <a href="/51_Chat">Chat</a>
+                </li>
+                <li>
+                    <a href="/42_Perfil">Meu Perfil</a>
+                </li>
+                <li>
+                    <a href="/">Configurações</a>
+                </li>
+                <li>
+                    <a href="/48_Politica_de_privacidade">Política de Privacidade</a>
+                </li>
+                <li>
+                    <a href="/52_Denuncia_profissional">Denúncia</a>
+                </li>
+                <li>
+                    <a href="/49_Sair_profissional">Sair</a>
+                </li>
+                
+            </ul>
+
+            <address>
+
+                <h3> Contato </h3>
+
+                <div class="con">
+
+                    <img src="img/paula/telefone.svg">
+
+                    <a href="tel:+5511999999999">(11) 99999-9999</a>
+
+                </div>
+
+                <div class="con">
+
+                    <img src="img/paula/email.svg">
+
+                    <a href="mailto:overlock.site@gmail.com">overlock.site@gmail.com</a>
+
+                </div>
+
+                <h3> REDES SOCIAIS </h3>
+
+                <div class="rede">
+
+                    <img src="img/paula/instagram.svg" alt="">
+                    <img src="img/paula/pinterest.svg" alt="">
+                    <img src="img/paula/twitter.svg" alt="">
+
+                </div>
+
+                <div class="empre">
+
+                    <h3> OUTROS SERVIÇOS </h3> <br>
+
+                    <a href="" class="transpor" > Cadastrar como transportadora </a>
+
+                </div>
+
+            </address>
+
+            <a href="#logo">
+
+                <img  id="inicio" src="img/paula/variações logo/overlock - tipografia.svg">
+
+            </a>
+            
+        </footer>
+
+        <!--Fim-->
+
+    </body>
+</html>

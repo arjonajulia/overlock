@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+
+        <link rel="stylesheet" href="css/Cadastros.css">
+        <script src="js/script.js" defer ></script>
+        <script src="js/mascara.js" defer ></script>
+
+        <title>Cadastro</title>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div id="submenu">
+
+                <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+                
+                <a onclick="window.location='/index'">
+
+                    <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                </a>
+
+                <img src="img/paula/icone login.svg" id="log" onclick="login()">
+
+            </div>
+
+        </header>
+
+        
+        <% 
+            let msgErro = { user_name: "" , nome: "" ,dataNaci: "" , tel: "" , end: "" , city: "" , nul: "" , cep: "" , cep: "" , cpf: "" , email: "" , senha: "" , senha: "" };
+            let avisoErro = { user_name: "" , nome: "" ,dataNaci: "" , tel: "" , end: "" , city: "" , nul: "" , cep: "" , cep: "" , cpf: "" , email: "" , senha: "" , senha: "" };
+            if(listaErros){
+                listaErros.errors.forEach(function(itemErro){
+                    if(itemErro.path == "user_name"){
+                        avisoErro.user_name = "erro";
+                        msgErro.user_name += " "+itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo user_name<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "nome"){
+                        avisoErro.nome = "erro";
+                        msgErro.nome = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo do nome<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%                
+                    }
+                    if(itemErro.path == "dataNaci"){
+                        avisoErro.dataNaci = "erro";
+                        msgErro.dataNaci = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo da data<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "tel"){
+                        avisoErro.tel = "erro";
+                        msgErro.tel = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo do telefone<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "end"){
+                        avisoErro.end = "erro";
+                        msgErro.end = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo do endereço<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "city"){
+                        avisoErro.city = "erro";
+                        msgErro.city = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo da cidade<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "nul"){
+                        avisoErro.nul = "erro";
+                        msgErro.nul = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo do numero<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "cep"){
+                        avisoErro.cep = "erro";
+                        msgErro.cep = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo do cep<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "cpf"){
+                        avisoErro.cpf = "erro";
+                        msgErro.cpf = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo do cpf<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "email"){
+                        avisoErro.email = "erro";
+                        msgErro.email = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo e-mail<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                    if(itemErro.path == "senha"){
+                        avisoErro.senha = "erro";
+                        msgErro.senha = itemErro.msg;
+                        %>
+                            <script>
+                                notify("Erro no preenchimento","Verifique o campo da senha<br><%= itemErro.msg%>", "error", "center")                        
+                            </script>
+                        <%
+                    }
+                })
+        }
+
+        if (dadosNotificacao) { %>
+            <script>
+                    notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                    if("<%= dadosNotificacao.tipo %>" == "success"){
+                        setTimeout(function(){window.location="/"}, 3000)
+                    }                        
+            </script>
+        <% } %>
+
+        <main>
+
+            <nav id="menu">
+
+                <ul>
+
+                    <a onclick="window.location='/index'">
+                        <li class="pri lli" > <p> início </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="lli" > <p> configurações </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="lli" > <p> meu perfil </p> </li>
+                    </a>
+
+                    <a onclick="window.location='/Perfil_Cliente_Profissional'">
+                        <li class="ulti" > <p> denúncia </p> </li>
+                    </a>
+
+                </ul>
+
+            </nav>
+            
+        <!--==========================================================================-->    
+
+            <form method="post" action="/CadastroUni" id="cadastro_Cliente">
+              
+                <div class="container">
+
+                    <h1> CADASTRO </h1>
+
+                    <hr>
+                  
+                    <input required type="text" name="user_name" id="user_name" placeholder="User name" value="<%= valores.user_name %>" class="<%= avisoErro.user_name %>"> 
+                    <span> <%= msgErro.user_name %> </span><br>
+ 
+                    <input required type="text" name="nome" id="name" placeholder="Nome" value="<%= valores.nome %>" class="<%= avisoErro.nome %>"> 
+                    <span> <%= msgErro.nome %> </span><br>
+ 
+                    <input required type="date" name="dataNaci" id="dataNaci" placeholder="data de nacimento" value="<%= valores.dataNaci %>" class="<%= avisoErro.dataNaci %>"> 
+                    <span> <%= msgErro.dataNaci %> </span><br>
+ 
+                    <input required type="text" name="tel" id="tel" placeholder="Telefone" onclick="formatarTelefone()" maxlength="14" value="<%= valores.tel %>" class="<%= avisoErro.tel %>"> 
+                    <span> <%= msgErro.tel %> </span><br>
+ 
+                    <input required type="text" name="end" id="end" placeholder="Endereço" value="<%= valores.end %>" class="<%= avisoErro.end %>"> 
+                    <span> <%= msgErro.end %> </span><br>
+ 
+                    <input required type="text" name="city" id="city" placeholder="Cidade" value="<%= valores.city %>" class="<%= avisoErro.city %>"> 
+                    <span> <%= msgErro.city %> </span><br>
+ 
+                    <input required type="text" name="nul" id="nul" placeholder="Número" value="<%= valores.nul %>" class="<%= avisoErro.nul %>"> 
+                    <span> <%= msgErro.nul %> </span><br>
+ 
+                    <input required type="text" name="cep" id="cep" placeholder="Cep" onclick="formatarCep()" maxlength="10" value="<%= valores.cep %>" class="<%= avisoErro.cep %>"> 
+                    <span> <%= msgErro.cep %> </span><br>
+ 
+                    <input required type="text" name="cpf" id="cpf" placeholder="Cpf" onclick="formatarCPF()" maxlength="14" value="<%= valores.cpf %>" class="<%= avisoErro.cpf %>"> 
+                    <span> <%= msgErro.cpf %> </span><br>
+ 
+                    <input required type="text" name="email" id="email" placeholder="Email" value="<%= valores.email %>" class="<%= avisoErro.email %>"> 
+                    <span> <%= msgErro.email %> </span><br>
+ 
+                    <input required type="password" name="senha" id="senha" placeholder="Senha" value="<%= valores.senha %>" class="<%= avisoErro.senha %>"> 
+                    <span> <%= msgErro.senha %> </span><br>
+                    <input type="text"  id="tipo_usuario" value="<%= valores.tipo %>" name="tipo_usuario" hidden> 
+ 
+                    <div class="priv">
+
+                        <input type="checkbox" name="checkbox" id="checkbox">
+
+                        <a href="/22_Politica_de_privacidade_cliente"> aceito os termos de serviço e política de privacidade de Overlock </p>
+
+                    </div>
+
+                    <!--
+
+                    <input required type="submit" value="cadastrar" id="cadastrar">
+                    
+                    <button id="cadastrar" onclick="window.location='/index'">
+                        Enviar
+                    </button>
+                    -->
+
+                    <input required type="submit" value="cadastrar" id="cadastrar">
+
+                </div>
+
+            </form>
+
+        </main>
+
+        <footer>
+
+            <h3> NAVEGAÇÃO </h3>
+
+            <ul>
+
+                <li>
+                    <a href="/index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="">configurações</a>
+                </li>
+
+                <li>
+                    <a href="#log">meu perfil</a>
+                </li>
+
+                <li>
+                    <a href="">denuncia</a>
+                </li>
+                
+            </ul>
+
+            <address>
+
+                <h3> CONTATO </h3>
+
+                <div class="con">
+
+                    <img src="img/paula/telefone.svg">
+
+                    <a href="tel:+5511999999999">(11) 99999-9999</a>
+
+                </div>
+
+                <div class="con">
+
+                    <img src="img/paula/email.svg">
+
+                    <a href="mailto:overlock.site@gmail.com">overlock.site@gmail.com</a>
+
+                </div>
+
+                <h3> REDES SOCIAIS </h3>
+
+                <div class="rede">
+
+                    <img src="img/paula/instagram.svg" alt="">
+                    <img src="img/paula/pinterest.svg" alt="">
+                    <img src="img/paula/twitter.svg" alt="">
+
+                </div>
+
+                <div class="empre">
+
+                    <h3> OUTROS SERVIÇOS </h3> <br>
+
+                    <a href="" class="transpor" > Cadastrar como transportadora </a>
+
+                </div>
+
+            </address>
+
+            <a href="/index.html">
+
+                <img  id="inicio" src="img/paula/variações logo/overlock - tipografia.svg">
+
+            </a>
+            
+            <!--
+
+            <address>
+
+                <div>
+
+                    <a href="embreve.html">SOBRE NÓS</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">AJUDA</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">POÍTICA DE PRIVACIDADE</a> <br>
+
+                    <br>
+
+                    <a href="embreve.html">ENTRAR EM CONTATO</a>
+
+                </div>
+
+                <div>
+
+                    <a href="embreve.html">
+
+                        <img src="pinterest-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://instagram.com/overlock_tca?igshid=YmMyMTA2M2Y=">
+
+                        <img src="instagram-footer.svg" alt="">
+
+                    </a>
+
+                    <a href="https://twitter.com/OVERLOC10909202?t=dRmEJ4CVN3JdyrCI231uzA&s=09">
+
+                        <img src="twiter-footer.svg" alt="">
+
+                    </a>
+
+                </div>
+                
+            </address>
+
+            -->
+        </footer>
+
+    </body>
+
+</html>
+<script>
+    
+
+    window.onload = ()=>{
+        var params = window.location.search.substring(1).split('&')[0].split("=");
+        let tipo_pro = document.getElementById('tipo_usuario')
+        tipo_pro.value = params[1];
+    }
+    
+
+</script>
