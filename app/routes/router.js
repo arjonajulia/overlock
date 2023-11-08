@@ -410,7 +410,7 @@ router.post(
         let resutado = final.toFixed(2).slice(0,2)
         if( resutado >= 18 ){
           req.session.dados = dadosForm;
-          res.render("pages/Cadastro_profissional_mais_18");
+          res.render("pages/Cadastro_Profissional_mais_18");
         } else if( resutado < 18 ){
           return res.render("pages/Cadastro_profissional_menos_18")
         }
