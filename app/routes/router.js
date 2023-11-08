@@ -392,7 +392,7 @@ router.post(
         final.toFixed(2)
         let resutado = final.toFixed(2).slice(0,2)
         if( resutado >= 18 ){
-            await usuarioDAL.SalvarProfissional(dadosForm)
+            await usuarioDAL.SalvarProfissional(dadosForm);
             return res.render("pages/index", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}});
          
           //return res.render("pages/Cadastro_Profissional_mais_18", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}})
