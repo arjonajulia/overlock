@@ -13,6 +13,8 @@ var usuarioDAL = new UsuarioDAL(conexao);
 
 var ProjetoDAL = require("../models/ProjetoDAL");
 var projetoDal = new ProjetoDAL(conexao);
+var OrcamentoDal = require("../models/OrcamentoDal");
+var orcamentoDal = new OrcamentoDal(conexao);
 
 
 var bcrypt = require("bcryptjs");
@@ -25,6 +27,7 @@ const { body, validationResult } = require("express-validator");
 const { render } = require("ejs");
 const { resolve } = require("path");
 const { promises } = require("dns");
+//const OrcamentoDal = require("../models/OrcamentoDal");
 //const ProjetoDAL = require("../models/ProjetoDAL");
 
 router.get("/", function (req, res) {
@@ -80,17 +83,19 @@ router.get("/9_Editar_perfil_form", async function (req, res) {
   res.render("pages/9_Editar_perfil_form", {usAdmin:usAdmin});
 });
 router.get("/10_Perfil", async function (req, res) {
-  const id = parseInt(req.session.id_u);
+  const id = parseInt(req.query.id || req.session.id_u);
   const usuario = JSON.stringify(await usuarioDAL.GetUsuario(id));
   return res.render("pages/10_Perfil", {usuario:usuario});
 });
 
 
-router.get("/11_Pagina_inicial_feed", function (req, res) {
+router.get("/11_Pagina_inicial_feed", async function (req, res) {
   
   let caminho = req.query.perfil;
+  const propostas = JSON.stringify(await projetoDal.GetPropostas());
   req.session.foto_painel = caminho;
-  res.render("pages/11_Pagina_inicial_feed", {img:"<img src=img/" + caminho + " alt='imagem de perfil' class= 'logFoto    width='60' height='60' />"});
+
+  res.render("pages/11_Pagina_inicial_feed", {img:"<img src=img/" + caminho + " alt='imagem de perfil' class= 'logFoto    width='60' height='60' />", propostas:propostas});
 });
 router.get("/12_Novo_projeto", function (req, res) {
   res.render("pages/12_Novo_projeto");
@@ -181,18 +186,24 @@ router.get("/42_Perfil", function (req, res) {
 router.get("/43_Publicacao", function (req, res) {
   res.render("pages/43_Publicacao");
 });
-router.get("/44_Pagina_inicial_feed", function (req, res) {
-  res.render("pages/44_Pagina_inicial_feed");
+router.get("/44_Pagina_inicial_feed", async function (req, res) {
+
+  const proposta =  await projetoDal.GetPropostas();
+
+  res.render("pages/44_Pagina_inicial_feed", {proposta:proposta});
 });
-router.get("/45_Proposta_Individual", function (req, res) {
-  res.render("pages/45_Proposta_Individual");
+router.get("/45_Proposta_Individual", async function (req, res) {
+  const proposta = (await orcamentoDal.GetPropostasOrcamentos(parseInt(req.query.id)));
+  res.render("pages/45_Proposta_Individual", {proposta});
 });
 router.get("/46_Propostas_em_andamento", async function (req, res) {
-  const proposta = JSON.stringify(await projetoDal.GetProposta());
-  res.render("pages/46_Propostas_em_andamento", {prop:proposta});
+  const proposta = (await projetoDal.GetPropostaById(parseInt(req.query.id)));
+  res.render("pages/46_Propostas_em_andamento", {proposta});
 });
-router.get("/47_Minhas_propostas_geral", function (req, res) {
-  res.render("pages/47_Minhas_propostas_geral");
+router.get("/47_Minhas_propostas_geral", async function (req, res) {
+  const id = req.session.id_u;
+  const propostas = JSON.stringify(await projetoDal.GetProposta(id));
+  res.render("pages/47_Minhas_propostas_geral", {propostas:propostas});
 });
 router.get("/48_Politica_de_privacidade", function (req, res) {
   res.render("pages/48_Politica_de_privacidade");
@@ -217,7 +228,7 @@ router.get("/54_Pagina_inicial_feed", function (req, res) {
 });
 
 router.get("/Administracao", async function (req, res) {
-  const usAdmin = JSON.stringify(await usuarioDAL.AdmUsuarios('3'));
+  const usAdmin = JSON.stringify(await usuarioDAL.AdmUsuarios(parseInt(req.session.id_u)));
   res.render("pages/Administracao", {usAdmin:usAdmin});
 });
 router.get("/ExcluirUsuario", function(req, res){
@@ -266,7 +277,51 @@ router.get("/DeletarPerfil", async function(req, res){
 
 
 })
+router.post("/EditarFoto", async function(req, res){
+   
+  const id = parseInt(req.body.id_usuario == '0'? req.session.id_u:req.body.id_usuario);
+  let usuario = await usuarioDAL.GetUsuario(id);
+  const img64 = req.body.usuarioFoto.split(';base64,').pop();
 
+  const criarFoto = () => {
+    return new Promise((resolve, reject)=>{
+     const caminho_fotos = path.resolve(__dirname + "/../public/img/perfil/" + id + ".jpg");
+
+     fs.writeFile(caminho_fotos, img64, {encoding: 'base64'}, err =>{
+        
+        if(err){
+           console.log("Erro ao criar arquivo no caminho: " + caminho_fotos);
+           reject();
+ 
+        } else {
+          resolve(id + ".jpg")
+          res.redirect("/10_Perfil?id=" + id);    
+       }
+     })
+
+    })
+    
+}
+
+const updatecaminho = await criarFoto();
+usuario[0].foto_perfil_pasta = updatecaminho;
+await usuarioDAL.update(usuario[0], id);
+  
+})
+
+router.post("/SalvarOrcamento", async function(req, res){
+
+  const id_usuario = req.session.id_u;
+  const preco = parseFloat(req.body.preco);
+  const id_proposta = parseInt(req.body.id_proposta);
+  const orc = {
+       valor_orcamento:preco,
+       id_usuario,
+       id_proposta
+     }
+  const retorno = await orcamentoDal.Add(orc)
+  res.redirect("/44_Pagina_inicial_feed")
+})
 
 router.post("/31_Pacotes_geral", function (req, res) {
   var dados_prof = [];
@@ -312,7 +367,8 @@ router.post("/novo_projeto", async function(req, res){
             reject();
   
          } else {
-           resolve(usuario + "-" + id_projeto + ".jpg")    
+           resolve(usuario + "-" + id_projeto + ".jpg")
+           res.redirect("/47_Minhas_propostas_geral");    
         }
       })
 
@@ -364,7 +420,7 @@ router.post(
     cpf: req.body.cpf,
     email: req.body.email,
     senha: bcrypt.hashSync(req.body.senha, salt),
-    status_usuario: 0,
+    status_usuario: 1,
     foto_perfil_pasta: "perfil/" + req.body.cpf,
     id_planos: 1
   
@@ -461,8 +517,7 @@ router.get("/", verificarUsuAutenticado, function (req, res) {
 });
 
 router.get("/sair", limparSessao, function (req, res) {
-  req.session.destroy();
-  res.redirect("/index");
+      res.redirect("/index");
 });
 
 router.post("/Tipo_Usuario", (req, res) =>{
@@ -509,6 +564,7 @@ router.post("/Tipo_Usuario", (req, res) =>{
 
         if(bcrypt.compareSync(req.body.senha_login, uss[0].senha)){
           req.session.id_u = id_user;
+          req.session.id_tipo_usuario = parseInt(uss[0].id_tipo_usuario);
           req.session.adm = parseInt(uss[0].id_tipo_usuario) == 3 ? true:false; 
           res.redirect("/11_Pagina_inicial_feed?perfil="+uss[0].foto_perfil_pasta);
           

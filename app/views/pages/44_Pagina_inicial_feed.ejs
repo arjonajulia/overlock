@@ -36,52 +36,10 @@
         </header>
         
         <main>
+              <%- include('menu') %>
+ 
             
-            <nav id="menu">
-        
-                <ul>
-        
-                    <a onclick="window.location='/11_Pagina_inicial_feed'">
-                        <li class="pri lli" > <p> Início </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/13_Meus_pedidos'">
-                        <li class="lli" > <p> Meus pedidos </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/18_Notificacao_geral'">
-                        <li class="lli" > <p> Notificações </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/19_Chat'">
-                        <li class="lli" > <p> Chat </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/10_Perfil'">
-                        <li class="lli" > <p> Meu perfil </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/'">
-                        <li class="lli" > <p> Configurações </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/22_Politica_de_privacidade_cliente'">
-                        <li class="lli" > <p> Política de Privacidade </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/20_Denuncia_cliente'">
-                        <li class="lli" > <p> Denúncia </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/21_Sair_cliente'">
-                        <li class="ulti" > <p> Sair </p> </li>
-                    </a>
-        
-                </ul>
-        
-            </nav>
-
-            <div id="reader">
+             <div id="reader">
 
                 <img src="img/icone de voltar.svg" alt="voltar" id="voltar">
 
@@ -89,19 +47,24 @@
                 
             </div>
 
-            <section class="container">
+            <% for(var i = 0; i < proposta.length; i++){%>
+                <section class="container">
 
-                <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.46.jpeg" alt="adicionar img">
 
-                <div>
+                    <img src="img/fotos_propostas/<%= proposta[i].foto_proposta %>" alt="adicionar img">
+    
+                    <div>
+    
+                        <p id="resposta"> Aguardando proposta </p>
+    
+                        <a href="/46_Propostas_em_andamento?id=<%= proposta[i].id_proposta %>"> ver mais </a>
+    
+                    </div>
+    
+                </section>
 
-                    <p id="resposta"> Aguardando proposta </p>
-
-                    <a href=""> ver mais </a>
-
-                </div>
-
-            </section>
+           <% } %>
+            
         
         </main>
         

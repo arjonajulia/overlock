@@ -13,7 +13,7 @@ let imagemExibida = document.getElementById("imagemExibida");
             reader.onload = function (e) {
 
                 imagemExibida.src = e.target.result;
-
+                alert("testes")
             }
             reader.readAsDataURL(file)
         }
@@ -34,8 +34,12 @@ let imagemExibida2 = document.getElementById("imagemExibida2");
             reader.onload = function (e) {
 
                 imagemExibida2.src = e.target.result;
-
-            }
+                document.getElementById('usuarioFoto').value =  e.target.result;
+                if( window.location.search.split("=").length > 1){
+                    document.getElementById('id_usuario').value = window.location.search.split("=")[1];
+                }
+                
+             }
             reader.readAsDataURL(file)
         }
     })

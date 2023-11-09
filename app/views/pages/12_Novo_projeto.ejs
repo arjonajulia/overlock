@@ -38,49 +38,8 @@
         
         <main>
             
-            <nav id="menu">
-        
-                <ul>
-        
-                    <a onclick="window.location='/11_Pagina_inicial_feed'">
-                        <li class="pri lli" > <p> Início </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/13_Meus_pedidos'">
-                        <li class="lli" > <p> Meus pedidos </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/18_Notificacao_geral'">
-                        <li class="lli" > <p> Notificações </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/19_Chat'">
-                        <li class="lli" > <p> Chat </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/10_Perfil'">
-                        <li class="lli" > <p> Meu perfil </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/'">
-                        <li class="lli" > <p> Configurações </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/22_Politica_de_privacidade_cliente'">
-                        <li class="lli" > <p> Política de Privacidade </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/20_Denuncia_cliente'">
-                        <li class="lli" > <p> Denúncia </p> </li>
-                    </a>
-        
-                    <a onclick="window.location='/21_Sair_cliente'">
-                        <li class="ulti" > <p> Sair </p> </li>
-                    </a>
-        
-                </ul>
-        
-            </nav>
+            <%- include ('menu') %>
+
 
             <div id="reader">
 
@@ -184,9 +143,7 @@
                 <input type="hidden" id="tipo_fazer" name="tipo_fazer" value="">
                 <input type="hidden" id="tipo_item" name="tipo_item" value="">
 
-                <textarea placeholder="Descrição do Projeto" name="descricao" id="descricao" rows="10">
-
-                </textarea>
+                <textarea placeholder="Descrição do Projeto" name="descricao" id="descricao" rows="10"></textarea>
 
                 <input type="submit" id="sub" value="Enviar" ">
 

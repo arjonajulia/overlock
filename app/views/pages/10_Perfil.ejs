@@ -39,51 +39,11 @@
 
         <main>
             
-            <nav id="menu">
-
-                <ul>
-
-                    <a onclick="window.location='/index'">
-                        <li class="pri lli" > <p> Início </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/13_Meus_pedidos'">
-                        <li class="lli" > <p> Meus pedidos </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/18_Notificacao_geral'">
-                        <li class="lli" > <p> Notificações </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/19_Chat'">
-                        <li class="lli" > <p> Chat </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/10_Perfil'">
-                        <li class="lli" > <p> Meu perfil </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/'">
-                        <li class="lli" > <p> Configurações </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/22_Politica_de_privacidade_cliente'">
-                        <li class="lli" > <p> Política de Privacidade </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/20_Denuncia_cliente'">
-                        <li class="lli" > <p> Denúncia </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/21_Sair_cliente'">
-                        <li class="ulti" > <p> Sair </p> </li>
-                    </a>
-
-                </ul>
-
-            </nav>
+            <%- include('menu') %>
 
             <% const us = JSON.parse(usuario)[0] %>
+
+            
 
             <label class="picture" for="imagemInput" tabindex="0">
 
@@ -95,9 +55,17 @@
 
             <label class="picture2" for="imagemInput2" tabindex="0">
 
-                <img id="imagemExibida2" src="img/<%= us.foto_perfil_pasta %>" alt="Imagem Exibida">
+                <img id="imagemExibida2" src="img/perfil/<%= us.foto_perfil_pasta %>" alt="Imagem Exibida">
 
             </label>
+            <form action="/EditarFoto" method="post">
+
+                <input type="hidden" id="usuarioFoto" name="usuarioFoto" />
+                <input type="hidden" id="id_usuario" value="0" name="id_usuario" />
+                <input type="submit" value="Salvar">
+            </form>
+
+
 
            <div id="editarFoto">
             <h4> Editar Foto </h4>

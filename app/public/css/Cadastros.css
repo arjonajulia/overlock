@@ -92,7 +92,7 @@ html {
     }
 
     #menu {
-      top: -300px;
+      top: -10000px;
       width: 90%;
       z-index: 4;
       margin: 5%;
@@ -532,7 +532,7 @@ html {
   }
 
   #menu {
-    top: -500px;
+    top: -10000px;
     width: 90%;
     z-index: 4;
     margin: 5%;

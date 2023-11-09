@@ -45,48 +45,27 @@
     </header>
 
     <main>
+<!--
+     
+        -->
 
-        <nav id="menu">
+        <%- include ('menu') %>
 
-            <ul>
+        <% const proposta = JSON.parse(propostas) %>
+                     
+            
 
-                <a onclick="window.location='/index'">
-                    <li class="pri lli">
-                        <p> início </p>
-                    </li>
-                </a>
 
-                <a onclick="window.location='/index'">
-                    <li class="lli">
-                        <p> configurações </p>
-                    </li>
-                </a>
-
-                <a onclick="window.location='/EditarUsuario?id=<%= id_user %>'">
-                    <li class="lli">
-                        <p> meu perfil </p>
-                    </li>
-                </a>
-
-                <a onclick="window.location='/index'">
-                    <li class="ulti">
-                        <p> denúncia </p>
-                    </li>
-                </a>
-
-            </ul>
-
-        </nav>
-        
+                   
         <form method="post" action="/login" id="login_x">
            
+            
+           
+
             <div class="fund">
 
-                <div class="sti">
-
-                    <img src="img/paula/variações logo/manequim 511555.svg"> 
-
-                </div>
+               
+               
                 
                 <br>
                 <br>
@@ -156,17 +135,24 @@
 
         <section id="pecas">
 
-            <article>
+            
+            <% for(var i = 0; i < proposta.length; i++){ %>
 
-                <a onclick="window.location='/10_perfil'">
-                        
-                    <p class="users"> @Aurora </p>
+              
+                <article>
 
-                    <img src="img/roupas/WhatsApp Image 2023-10-18 at 20.46.46 (1).jpeg">
+                    <a onclick="window.location='/10_perfil'">
+                            
+                        <p class="users"> @<%=proposta[i].id_usuario %> </p>
+    
+                        <img src="img/fotos_propostas/<%=proposta[i].foto_proposta %>">
+    
+                    </a>
+                </article>
+            <% } %>
+           
 
-                </a>
-
-            </article>
+           
 
             <article>
 

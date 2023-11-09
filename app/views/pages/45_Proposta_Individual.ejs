@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="css/Editar_perfil_home.css">
+        <link rel="stylesheet" href="css/Administracao.css">
+        <link rel="stylesheet" href="css/Perfil.css">
+        <script src="js/script.js" defer ></script>
+        <script src="js/Administrar.js" defer ></script>
+        <title> Editar Perfil </title>
+
+    </head>
+
+    <body>
+
+        <!--Inicio-->
+
+        <header>
+
+            <div id="submenu">
+                
+                <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+                <a onclick.window.location="/index">
+                                
+                    <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                </a>
+
+            </div>
+
+        </header>
+
+        <main>
+            
+         <%- include('menu') %>
+         <% itens = ["Ajsutes", "Personalização", "Criação"]
+            tipos = ["Camisa", "Calça", "Blusa", "Bolsa", "Tenis", "Camiseta", "Short", "Jaqueta", "Vestido", "Crooped" ] %>
+        <!--Fim-->
+       
+        <br/><br/>
+       <img id="imagemExibida2" src="img/fotos_propostas/<%= proposta[0].foto_proposta %>" alt="Imagem Exibida">
+       <br/>
+       <div id="detalhe">
+        
+        <ul id="detalhePerfil">
+         
+            <li>Categoria: <%= itens[parseInt(proposta[0].categoria ) -1] %> </li>
+            <li>Tipos de Roupas: <%= tipos[parseInt(proposta[0].tipo_roupa ) -1] %> </li>
+            <li>Descrição: <%= proposta[0].descricao %></li>
+        </hr><br/>
+            <% for(var i = 0; i < proposta.length; i++){ %>
+                <li><%= proposta[i].nome %></li>
+                <li><%= proposta[i].telefone %></li>
+                <li><%= proposta[i].email %></li>
+                <li><%= proposta[i].valor_orcamento %></li>
+                <li><a href="/SalvarPedido?id_orc=<%= proposta[i].id_orcamento %>">Salvar</a>
+                <a href="/RecusarPedido?id_orc=<%= proposta[i].id_orcamento %>">Recusar</a></li>
+                </hr><br/>
+            <%}%>
+        
+        </ul>
+        <br/>
+     
+    </div>
+
+
+
+</main>
+
+</div>
+        
+
+        <!--Inicio-->
+
+   
+        <!--Fim-->
+
+    </body>
+</html>

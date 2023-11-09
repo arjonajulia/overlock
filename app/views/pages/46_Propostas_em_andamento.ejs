@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" href="css/Editar_perfil_home.css">
         <link rel="stylesheet" href="css/Administracao.css">
+        <link rel="stylesheet" href="css/Perfil.css">
         <script src="js/script.js" defer ></script>
         <script src="js/Administrar.js" defer ></script>
         <title> Editar Perfil </title>
@@ -42,78 +43,36 @@
 
         <main>
             
-            <nav id="menu">
-
-                <ul>
-
-                    <a onclick="window.location='/54_Pagina_inicial_feed'">
-                        <li class="pri lli" > <p> Início </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/46_Propostas_em_andamento'">
-                        <li class="lli" > <p> Minhas Propostas </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/31_Pacotes_geral'">
-                        <li class="lli" > <p> Pacotes </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/53_Notificacao_geral'">
-                        <li class="lli" > <p> Notificações </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/51_Chat'">
-                        <li class="lli" > <p> Chat </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/42_Perfil'">
-                        <li class="lli" > <p> Meu perfil </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/'">
-                        <li class="lli" > <p> Configurações </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/48_Politica_de_privacidade'">
-                        <li class="lli" > <p> Política de Privacidade </p> </li>
-                    </a>
-
-                    <a onclick="window.location='/52_Denuncia_profissional'">
-                        <li class="lli" > <p> Denúncia </p> </li>
-                    </a>
-                    <a onclick="window.location='/Administracao'">
-                        <li class="ulti" > <p> ADMINISTRACAO </p> </li>
-                    </a>
-                    <a onclick="window.location='/49_Sair_profissional'">
-                        <li class="ulti" > <p> Sair </p> </li>
-                    </a>
-
-                 
-                </ul>
-
-            </nav>
-
+         <%- include('menu') %>
+         <% itens = ["Ajsutes", "Personalização", "Criação"]
+            tipos = ["Camisa", "Calça", "Blusa", "Bolsa", "Tenis", "Camiseta", "Short", "Jaqueta", "Vestido", "Crooped" ] %>
         <!--Fim-->
+       
+        <br/><br/>
+       <img id="imagemExibida2" src="img/fotos_propostas/<%= proposta[0].foto_proposta %>" alt="Imagem Exibida">
+       <br/>
+       <div id="detalhe">
+        <ul id="detalhePerfil">
 
+            <li>Categoria: <%= itens[parseInt(proposta[0].categoria ) -1] %> </li>
+            <li>Tipos de Roupas: <%= tipos[parseInt(proposta[0].tipo_roupa ) -1] %> </li>
 
-<% const pg = JSON.parse(prop) %>
-
-<input type="text" value="<%=prop%>"/>
-<div id="tabela">
-    <% for(var i=0; i<pg.length; i++){ %>
-        <input type="hidden" value="<%= pg[i].id_usuario %>">
-        <ul class="quadro">
-            <div class="foto">
-                <li><img src="img/fotos_propostas/<%= pg[i].foto_proposta %>" class="img_foto" alt="" width="80px" height="80px"></li>
-                <li>@<%= prop[i].user_name %></li>
-            </div>
-            <div class="q_btn">
-                <td><input type="button" class="btn btn_perfil" id="" onclick='editarUsuario(this)' value="Perfil Cliente"></td>
-                <td><input type="button" class="btn btn_mais" value="ver mais" onclick='ExcluirUsuario("")'></td>
-            </div>
+            <li>Descrição: <%= proposta[0].descricao %></li>
+        
+            
         </ul>
-   
-    <% } %>
+        <br/>
+        <form action="/SalvarOrcamento" method="POST">
+            <label>Valor: </label>
+            <input type="text" id="preco" name="preco" inputmode="decimal" style="width: 80%" maxlength="9" onkeyup="mascara_preco(this)" />
+            <br/><br/>
+            <input type="hidden" id="id_proposta" name="id_proposta" value="<%= proposta[0].id_proposta%>" />
+            <input type="submit" value="Enviar Proposta"/>
+        </form>
+
+        
+
+    </div>
 
 
 

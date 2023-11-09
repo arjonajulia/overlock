@@ -239,5 +239,21 @@ function BemVindoCliente(){
 }
 
 
+const mascara_preco = (el) => {
+    let val_formatado = mascaraDinheiro(el.value)
+    el.value = val_formatado.length <= 9 ? val_formatado : mascaraDinheiro(val_formatado.slice(0, 9))
+}
 
+
+const mascaraDinheiro = (value) => {
+    value = value.replace('.', '').replace(',', '').replace(/\D/g, '')
+
+    let number = parseFloat(value) / 100
+
+    number = isNaN(number) ? 0.00 : number
+
+    const result = number.toFixed(2)
+
+    return result
+}
 

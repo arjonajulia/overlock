@@ -40,13 +40,15 @@ app.use(
   app.use(function(req, res, next){
     console.log(req.session);
     res.locals.id_user = req.session?.id_u;
+    res.locals.foto_painel = req.session?.foto_painel;
+    res.locals.id_tipo_usuario = req.session?.id_tipo_usuario;
     next();
   })
-  app.use(function(req, res, next){
+  /*app.use(function(req, res, next){
     console.log(req.session);
     res.locals.foto_painel = req.session?.foto_painel;
     next();
-  })
+  })*/
   
 
 var rotas = require("./app/routes/router");

@@ -97,7 +97,7 @@ position: absolute;
 }
 
 #menu {
-top: -500px;
+top: -10000px;
 width: 90%;
 z-index: 4;
 margin: 5%;
@@ -535,7 +535,7 @@ transition-duration: 0.2s;
     }
 
     #menu {
-    top: -500px;
+    top: -10000px;
     width: 90%;
     z-index: 4;
     margin: 5%;
@@ -974,7 +974,7 @@ transition-duration: 0.2s;
     }
 
     #menu {
-    top: -500px;
+    top: -10000px;
     width: 90%;
     z-index: 4;
     margin: 5%;
@@ -1412,7 +1412,7 @@ transition-duration: 0.2s;
     }
 
     #menu {
-    top: -500px;
+    top: -10000px;
     width: 90%;
     z-index: 4;
     margin: 5%;
