@@ -29,6 +29,34 @@ module.exports = class OrcamentoDal{
         });
     }
 
+    GetByPropostas(orcamento){
+        return new Promise((resolve, reject) => {
+            this.conexao.query("SELECT *, o.id_usuario AS id_pro, p.id_usuario AS id_cliente FROM proposta p INNER JOIN orcamento o ON o.id_proposta = p.id_proposta WHERE id_orcamento = ?",
+                [orcamento],
+                function (error, elements) {
+                    if (error) {
+                        return reject(error);
+                    }
+                     return resolve(elements);
+                });
+        });
+    }
+
+
+    DeleteOrcamento(id_orc){
+        return new Promise((resolve, reject) => {
+            this.conexao.query("DELETE FROM orcamento WHERE id_orcamento = ?",
+                [id_orc],
+                function (error) {
+                    if (error) {
+                        return reject(error);
+                    }
+                     return resolve();
+                });
+        });
+    }
+
+   
 
 
 

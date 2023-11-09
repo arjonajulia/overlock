@@ -240,6 +240,33 @@ router.get("/EditarCadastro", async function(req, res){
 
 })
 
+router.get("/SalvarPedido", async function(req,res){
+
+     const id_orc = req.query.id_orc;
+     const propostapedido =  await orcamentoDal.GetByPropostas(id_orc);
+     const pp = JSON.parse(propostapedido)[0]; 
+     const pedido = {
+      tipo_roupa: pp.tipo_roupa,
+      categoria: pp.categoria,
+      descricao: pp.descricao,
+      foto_proposta: pp.foto_proposta,
+      valor_pedido: pp.valor_orcamento,
+      id_usuario: pp.id_cliente,
+      id_usuario_prof: pp.id_pro
+     }
+
+
+
+})
+router.get("/RecusarPedido", async function(req,res){
+
+  const id_orc = parseInt(req.query.id_orc);
+  await orcamentoDal.DeleteOrcamento(id_orc);
+  res.redirect("/47_Minhas_propostas_geral")
+
+
+})
+
 router.get("/EditarUsuario", async function(req, res){
         
         const id = parseInt(req.query.id);
@@ -517,6 +544,7 @@ router.get("/", verificarUsuAutenticado, function (req, res) {
 });
 
 router.get("/sair", limparSessao, function (req, res) {
+      req.session.destroy();
       res.redirect("/index");
 });
 
