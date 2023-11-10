@@ -45,65 +45,59 @@
          
                 <%- include('menu') %>
 
-            <div id="reader">
-
-                <img src="img/icone de voltar.svg" alt="voltar" id="voltar">
-
-                <h1> Meus Pedidos </h1>
-            
-            </div>
-
-            <h2> Ops! vc ainda não fez nenhum pedido </h2>
-
-            <img src="img/default.jpg" alt="nenhum pedido feito" id="nada">
-
-            <h2 id="baixo"> Fazer projeto com </h2>
-
-            <img src="img/paula/variações logo/overlock - tipografia - escuro.svg" id="over">
-            
-            <br>
-            
-            <br>
-
-            <a href="/12_Novo_projeto" id="novo"> Novo Projeto </a>
+           
         
         </main>
         
+    
+
+        <div id="reader">
+
+            <img src="img/icone de voltar.svg" alt="voltar" id="voltar">
+
+            <h1> Meus Pedidos </h1>
+        
+        </div>
+
+      
+
+        <% if(pedido.length != 0){
+            for(var i=0; i < pedido.length; i++ ){%>
+                
+                <img src="img/fotos_propostas/<%=pedido[i].foto_proposta%>" alt="nenhum pedido feito" id="nada">
+                
+                <br>
+
+                <a href="/45_Proposta_Individual?id=<%= pedido[i].id_proposta %>" id="novo"> Ver de Pedido </a> <br/>
+
+                   <%}
+            }else{ %>
+                    
+    
+                <img src="img/default.jpg" alt="nenhum pedido feito" id="nada">
+                <br/>    
+                <h2 id="baixo" style="text-align: center;"> Sem Pedidos Aprovados </h2>
+                  
+                
+                <br>
+                
+                <br>
+    
+                <a href="/12_Novo_projeto" id="novo"> Novo Propostas </a>
+                <br/>
+           <% } %>
+
+           <img src="img/paula/variações logo/overlock - tipografia - escuro.svg" id="over">
+
+
+
         <footer>
         
             <h3> Navegação </h3>
         
-            <ul>
-        
-                <li>
-                    <a href="/index">Início</a>
-                </li>
-                <li>
-                    <a href="/13_Meus_pedidos">Meus Pedidos</a>
-                </li>
-                <li>
-                    <a href="/18_Notificacao_geral">Notificações</a>
-                </li>
-                <li>
-                    <a href="/19_Chat">Chat</a>
-                </li>
-                <li>
-                    <a href="/10_Perfil">Meu Perfil</a>
-                </li>
-                <li>
-                    <a href="/">Configurações</a>
-                </li>
-                <li>
-                    <a href="/22_Politica_de_privacidade_cliente">Política de Privacidade</a>
-                </li>
-                <li>
-                    <a href="/20_Denuncia_cliente">Denúncia</a>
-                </li>
-                <li>
-                    <a href="/21_Sair_cliente">Sair</a>
-                </li>
-                
-            </ul>
+         
+
+
         
             <address>
         

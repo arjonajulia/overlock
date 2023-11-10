@@ -18,7 +18,7 @@ module.exports = class OrcamentoDal{
 
     GetPropostasOrcamentos(orcamento){
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM proposta p INNER JOIN orcamento o ON o.id_proposta = p.id_proposta INNER JOIN usuario u on u.id_usuario = o.id_usuario WHERE p.id_proposta = ?",
+            this.conexao.query("SELECT * FROM proposta p LEFT JOIN orcamento o ON o.id_proposta = p.id_proposta LEFT JOIN usuario u on u.id_usuario = o.id_usuario WHERE p.id_proposta = ?",
                 [orcamento],
                 function (error, elements) {
                     if (error) {

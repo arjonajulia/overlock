@@ -59,7 +59,8 @@
             <li>Tipos de Roupas: <%= tipos[parseInt(proposta[0].tipo_roupa ) -1] %> </li>
             <li>Descrição: <%= proposta[0].descricao %></li>
         </hr><br/>
-            <% for(var i = 0; i < proposta.length; i++){ %>
+        <% if(proposta[0].id_orcamento){
+             for(var i = 0; i < proposta.length; i++){ %>
                 <li><%= proposta[i].nome %></li>
                 <li><%= proposta[i].telefone %></li>
                 <li><%= proposta[i].email %></li>
@@ -67,8 +68,10 @@
                 <li><a href="/SalvarPedido?id_orc=<%= proposta[i].id_proposta %>">Salvar</a>
                     <a href="/RecusarPedido?id_orc=<%= proposta[i].id_proposta %>">Recusar</a></li>
                 </hr><br/>
+            <%}
+        }else{%>
+            <li>SEM ORÇAMENTOS DISPONÍVEIS</li>
             <%}%>
-        
         </ul>
         <br/>
      

@@ -43,7 +43,8 @@ module.exports = class ProjetoDAL{
 
     GetProposta(id){
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM proposta WHERE id_usuario = ?",id,
+            this.conexao.query("SELECT * FROM proposta WHERE id_usuario = ?",
+            id,
              function (error, elements) {
                 if (error) {
                     return reject(error);

@@ -16,7 +16,20 @@ module.exports = class PedidoDal{
                 });
         });
     }
-
+    
+    GetPedidoByUser(id){
+        return new Promise((resolve, reject) =>{
+            this.conexao.query("SELECT * FROM pedido WHERE id_usuario = ?", parseInt(id),
+                 function(error, elements){
+                    if(error){
+                        return reject(error);
+                    }
+                    return resolve(elements);
+                 }
+            
+            )
+        })
+    }
 
 
 }

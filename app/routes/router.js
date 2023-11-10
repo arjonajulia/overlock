@@ -144,8 +144,10 @@ router.get("/22_Politica_de_privacidade_cliente", function (req, res) {
 router.get("/23_Projeto_usuario_ja_feito", function (req, res) {
   res.render("pages/23_Projeto_usuario_ja_feito");
 });
-router.get("/24_Meus_pedidos_geral", function (req, res) {
-  res.render("pages/24_Meus_pedidos_geral");
+router.get("/24_Meus_pedidos_geral", async function (req, res) {
+  const id = req.session.id_u;
+  const pedido = await pedidoDal.GetPedidoByUser(id);
+  res.render("pages/24_Meus_pedidos_geral", {pedido});
 });
 router.get("/25_Avaliacao", function (req, res) {
   res.render("pages/25_Avaliacao");
@@ -202,6 +204,7 @@ router.get("/44_Pagina_inicial_feed", async function (req, res) {
 
   res.render("pages/44_Pagina_inicial_feed", { proposta: proposta });
 });
+
 router.get("/45_Proposta_Individual", async function (req, res) {
   const proposta = (await orcamentoDal.GetPropostasOrcamentos(parseInt(req.query.id)));
   res.render("pages/45_Proposta_Individual", { proposta });
