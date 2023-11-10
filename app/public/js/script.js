@@ -256,4 +256,3 @@ const mascaraDinheiro = (value) => {
 
     return result
 }
-

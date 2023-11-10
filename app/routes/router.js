@@ -23,31 +23,33 @@ var bcrypt = require("bcryptjs");
 var salt = bcrypt.genSaltSync(12);
 
 var { verificarUsuAutenticado, limparSessao, gravarUsuAutenticado,
-     verificarUsuAutorizado } = require("../models/autenticador_middlewere");
+  verificarUsuAutorizado } = require("../models/autenticador_middlewere");
 
 const { body, validationResult } = require("express-validator");
 const { render } = require("ejs");
 const { resolve } = require("path");
 const { promises } = require("dns");
+const { isUndefined } = require("util");
+const { isObject } = require("appjs/lib/utils");
 //const OrcamentoDal = require("../models/OrcamentoDal");
 //const ProjetoDAL = require("../models/ProjetoDAL");
 
 router.get("/", function (req, res) {
   res.locals.erroLogin = null
-  res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""} });
+  res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: { "user_login": "", "senha_login": "" } });
 });
 
 // "user_login":"", "senha_login":""
 
 router.get("/index", function (req, res) {
   res.locals.erroLogin = null
-  res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""} });
+  res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: { "user_login": "", "senha_login": "" } });
 });
 
 
 router.get("/CadastroUni", function (req, res) {
   res.locals.erroLogin = null
-  res.render("pages/CadastroUni", { listaErros: null, dadosNotificacao: null, valores: { user_name: "" , nome: "" ,dataNaci: "" , tel: "" , end: "" , city: "" , nul: "" , cep: "" , cep: "" , cpf: "" , email: "" , senha: "" , senha: "", tipo_usuario: req.query.id } });
+  res.render("pages/CadastroUni", { listaErros: null, dadosNotificacao: null, valores: { user_name: "", nome: "", dataNaci: "", tel: "", end: "", city: "", nul: "", cep: "", cep: "", cpf: "", email: "", senha: "", senha: "", tipo_usuario: req.query.id } });
 });
 
 /*
@@ -82,22 +84,23 @@ router.get("/inicial_feed", function (req, res) {
 router.get("/9_Editar_perfil_form", async function (req, res) {
   const user = req.session.id_u;
   const usAdmin = JSON.stringify(await usuarioDAL.AdmUsuarios(user));
-  res.render("pages/9_Editar_perfil_form", {usAdmin:usAdmin});
+  res.render("pages/9_Editar_perfil_form", { usAdmin: usAdmin });
 });
 router.get("/10_Perfil", async function (req, res) {
   const id = parseInt(req.query.id || req.session.id_u);
   const usuario = JSON.stringify(await usuarioDAL.GetUsuario(id));
-  return res.render("pages/10_Perfil", {usuario:usuario});
+  return res.render("pages/10_Perfil", { usuario: usuario });
 });
 
 
 router.get("/11_Pagina_inicial_feed", async function (req, res) {
-  
-  let caminho = req.query.perfil;
+
+  const cam = await usuarioDAL.GetUsuario(req.session.id_u);
+  let caminho = cam.foto_perfil_pasta;
   const propostas = JSON.stringify(await projetoDal.GetPropostas());
   req.session.foto_painel = caminho;
 
-  res.render("pages/11_Pagina_inicial_feed", {img:"<img src=img/" + caminho + " alt='imagem de perfil' class= 'logFoto    width='60' height='60' />", propostas:propostas});
+  res.render("pages/11_Pagina_inicial_feed", { img: "<img src=img/" + caminho + " alt='imagem de perfil' class= 'logFoto    width='60' height='60' />", propostas: propostas });
 });
 router.get("/12_Novo_projeto", function (req, res) {
   res.render("pages/12_Novo_projeto");
@@ -165,8 +168,8 @@ router.get("/37_pix", async function (req, res) {
   const planos = req.query.id_c;
   const dados = req.session.dados;
   dados.id_planos = parseInt(planos);
-  const dados_p = req.  session.dados_prof;
-  const id_r = await  usuarioDAL.SalvarProfissional(dados);
+  const dados_p = req.session.dados_prof;
+  const id_r = await usuarioDAL.SalvarProfissional(dados);
   const ser = usuarioDAL.AddServicos(dados_p, id_r)
   res.render("pages/37_pix");
 });
@@ -190,22 +193,22 @@ router.get("/43_Publicacao", function (req, res) {
 });
 router.get("/44_Pagina_inicial_feed", async function (req, res) {
 
-  const proposta =  await projetoDal.GetPropostas();
+  const proposta = await projetoDal.GetPropostas();
 
-  res.render("pages/44_Pagina_inicial_feed", {proposta:proposta});
+  res.render("pages/44_Pagina_inicial_feed", { proposta: proposta });
 });
 router.get("/45_Proposta_Individual", async function (req, res) {
   const proposta = (await orcamentoDal.GetPropostasOrcamentos(parseInt(req.query.id)));
-  res.render("pages/45_Proposta_Individual", {proposta});
+  res.render("pages/45_Proposta_Individual", { proposta });
 });
 router.get("/46_Propostas_em_andamento", async function (req, res) {
   const proposta = (await projetoDal.GetPropostaById(parseInt(req.query.id)));
-  res.render("pages/46_Propostas_em_andamento", {proposta});
+  res.render("pages/46_Propostas_em_andamento", { proposta });
 });
 router.get("/47_Minhas_propostas_geral", async function (req, res) {
   const id = req.session.id_u;
   const propostas = JSON.stringify(await projetoDal.GetProposta(id));
-  res.render("pages/47_Minhas_propostas_geral", {propostas:propostas});
+  res.render("pages/47_Minhas_propostas_geral", { propostas: propostas });
 });
 router.get("/48_Politica_de_privacidade", function (req, res) {
   res.render("pages/48_Politica_de_privacidade");
@@ -231,39 +234,39 @@ router.get("/54_Pagina_inicial_feed", function (req, res) {
 
 router.get("/Administracao", async function (req, res) {
   const usAdmin = JSON.stringify(await usuarioDAL.AdmUsuarios(parseInt(req.session.id_u)));
-  res.render("pages/Administracao", {usAdmin:usAdmin});
+  res.render("pages/Administracao", { usAdmin: usAdmin });
 });
-router.get("/ExcluirUsuario", function(req, res){
-    
+router.get("/ExcluirUsuario", function (req, res) {
+
 });
 
-router.get("/EditarCadastro", async function(req, res){
-  
+router.get("/EditarCadastro", async function (req, res) {
+
 
 })
 
-router.get("/SalvarPedido", async function(req,res){
+router.get("/SalvarPedido", async function (req, res) {
 
-     const id_orc = req.query.id_orc;
-     const propostapedido =  await orcamentoDal.GetByPropostas(id_orc);
-     const pp = JSON.parse(propostapedido)[0]; 
-     const pedido = {
-      tipo_roupa: pp.tipo_roupa,
-      categoria: pp.categoria,
-      descricao: pp.descricao,
-      foto_proposta: pp.foto_proposta,
-      valor_pedido: pp.valor_orcamento,
-      id_usuario: pp.id_cliente,
-      id_usuario_prof: pp.id_pro
-     }
-     const pedidoRetorno = await pedidoDal.Add(pedido);
-     if(pedidoRetorno > 1){
-           
-     }
+  const id_orc = req.query.id_orc;
+  const propostapedido = await orcamentoDal.GetByPropostas(id_orc);
+  const pp = JSON.parse(propostapedido)[0];
+  const pedido = {
+    tipo_roupa: pp.tipo_roupa,
+    categoria: pp.categoria,
+    descricao: pp.descricao,
+    foto_proposta: pp.foto_proposta,
+    valor_pedido: pp.valor_orcamento,
+    id_usuario: pp.id_cliente,
+    id_usuario_prof: pp.id_pro
+  }
+  const pedidoRetorno = await pedidoDal.Add(pedido);
+  if (pedidoRetorno > 1) {
+
+  }
 
 
 })
-router.get("/RecusarPedido", async function(req,res){
+router.get("/RecusarPedido", async function (req, res) {
 
   const id_orc = parseInt(req.query.id_orc);
   await orcamentoDal.DeleteOrcamento(id_orc);
@@ -272,85 +275,85 @@ router.get("/RecusarPedido", async function(req,res){
 
 })
 
-router.get("/EditarUsuario", async function(req, res){
-        
-        const id = parseInt(req.query.id);
-        
-        if(req.session.adm || (req.session.id_u === id)){
-      
-        const valores = JSON.stringify(await usuarioDAL.GetUsuario(id));
-        return res.render("pages/9_Editar_perfil_form", {valores:valores}); 
-        }else{
-          res.redirect("/index");
-        }
-  
-  
+router.get("/EditarUsuario", async function (req, res) {
+
+  const id = parseInt(req.query.id);
+
+  if (req.session.adm || (req.session.id_u === id)) {
+
+    const valores = JSON.stringify(await usuarioDAL.GetUsuario(id));
+    return res.render("pages/9_Editar_perfil_form", { valores: valores });
+  } else {
+    res.redirect("/index");
+  }
+
+
 });
 
-router.get("/DeletarPerfil", async function(req, res){
-    
-      const id = parseInt(req.query.id);
-      
-      if(req.session.adm || (req.session.id_u == id)){
-        const retorno = await usuarioDAL.deleteCompleto(id);
-       
-        if(!req.session.adm){
-          req.session.destroy();
-          res.redirect("/index");
-        }else{
-          res.redirect("/Administracao?r=" + retorno);
-        }
-        
-       }else{
-          res.redirect("/index");
-       }
-     
+router.get("/DeletarPerfil", async function (req, res) {
+
+  const id = parseInt(req.query.id);
+
+  if (req.session.adm || (req.session.id_u == id)) {
+    const retorno = await usuarioDAL.deleteCompleto(id);
+
+    if (!req.session.adm) {
+      req.session.destroy();
+      res.redirect("/index");
+    } else {
+      res.redirect("/Administracao?r=" + retorno);
+    }
+
+  } else {
+    res.redirect("/index");
+  }
+
 
 
 
 })
-router.post("/EditarFoto", async function(req, res){
-   
-  const id = parseInt(req.body.id_usuario == '0'? req.session.id_u:req.body.id_usuario);
+router.post("/EditarFoto", async function (req, res) {
+
+  const id = parseInt(req.body.id_usuario == '0' ? req.session.id_u : req.body.id_usuario);
   let usuario = await usuarioDAL.GetUsuario(id);
   const img64 = req.body.usuarioFoto.split(';base64,').pop();
 
   const criarFoto = () => {
-    return new Promise((resolve, reject)=>{
-     const caminho_fotos = path.resolve(__dirname + "/../public/img/perfil/" + id + ".jpg");
+    return new Promise((resolve, reject) => {
+      const caminho_fotos = path.resolve(__dirname + "/../public/img/perfil/" + id + ".jpg");
 
-     fs.writeFile(caminho_fotos, img64, {encoding: 'base64'}, err =>{
-        
-        if(err){
-           console.log("Erro ao criar arquivo no caminho: " + caminho_fotos);
-           reject();
- 
+      fs.writeFile(caminho_fotos, img64, { encoding: 'base64' }, err => {
+
+        if (err) {
+          console.log("Erro ao criar arquivo no caminho: " + caminho_fotos);
+          reject();
+
         } else {
           resolve(id + ".jpg")
-          res.redirect("/10_Perfil?id=" + id);    
-       }
-     })
+          res.redirect("/10_Perfil?id=" + id);
+        }
+      })
 
     })
-    
-}
 
-const updatecaminho = await criarFoto();
-usuario[0].foto_perfil_pasta = updatecaminho;
-await usuarioDAL.update(usuario[0], id);
-  
+  }
+
+  const updatecaminho = await criarFoto();
+  usuario[0].foto_perfil_pasta = updatecaminho;
+  await usuarioDAL.update(usuario[0], id);
+
 })
 
-router.post("/SalvarOrcamento", async function(req, res){
+router.post("/SalvarOrcamento", async function (req, res) {
 
   const id_usuario = req.session.id_u;
   const preco = parseFloat(req.body.preco);
   const id_proposta = parseInt(req.body.id_proposta);
   const orc = {
-       valor_orcamento:preco,
-       id_usuario,
-       id_proposta
-     }
+    valor_orcamento: preco,
+    id_usuario,
+    id_proposta
+  }
   const retorno = await orcamentoDal.Add(orc)
   res.redirect("/44_Pagina_inicial_feed")
 })
@@ -364,162 +367,162 @@ router.post("/31_Pacotes_geral", function (req, res) {
   res.render("pages/31_Pacotes_geral");
 });
 
-router.post("/administracao", function(req, res){
-    
+router.post("/administracao", function (req, res) {
+
 })
 
-router.post("/novo_projeto", async function(req, res){
+router.post("/novo_projeto", async function (req, res) {
 
-   const t = req.body.item;
-   const tt = req.body[0];
-   const ta = req.body.descricao;
-   const img64 = req.body.imagem64.split(';base64,').pop()
-   const usuario = req.session.id_u;
+  const t = req.body.item;
+  const tt = req.body[0];
+  const ta = req.body.descricao;
+  const img64 = req.body.imagem64.split(';base64,').pop()
+  const usuario = req.session.id_u;
 
 
 
-   const projeto = {
-      id_usuario:usuario,
-      tipo_roupa:req.body.tipo_item,
-      categoria:req.body.tipo_fazer,
-      descricao:req.body.descricao,
-      foto_proposta: ""
-   }
-   
-   const id_projeto = await projetoDal.SetProjetoUsusario(projeto);
+  const projeto = {
+    id_usuario: usuario,
+    tipo_roupa: req.body.tipo_item,
+    categoria: req.body.tipo_fazer,
+    descricao: req.body.descricao,
+    foto_proposta: ""
+  }
 
-   const criarFoto = () => {
-     return new Promise((resolve, reject)=>{
+  const id_projeto = await projetoDal.SetProjetoUsusario(projeto);
+
+  const criarFoto = () => {
+    return new Promise((resolve, reject) => {
       const caminho_fotos = path.resolve(__dirname + "/../public/img/fotos_propostas/" + usuario + "-" + id_projeto + ".jpg");
 
-      fs.writeFile(caminho_fotos, img64, {encoding: 'base64'}, err =>{
-         
-         if(err){
-            console.log("Erro ao criar arquivo no caminho: " + caminho_fotos);
-            reject();
-  
-         } else {
-           resolve(usuario + "-" + id_projeto + ".jpg")
-           res.redirect("/47_Minhas_propostas_geral");    
+      fs.writeFile(caminho_fotos, img64, { encoding: 'base64' }, err => {
+
+        if (err) {
+          console.log("Erro ao criar arquivo no caminho: " + caminho_fotos);
+          reject();
+
+        } else {
+          resolve(usuario + "-" + id_projeto + ".jpg")
+          res.redirect("/47_Minhas_propostas_geral");
         }
       })
 
-     })
-     
- }
- 
- 
+    })
 
- const updatecaminho = await criarFoto();
- await projetoDal.UpdateProjetoUsusario(id_projeto, updatecaminho);
+  }
+
+
+
+  const updatecaminho = await criarFoto();
+  await projetoDal.UpdateProjetoUsusario(id_projeto, updatecaminho);
 
 })
 
-router.post("/EditarUsuario", function(req, res){
-      
+router.post("/EditarUsuario", function (req, res) {
+
 });
-router.post("/ExcluirUsuario", function(req, res){
-    
+router.post("/ExcluirUsuario", function (req, res) {
+
 });
-router.post( 
+router.post(
   "/CadastroUni",
 
-  body("user_name").isLength({min: 3,max: 20}),
-  body("nome").isLength({min: 3,max: 45}),
-  body("tel").isLength({max: 45}),
-  body("dataNaci").isLength({max:45}),
-  body("cep").isLength({max:45}),
-  body("city").isLength({max:45}),
-  body("nul").isLength({max: 45}),
-  body("end").isLength({max: 45}),
-  body("cpf").isLength({max:45}),
-  body("email").isLength({max:100}),
-  body("senha").isLength({max:45}),
-  body("tipo").isLength({max:100}),
+  body("user_name").isLength({ min: 3, max: 20 }),
+  body("nome").isLength({ min: 3, max: 45 }),
+  body("tel").isLength({ max: 45 }),
+  body("dataNaci").isLength({ max: 45 }),
+  body("cep").isLength({ max: 45 }),
+  body("city").isLength({ max: 45 }),
+  body("nul").isLength({ max: 45 }),
+  body("end").isLength({ max: 45 }),
+  body("cpf").isLength({ max: 45 }),
+  body("email").isLength({ max: 100 }),
+  body("senha").isLength({ max: 45 }),
+  body("tipo").isLength({ max: 100 }),
 
   async function (req, res) {
 
-  var dadosForm = {
-    id_tipo_usuario: parseInt(req.body.tipo_usuario),
-    user_name: req.body.user_name,
-    nome: req.body.nome,
-    telefone: req.body.tel,
-    data_nasc: req.body.dataNaci,
-    cep: req.body.cep,
-    cidade: req.body.city,
-    numero: req.body.nul,
-    rua: req.body.end,
-    cpf: req.body.cpf,
-    email: req.body.email,
-    senha: bcrypt.hashSync(req.body.senha, salt),
-    status_usuario: 1,
-    foto_perfil_pasta: "perfil/" + req.body.cpf,
-    id_planos: 1
-  
-  }
-  console.log(dadosForm)
+    var dadosForm = {
+      id_tipo_usuario: parseInt(req.body.tipo_usuario),
+      user_name: req.body.user_name,
+      nome: req.body.nome,
+      telefone: req.body.tel,
+      data_nasc: req.body.dataNaci,
+      cep: req.body.cep,
+      cidade: req.body.city,
+      numero: req.body.nul,
+      rua: req.body.end,
+      cpf: req.body.cpf,
+      email: req.body.email,
+      senha: bcrypt.hashSync(req.body.senha, salt),
+      status_usuario: 1,
+      foto_perfil_pasta: "perfil/" + req.body.cpf,
+      id_planos: 1
 
-  const erros = validationResult(req);
+    }
+    console.log(dadosForm)
 
-  console.log(erros)
+    const erros = validationResult(req);
+
+    console.log(erros)
 
     if (!erros.isEmpty()) {
       console.log("Vai dar erro 2")
       return res.render("pages/CadastroUni", { listaErros: erros, dadosNotificacao: null, valores: req.body })
     }
     try {
-      if(dadosForm.id_tipo_usuario == '1'){
+      if (dadosForm.id_tipo_usuario == '1') {
         let insert = await usuarioDAL.create(dadosForm);
         console.log(insert);
         console.log("Cadastro Certo")
         let hoje = new Date()
-        let dataFinal = new Date( req.body.dataNaci )
+        let dataFinal = new Date(req.body.dataNaci)
         let media = hoje - dataFinal
         let convercao = 365 * 24 * 60 * 60;
         let final = media / convercao
         final.toFixed(2)
-        let resutado = final.toFixed(2).slice(0,2)
-        if( resutado >= 18 ){
-            await usuarioDAL.SalvarProfissional(dadosForm);
-            return res.render("pages/index", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}});
-         
+        let resutado = final.toFixed(2).slice(0, 2)
+        if (resutado >= 18) {
+          await usuarioDAL.SalvarProfissional(dadosForm);
+          return res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: { "user_login": "", "senha_login": "" } });
+
           //return res.render("pages/Cadastro_Profissional_mais_18", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}})
-        } else if( resutado < 18 ){
+        } else if (resutado < 18) {
           return res.render("pages/Cadastro_profissional_menos_18")
         }
       }
-      if(dadosForm.id_tipo_usuario == '2'){
+      if (dadosForm.id_tipo_usuario == '2') {
         let hoje = new Date()
-        let dataFinal = new Date( req.body.dataNaci )
+        let dataFinal = new Date(req.body.dataNaci)
         let media = hoje - dataFinal
         let convercao = 365 * 24 * 60 * 60;
         let final = media / convercao
         final.toFixed(2)
-        let resutado = final.toFixed(2).slice(0,2)
-        if( resutado >= 18 ){
+        let resutado = final.toFixed(2).slice(0, 2)
+        if (resutado >= 18) {
           req.session.dados = dadosForm;
           res.render("pages/Cadastro_Profissional_mais_18");
-        } else if( resutado < 18 ){
+        } else if (resutado < 18) {
           return res.render("pages/Cadastro_profissional_menos_18")
         }
 
 
 
-        
+
       }
-        
-      
-      
+
+
+
     } catch (e) {
       console.log(e + 'console')
       console.log("catch")
       res.render("pages/CadastroUni", {
-        listaErros: erros, dadosNotificacao: { titulo: "Erro ao cadastrar!", mensagem: "Verifique os valores digitados!", tipo: "error"},
+        listaErros: erros, dadosNotificacao: { titulo: "Erro ao cadastrar!", mensagem: "Verifique os valores digitados!", tipo: "error" },
         valores: req.body
       })
     }
 
-})
+  })
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -549,22 +552,22 @@ router.get("/", verificarUsuAutenticado, function (req, res) {
 });
 
 router.get("/sair", limparSessao, function (req, res) {
-      
-      res.redirect("/index");
+
+  res.redirect("/index");
 });
 
-router.post("/Tipo_Usuario", (req, res) =>{
-      var id = req.session.id_u;
-      if(req.body.tipo_usuario == 1){
-        res.redirect("/CadastroUni?id="+id)
-        console.log(1);
-      }
-      if(req.body.tipo_usuario == 2){
-        res.redirect("/CadastroUni?id="+id)
-        console.log(2);
-      }
-      
-} )
+router.post("/Tipo_Usuario", (req, res) => {
+  var id = req.session.id_u;
+  if (req.body.tipo_usuario == 1) {
+    res.redirect("/CadastroUni?id=" + id)
+    console.log(1);
+  }
+  if (req.body.tipo_usuario == 2) {
+    res.redirect("/CadastroUni?id=" + id)
+    console.log(2);
+  }
+
+})
 
 
 
@@ -576,171 +579,180 @@ router.post("/Tipo_Usuario", (req, res) =>{
 // -//////////////////////////////////////////////////////
 
 
-  // -//////////////////////////////////////////////////////
-  // -//////////////////////////////////////////////////////
-  // -//////////////////////////////////////////////////////
+// -//////////////////////////////////////////////////////
+// -//////////////////////////////////////////////////////
+// -//////////////////////////////////////////////////////
 
-   // login
+// login
 
-      router.post("/login",async (req, res) => {
+router.post("/login", async (req, res) => {
 
-        const user = req.body;
-        const senha =  bcrypt.hashSync(req.body.senha_login, salt);
-        const erros = validationResult(req);
-    
-        var usuario;
-        
-        usuario = await usuarioDAL.authUser(req.body.user_login);
-        us = JSON.stringify(usuario);
-        uss = JSON.parse(us);
-        var id_user = uss[0].id_usuario;
+  const user = req.body;
+  if (!user.user_login == '' || user.user_senha == '') {
+    const senha = bcrypt.hashSync(req.body.senha_login, salt);
+    const erros = validationResult(req);
 
-        if(bcrypt.compareSync(req.body.senha_login, uss[0].senha)){
-          req.session.id_u = id_user;
-          req.session.id_tipo_usuario = parseInt(uss[0].id_tipo_usuario);
-          req.session.adm = parseInt(uss[0].id_tipo_usuario) == 3 ? true:false; 
-          res.redirect("/11_Pagina_inicial_feed?perfil="+uss[0].foto_perfil_pasta);
-          
+    var usuario;
 
-        }else{
-          return res.render("pages/index", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" }})
-        }
+    usuario = await usuarioDAL.authUser(req.body.user_login);
+    us = JSON.stringify(usuario);
+    uss = JSON.parse(us);
+    if (us == '[]') {
+      //{ listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" }}
+      return res.redirect("/index?erro=error")
+    }
+    var id_user = uss[0].id_usuario;
 
-/*
-        gravarUsuAutenticado(usuarioDAL, bcrypt),
-        function (req, res) {
-         
-          const erros = validationResult(req);
-          if (!erros.isEmpty()) {
-           console.log("Caminho 1")
-            return res.render("pages/index", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" }})
-          }
-          if (req.session.autenticado != null) {
-           console.log("Caminho 2")
-            //mudar para página de perfil quando existir
-            res.redirect("/Perfil_Cliente_Profissional?login=logado");
-          } else {
-            console.log("Caminho 3")
-            res.render("pages/index", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" } })
-          }
-        }*/
-      });
-    
-        /*
-        body("user_login")
-          .isLength({ min: 4, max: 45 }),
-        body("senha_login")
-          .isStrongPassword(),
-        */
-        
+    if (bcrypt.compareSync(req.body.senha_login, uss[0].senha)) {
+      req.session.id_u = id_user;
+      req.session.id_tipo_usuario = parseInt(uss[0].id_tipo_usuario);
+      req.session.adm = parseInt(uss[0].id_tipo_usuario) == 3 ? true : false;
 
-       
-    
+      res.redirect("/11_Pagina_inicial_feed?perfil=" + uss[0].foto_perfil_pasta);
+
+
+    } else {
+      return res.redirect("/index?erro=error")
+    }
+  } else {
+    return res.redirect("/index?erro=error")
+  }
 
   /*
-  
-  // -//////////////////////////////////////////////////////
-  // -//////////////////////////////////////////////////////
-  // -//////////////////////////////////////////////////////
+          gravarUsuAutenticado(usuarioDAL, bcrypt),
+          function (req, res) {
+           
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+             console.log("Caminho 1")
+              return res.render("pages/index", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" }})
+            }
+            if (req.session.autenticado != null) {
+             console.log("Caminho 2")
+              //mudar para página de perfil quando existir
+              res.redirect("/Perfil_Cliente_Profissional?login=logado");
+            } else {
+              console.log("Caminho 3")
+              res.render("pages/index", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" } })
+            }
+          }*/
+});
+
+/*
+body("user_login")
+  .isLength({ min: 4, max: 45 }),
+body("senha_login")
+  .isStrongPassword(),
+*/
+
+
+
+
+
+/*
+ 
+// -//////////////////////////////////////////////////////
+// -//////////////////////////////////////////////////////
+// -//////////////////////////////////////////////////////
 
 router.get("/perfil", verificarUsuAutorizado([1, 2, 3], "pages/1_Restrito"), async function (req, res) {
-  
-  try {
-    let results = await usuarioDAL.findID(req.session.autenticado.id);
-    console.log(results);
-    let campos = {
-      user_name: results[0].user_nameario, 
-      email_usu: results[0].email_usuario,
-      foto_perfil_pasta: results[0].foto_perfil_pasta, 
-      foto_perfil_banco: results[0].foto_perfil_banco,
-      user_name: results[0].user_name, 
-      fone_usu: results[0].fone_usuario, 
+ 
+try {
+  let results = await usuarioDAL.findID(req.session.autenticado.id);
+  console.log(results);
+  let campos = {
+    user_name: results[0].user_nameario, 
+    email_usu: results[0].email_usuario,
+    foto_perfil_pasta: results[0].foto_perfil_pasta, 
+    foto_perfil_banco: results[0].foto_perfil_banco,
+    user_name: results[0].user_name, 
+    fone_usu: results[0].fone_usuario, 
+    senha: ""
+  }
+  res.render("pages/9_Editar_perfil_form", { listaErros: null, dadosNotificacao: null, valores: campos })
+} catch (e) {
+  res.render("pages/9_Editar_perfil_form", {
+    listaErros: null, 
+    dadosNotificacao: null, 
+    valores: {
+      foto_perfil_banco: "",
+      foto_perfil_pasta: "", 
+      user_name: "", 
+      email: "", 
+      fone_usu: "", 
       senha: ""
     }
-    res.render("pages/9_Editar_perfil_form", { listaErros: null, dadosNotificacao: null, valores: campos })
-  } catch (e) {
-    res.render("pages/9_Editar_perfil_form", {
-      listaErros: null, 
-      dadosNotificacao: null, 
-      valores: {
-        foto_perfil_banco: "",
-        foto_perfil_pasta: "", 
-        user_name: "", 
-        email: "", 
-        fone_usu: "", 
-        senha: ""
-      }
-    })
-  }
+  })
+}
 });
 
 
 router.post("/perfil_form", upload.single('imagem-perfil_usu'),
-  body("user_name")
-    .isLength({ min: 3, max: 50 }).withMessage("Mínimo de 3 letras e máximo de 50!"),
-  body("user_name")
-    .isLength({ min: 8, max: 30 }).withMessage("Nome de usuário deve ter de 8 a 30 caracteres!"),
-  body("email_usu")
-    .isEmail().withMessage("Digite um e-mail válido!"),
-  body("fone_usu")
-    .isLength({ min: 12, max: 13 }).withMessage("Digite um telefone válido!"),
-  verificarUsuAutorizado([1, 2, 3], "pages/1_Restrito"),
-  async function (req, res) {
-    const erros = validationResult(req);
-    console.log(erros)
-    if (!erros.isEmpty()) {
-      return res.render("pages/9_Editar_perfil_form", { listaErros: erros, dadosNotificacao: null, valores: req.body })
+body("user_name")
+  .isLength({ min: 3, max: 50 }).withMessage("Mínimo de 3 letras e máximo de 50!"),
+body("user_name")
+  .isLength({ min: 8, max: 30 }).withMessage("Nome de usuário deve ter de 8 a 30 caracteres!"),
+body("email_usu")
+  .isEmail().withMessage("Digite um e-mail válido!"),
+body("fone_usu")
+  .isLength({ min: 12, max: 13 }).withMessage("Digite um telefone válido!"),
+verificarUsuAutorizado([1, 2, 3], "pages/1_Restrito"),
+async function (req, res) {
+  const erros = validationResult(req);
+  console.log(erros)
+  if (!erros.isEmpty()) {
+    return res.render("pages/9_Editar_perfil_form", { listaErros: erros, dadosNotificacao: null, valores: req.body })
+  }
+  try {
+    var dadosForm = {
+      user_name: req.body.user_name,
+      email: req.body.email,
+      foto_perfil_banco: null,
+      tipo_usuario: 1,
+      status_usuario: 1
+    };
+    console.log("senha: " + req.body.senha)
+    if (req.body.senha != "") {
+      dadosForm.senhaario = bcrypt.hashSync(req.body.senha, salt);
     }
-    try {
-      var dadosForm = {
-        user_name: req.body.user_name,
-        email: req.body.email,
-        foto_perfil_banco: null,
-        tipo_usuario: 1,
-        status_usuario: 1
-      };
-      console.log("senha: " + req.body.senha)
-      if (req.body.senha != "") {
-        dadosForm.senhaario = bcrypt.hashSync(req.body.senha, salt);
-      }
-      if (!req.file) {
-        console.log("Falha no carregamento");
-      } else {
-        caminhoArquivo = "img/0_Perfil/" + req.file.filename;
-        dadosForm.foto_perfil_pasta = caminhoArquivo
-      }
-      console.log(dadosForm);
+    if (!req.file) {
+      console.log("Falha no carregamento");
+    } else {
+      caminhoArquivo = "img/0_Perfil/" + req.file.filename;
+      dadosForm.foto_perfil_pasta = caminhoArquivo
+    }
+    console.log(dadosForm);
 
-      let resultUpdate = await usuarioDAL.update(dadosForm, req.session.autenticado.id);
-      if (!resultUpdate.isEmpty) {
-        if (resultUpdate.changedRows == 1) {
-          var result = await usuarioDAL.findID(req.session.autenticado.id);
-          var autenticado = {
-            autenticado: result[0].user_nameario,
-            id: result[0].id_usuario,
-            tipo: result[0].tipo_usuario,
-            foto_perfil_banco: result[0].foto_perfil_banco,
-            foto_perfil_pasta: result[0].foto_perfil_pasta
-          };
-          req.session.autenticado = autenticado;
-          var campos = {
-            user_name: result[0].user_nameario, 
-            email_usu: result[0].email_usuario,
-            foto_perfil_pasta: result[0].foto_perfil_pasta, 
-            foto_perfil_banco: result[0].foto_perfil_banco,
-            user_name: result[0].user_name,
-            senha: ""
-          }
-          res.render("pages/9_Editar_perfil_form", { listaErros: null, dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "", tipo: "success" }, valores: campos });
+    let resultUpdate = await usuarioDAL.update(dadosForm, req.session.autenticado.id);
+    if (!resultUpdate.isEmpty) {
+      if (resultUpdate.changedRows == 1) {
+        var result = await usuarioDAL.findID(req.session.autenticado.id);
+        var autenticado = {
+          autenticado: result[0].user_nameario,
+          id: result[0].id_usuario,
+          tipo: result[0].tipo_usuario,
+          foto_perfil_banco: result[0].foto_perfil_banco,
+          foto_perfil_pasta: result[0].foto_perfil_pasta
+        };
+        req.session.autenticado = autenticado;
+        var campos = {
+          user_name: result[0].user_nameario, 
+          email_usu: result[0].email_usuario,
+          foto_perfil_pasta: result[0].foto_perfil_pasta, 
+          foto_perfil_banco: result[0].foto_perfil_banco,
+          user_name: result[0].user_name,
+          senha: ""
         }
+        res.render("pages/9_Editar_perfil_form", { listaErros: null, dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "", tipo: "success" }, valores: campos });
       }
-    } catch (e) {
-      console.log(e)
-      res.render("pages/9_Editar_perfil_form", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
     }
+  } catch (e) {
+    console.log(e)
+    res.render("pages/9_Editar_perfil_form", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
+  }
 
-  });
-  
+});
+ 
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
