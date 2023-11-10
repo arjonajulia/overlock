@@ -81,7 +81,20 @@
                     <li>&#9993;&nbsp;e-mail: <%= us.email %></li>
                     <li>&#9745;&nbsp;CPF: <%= us.cpf %></li>
                     <li>&#10163;&nbsp;Tipo de Usuario: <%= us.id_tipo_usuario %></li>
-                   
+                    <% if(us.id_tipo_usuario == 2){
+                         if(us.id_planos == 1){%>
+                            <li>&#10163;&nbsp;Plano: Plus Mensal - R$ 35,00</li>
+                         <%}
+                         if(us.id_planos == 2){%>
+                            <li>&#10163;&nbsp;Plano: Plus anual - R$ 30,00</li>
+                        <%}
+                         if(us.id_planos == 3){%>
+                            <li>&#10163;&nbsp;Plano: Premio Mensal - R$ 60,00</li>
+                         <%}
+                         if(us.id_planos == 4){%>
+                            <li>&#10163;&nbsp;Plano: Premio Anual - R$ 60,00</li>
+                         <%}
+                    }%>               
                 </ul>
 
             </div>
