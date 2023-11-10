@@ -65,7 +65,19 @@ module.exports = class ProjetoDAL{
         });
     }
 
-    
+    DeleteProposta(id){
+        return new Promise((resolve, reject) =>{
+            this.conexao.query("DELETE FROM orcamento WHERE id_proposta = ?"),
+            id,
+            function(error, elements){
+                if(error){
+                    return reject(error)
+                }else{
+                    this
+                }
+            }
+        });
+    }
 
 
 

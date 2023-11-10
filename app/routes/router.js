@@ -15,6 +15,8 @@ var ProjetoDAL = require("../models/ProjetoDAL");
 var projetoDal = new ProjetoDAL(conexao);
 var OrcamentoDal = require("../models/OrcamentoDal");
 var orcamentoDal = new OrcamentoDal(conexao);
+var PedidoDalDal = require("../models/PedidoDal");
+var pedidoDal = new PedidoDalDal(conexao);
 
 
 var bcrypt = require("bcryptjs");
@@ -254,7 +256,10 @@ router.get("/SalvarPedido", async function(req,res){
       id_usuario: pp.id_cliente,
       id_usuario_prof: pp.id_pro
      }
-
+     const pedidoRetorno = await pedidoDal.Add(pedido);
+     if(pedidoRetorno > 1){
+           
+     }
 
 
 })
@@ -544,7 +549,7 @@ router.get("/", verificarUsuAutenticado, function (req, res) {
 });
 
 router.get("/sair", limparSessao, function (req, res) {
-      req.session.destroy();
+      
       res.redirect("/index");
 });
 
