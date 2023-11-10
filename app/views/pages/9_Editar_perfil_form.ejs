@@ -64,30 +64,30 @@
                 <form method="post" action="/Editar_Perfil" id="cadastro_Cliente">
 
                     <% const usuario = JSON.parse(valores)[0] %>
-
+                    console.log(usuario)
                     <div class="container">
     
                         <h1> CADASTRO </h1>
     
                         <hr>
         
-                            <input required type="text" name="user_name" id="user_name" placeholder="User name" value="<% usuario.user_name %>"> 
+                            <input required type="text" name="user_name" id="user_name" placeholder="User name" value="<%= usuario.user_name %>"> 
         
-                            <input required type="text" name="nome" id="name" placeholder="Nome" value="<% usuario.nome %>" > 
+                            <input required type="text" name="nome" id="name" placeholder="Nome" value="<%= usuario.nome %>" > 
                                      
-                            <input required type="date" name="dataNaci" id="dataNaci" placeholder="data de nacimento" value="<% usuario.data_naci %>"> 
+                            <input required type="date" name="dataNaci" id="dataNaci" placeholder="data de nacimento" value="<%= usuario.data_naci %>"> 
         
-                            <input required type="text" name="tel" id="tel" placeholder="Telefone" onclick="formatarTelefone()" maxlength="14" value="<% usuario.telefone %>"> 
+                            <input required type="text" name="tel" id="tel" placeholder="Telefone" onclick="formatarTelefone()" maxlength="14" value="<%= usuario.telefone %>"> 
                                     
-                            <input required type="text" name="end" id="end" placeholder="Endereço" value="<% usuario.rua %>"> 
+                            <input required type="text" name="end" id="end" placeholder="Endereço" value="<%= usuario.rua %>"> 
                                     
-                            <input required type="text" name="city" id="city" placeholder="Cidade" value="<% usuario.cidade %>"> 
+                            <input required type="text" name="city" id="city" placeholder="Cidade" value="<%= usuario.cidade %>"> 
                                      
-                            <input required type="text" name="nul" id="nul" placeholder="Número" value="<% usuario.numero %>">  
+                            <input required type="text" name="nul" id="nul" placeholder="Número" value="<%= usuario.numero %>">  
                                     
-                            <input required type="text" name="cep" id="cep" placeholder="Cep" onclick="formatarCep()" maxlength="10" value="<% usuario.cep %>"> 
+                            <input required type="text" name="cep" id="cep" placeholder="Cep" onclick="formatarCep()" maxlength="10" value="<%= usuario.cep %>"> 
 
-                            <input required type="text" name="email" id="email" placeholder="Email" value="<% usuario.email %>"> 
+                            <input required type="text" name="email" id="email" placeholder="Email" value="<%= usuario.email %>"> 
                                       
                             <input required type="password" name="senha" id="senha" placeholder="Senha" value="<% usuario.senha %>"> 
                                   
