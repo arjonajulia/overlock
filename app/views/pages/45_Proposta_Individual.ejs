@@ -64,8 +64,8 @@
                 <li><%= proposta[i].telefone %></li>
                 <li><%= proposta[i].email %></li>
                 <li><%= proposta[i].valor_orcamento %></li>
-                <li><a href="/SalvarPedido?id_orc=<%= proposta[i].id_orcamento %>">Salvar</a>
-                    <a href="/RecusarPedido?id_orc=<%= proposta[i].id_orcamento %>">Recusar</a></li>
+                <li><a href="/SalvarPedido?id_orc=<%= proposta[i].id_proposta %>">Salvar</a>
+                    <a href="/RecusarPedido?id_orc=<%= proposta[i].id_proposta %>">Recusar</a></li>
                 </hr><br/>
             <%}%>
         

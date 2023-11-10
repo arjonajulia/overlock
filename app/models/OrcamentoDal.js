@@ -31,7 +31,7 @@ module.exports = class OrcamentoDal{
 
     GetByPropostas(orcamento){
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT *, o.id_usuario AS id_pro, p.id_usuario AS id_cliente FROM proposta p INNER JOIN orcamento o ON o.id_proposta = p.id_proposta WHERE id_orcamento = ?",
+            this.conexao.query("SELECT *, o.id_usuario AS id_pro, p.id_usuario AS id_cliente FROM proposta p INNER JOIN orcamento o ON o.id_proposta = p.id_proposta WHERE o.id_proposta = ?",
                 [orcamento],
                 function (error, elements) {
                     if (error) {

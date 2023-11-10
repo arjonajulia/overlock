@@ -88,8 +88,13 @@ router.get("/9_Editar_perfil_form", async function (req, res) {
 });
 router.get("/10_Perfil", async function (req, res) {
   const id = parseInt(req.query.id || req.session.id_u);
-  const usuario = JSON.stringify(await usuarioDAL.GetUsuario(id));
-  return res.render("pages/10_Perfil", { usuario: usuario });
+  const us = await usuarioDAL.GetUsuario(id);
+  req.session.foto_painel = us.foto_perfil_pasta;
+  const usuario = us;
+
+
+ 
+  return res.render("pages/10_Perfil", { usuario });
 });
 
 
@@ -249,7 +254,7 @@ router.get("/SalvarPedido", async function (req, res) {
 
   const id_orc = req.query.id_orc;
   const propostapedido = await orcamentoDal.GetByPropostas(id_orc);
-  const pp = JSON.parse(propostapedido)[0];
+  const pp = propostapedido[0];
   const pedido = {
     tipo_roupa: pp.tipo_roupa,
     categoria: pp.categoria,
@@ -261,7 +266,13 @@ router.get("/SalvarPedido", async function (req, res) {
   }
   const pedidoRetorno = await pedidoDal.Add(pedido);
   if (pedidoRetorno > 1) {
-
+       
+        if(orcamentoDal.DeleteOrcamento(id_orc)){
+          res.redirect("/47_Minhas_propostas_geral");
+        }else{
+          res.redirect("/45_Proposta_Individual?id=" + id_orc);
+        }
+       
   }
 
 

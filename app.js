@@ -32,7 +32,7 @@ app.use(bodyParse.urlencoded({limit: '50mb', extended:true }))
 app.use(
     session({
       secret: "HELLo nODE",
-      resave: false,
+      resave: true,
       saveUninitialized: false,
       cookie:{secure: false}
   }));
@@ -44,7 +44,7 @@ app.use(
     res.locals.id_tipo_usuario = req.session?.id_tipo_usuario;
     next();
   })
- app.use(function(req, res, next){
+app.use(function(req, res, next){
     console.log(req.session);
     res.locals.foto_painel = req.session?.foto_painel;
     next();

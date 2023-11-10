@@ -34,7 +34,7 @@
                 </a>
 
                 <span id="log" class="logFoto">
-                    <img src="img/perfil/<%- foto_painel %>" alt='imagem de perfil' class= 'logFoto    width='60' height='60'/>  
+                    <img src="img/perfil/<%= usuario[0].foto_perfil_pasta %>" alt='imagem de perfil' class= 'logFoto'    width="60" height="60"/>  
                  </span>
 
             </div>
@@ -45,7 +45,7 @@
             
             <%- include('menu') %>
 
-            <% const us = JSON.parse(usuario)[0] %>
+            <% const us = usuario[0] %>
 
             
 
@@ -59,7 +59,7 @@
 
             <label class="picture2" for="imagemInput2" tabindex="0">
 
-                <img id="imagemExibida2" src="img/perfil/<%= us.foto_perfil_pasta %>" alt="Imagem Exibida">
+                <img id="imagemExibida2" src="img/perfil/<%= usuario[0].foto_perfil_pasta %>" alt="Imagem Exibida">
 
             </label>
             <form action="/EditarFoto" method="post">
