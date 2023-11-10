@@ -303,15 +303,11 @@ font - font-family: 'Quicksand', sans-serif;
       background-color: #fff;
     }
 
-    .container div:first-child img:first-child {
-      width: 35%;
-      display: flex;
-    }
-
-    .container div:nth-child(3) img:first-child {
+    .container div:nth-child(2) img:first-child {
       width: 60%;
       display: flex;
     }
+
 
     .container article {
       padding: 5%;

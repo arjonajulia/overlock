@@ -35,13 +35,35 @@
         
         <main>
             
-            <%- include('menu') %>
+            <ul>
+        
+                <a onclick="window.location='/index'">
+                    <li class="pri lli" > <p> Início </p> </li>
+                </a>
+    
+                <a onclick="window.location='/31_Pacotes_geral'">
+                    <li class="lli" > <p> Pacotes </p> </li>
+                </a>
+    
+                <a onclick="window.location='/48_Politica_de_privacidade'">
+                    <li class="lli" > <p> Política de Privacidade </p> </li>
+                </a>
+    
+                <a onclick="addEventListener('click', function() { window.history.back(); });">
+                    <li class="lli" > <p> Voltar </p> </li>
+                </a>
+    
+                <a onclick="window.location='/49_Sair_profissional'">
+                    <li class="ulti" > <p> Sair </p> </li>
+                </a>
+    
+            </ul>
 
                 <h3> Plus Mensal </h3>
                 
                 <div> 
                     
-                    <img src="img/icone de voltar.svg" alt=""> 
+                    <img src="img/1" alt=""> 
                 
                 </div>
                 
@@ -69,29 +91,17 @@
             <ul>
         
                 <li>
-                    <a href="/54_Pagina_inicial_feed">Início</a>
+                    <a href="/index">Início</a>
                 </li>
+
                 <li>
-                    <a href="/46_Propostas_em_andamento">Minhas Propostas</a>
+                    <a href="/31_Pacotes_geral">Pacotes</a>
                 </li>
-                <li>
-                    <a href="/53_Notificacao_geral">Notificações</a>
-                </li>
-                <li>
-                    <a href="/51_Chat">Chat</a>
-                </li>
-                <li>
-                    <a href="/42_Perfil">Meu Perfil</a>
-                </li>
-                <li>
-                    <a href="/">Configurações</a>
-                </li>
+
                 <li>
                     <a href="/48_Politica_de_privacidade">Política de Privacidade</a>
                 </li>
-                <li>
-                    <a href="/52_Denuncia_profissional">Denúncia</a>
-                </li>
+
                 <li>
                     <a href="/49_Sair_profissional">Sair</a>
                 </li>

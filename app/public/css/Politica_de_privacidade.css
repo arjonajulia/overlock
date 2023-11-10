@@ -188,11 +188,29 @@ html {
         font-family: 'Montserrat', sans-serif;
     }
 
+    main h4 {
+      margin: 8% 5%;
+      font-size: 20px;
+      font-weight: 900;
+      color: #551555;
+      font-family: 'Montserrat', sans-serif;
+  }
+
     main p {
       color: black;
+      font-size: 18px;
       margin: 0px 30px;
       font-family: 'Quicksand', sans-serif;
     }
+
+    .lista {
+      color: black;
+      font-size: 18px;
+      margin: 0px 30px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+
 
     /*//////////////////////////////////////////////////////////////////////////////////////*/
     /*//////////////////////////////////////////////////////////////////////////////////////*/
