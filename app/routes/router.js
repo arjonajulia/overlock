@@ -257,6 +257,7 @@ router.get("/EditarCadastro", async function (req, res) {
 router.post("/Editar_Perfil", function(req,res){
 
      const id = req.session.id_u;
+     const caminho = id +".jpg";
      const usuario = {
       id_tipo_usuario: parseInt(req.body.tipo_usuario),
       user_name: req.body.user_name,
@@ -269,11 +270,12 @@ router.post("/Editar_Perfil", function(req,res){
       rua: req.body.end,
       cpf: req.body.cpf,
       email: req.body.email,
+      foto_perfil_pasta : caminho,
       senha: bcrypt.hashSync(req.body.senha, salt),
       status_usuario: 1,
-      foto_perfil_pasta: "perfil/" + req.body.cpf,
       id_planos: 1
      }
+     
      usuarioDAL.update(usuario, id);
 
      res.redirect("/11_Pagina_inicial_feed");
