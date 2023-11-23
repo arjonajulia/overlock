@@ -62,18 +62,20 @@
                 <img id="imagemExibida2" src="img/perfil/<%= usuario[0].foto_perfil_pasta %>" alt="Imagem Exibida">
 
             </label>
+            <div id="editarFoto">
+                <h4> Editar Foto </h4>
+               </div>
             <form action="/EditarFoto" method="post">
 
                 <input type="hidden" id="usuarioFoto" name="usuarioFoto" />
                 <input type="hidden" id="id_usuario" value="0" name="id_usuario" />
-                <input type="submit" value="Salvar">
+                <br/>
+                <input type="submit" class="btn" value="Salvar">
             </form>
 
 
 
-           <div id="editarFoto">
-            <h4> Editar Foto </h4>
-           </div>
+   
             
             <input type="file" id="imagemInput2">
 
@@ -104,10 +106,10 @@
 
             </div>
 
-            <a href="/EditarUsuario?id=<%= id_user %>">Editar</a>
+            <a href="/EditarUsuario?id=<%= id_user %>" class="btn">Editar Perfil</a>
         
         </main>
-        
+        <br/>
         <footer>
 
             <h3> Navegação </h3>

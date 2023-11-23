@@ -146,7 +146,8 @@ router.get("/23_Projeto_usuario_ja_feito", function (req, res) {
 });
 router.get("/24_Meus_pedidos_geral", async function (req, res) {
   const id = req.session.id_u;
-  const pedido = await pedidoDal.GetPedidoByUser(id);
+  const tipo = parseInt(req.session.id_tipo_usuario);
+  const pedido = await pedidoDal.GetPedidoByUser(id, tipo);
   res.render("pages/24_Meus_pedidos_geral", {pedido});
 });
 router.get("/25_Avaliacao", function (req, res) {
@@ -215,7 +216,8 @@ router.get("/46_Propostas_em_andamento", async function (req, res) {
 });
 router.get("/47_Minhas_propostas_geral", async function (req, res) {
   const id = req.session.id_u;
-  const propostas = JSON.stringify(await projetoDal.GetProposta(id));
+  const id_tipo = req.session.id_tipo_usuario;
+  const propostas = JSON.stringify(await orcamentoDal.GetPropostaByUsuario(id, id_tipo));
   res.render("pages/47_Minhas_propostas_geral", { propostas: propostas });
 });
 router.get("/48_Politica_de_privacidade", function (req, res) {
@@ -287,7 +289,7 @@ router.post("/Editar_Perfil", function(req,res){
 router.get("/SalvarPedido", async function (req, res) {
 
   const id_orc = req.query.id_orc;
-  const propostapedido = await orcamentoDal.GetByPropostas(id_orc);
+  const propostapedido = await orcamentoDal.GetByPropostas(parseInt(id_orc));
   const pp = propostapedido[0];
   const pedido = {
     tipo_roupa: pp.tipo_roupa,
@@ -301,7 +303,7 @@ router.get("/SalvarPedido", async function (req, res) {
   const pedidoRetorno = await pedidoDal.Add(pedido);
   if (pedidoRetorno > 1) {
        
-        if(orcamentoDal.DeleteOrcamento(id_orc)){
+        if(await orcamentoDal.DeleteByProposta(pp.id_proposta)){
           res.redirect("/47_Minhas_propostas_geral");
         }else{
           res.redirect("/45_Proposta_Individual?id=" + id_orc);
@@ -314,7 +316,7 @@ router.get("/SalvarPedido", async function (req, res) {
 router.get("/RecusarPedido", async function (req, res) {
 
   const id_orc = parseInt(req.query.id_orc);
-  await orcamentoDal.DeleteOrcamento(id_orc);
+  const ret = await orcamentoDal.DeleteOrcamento(id_orc);
   res.redirect("/47_Minhas_propostas_geral")
 
 
@@ -338,7 +340,7 @@ router.get("/EditarUsuario", async function (req, res) {
 router.get("/DeletarPerfil", async function (req, res) {
 
   const id = parseInt(req.query.id);
-
+  
   if (req.session.adm || (req.session.id_u == id)) {
     const retorno = await usuarioDAL.deleteCompleto(id);
 
@@ -652,7 +654,7 @@ router.post("/login", async (req, res) => {
       req.session.id_u = id_user;
       req.session.id_tipo_usuario = parseInt(uss[0].id_tipo_usuario);
       req.session.adm = parseInt(uss[0].id_tipo_usuario) == 3 ? true : false;
-
+      //res.render("pages/11_Pagina_inicial_feed", {uss} );
       res.redirect("/11_Pagina_inicial_feed?perfil=" + uss[0].foto_perfil_pasta);
 
 

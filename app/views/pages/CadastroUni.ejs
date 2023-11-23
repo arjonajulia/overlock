@@ -227,7 +227,9 @@
                     <input required type="text" name="email" id="email" placeholder="Email" value="<%= valores.email %>" class="<%= avisoErro.email %>"> 
                     <span> <%= msgErro.email %> </span><br>
  
-                    <input required type="password" name="senha" id="senha" placeholder="Senha" value="<%= valores.senha %>" class="<%= avisoErro.senha %>"> 
+                    <input required type="password" name="senha" id="senha" placeholder="Senha" value="<%= valores.senha %>" class="<%= avisoErro.senha %>"
+                          minlength="6" oninvalid="this.setCustomValidity('Por favor digite uma senha com no Mínimo 6 caracterers e que contenha Letras Maiscula, Minuscula e número e uma caracter especial')" oninput="this.setCustomValidity('')" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%¨&]).{6,}">
+
                     <span> <%= msgErro.senha %> </span><br>
                     <input type="text"  id="tipo_usuario" value="<%= valores.tipo %>" name="tipo_usuario" hidden> 
  

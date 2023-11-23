@@ -793,6 +793,18 @@ footer h3 {
   padding: auto;
 }
 
+.btn {
+  width: 60vw;
+  margin: 0 auto;
+  height: 40px;
+  display: block;
+  padding: 5px;
+  font-size: 20px;
+  color: #CFA2F6;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #551555;
+}
 
 
 

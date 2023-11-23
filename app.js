@@ -40,6 +40,7 @@ app.use(
   app.use(function(req, res, next){
     console.log(req.session);
     res.locals.id_user = req.session?.id_u;
+    res.locals.id_tipo = req.session?.id_tipo_usuario;
     res.locals.foto_painel = req.session?.foto_painel;
     res.locals.id_tipo_usuario = req.session?.id_tipo_usuario;
     next();

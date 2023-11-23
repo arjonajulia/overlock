@@ -1,3 +1,5 @@
+const UsuarioDAL = require("./UsuarioDAL");
+
 module.exports = class OrcamentoDal{
     constructor(conexao) {
         this.conexao = conexao;
@@ -31,7 +33,7 @@ module.exports = class OrcamentoDal{
 
     GetByPropostas(orcamento){
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT *, o.id_usuario AS id_pro, p.id_usuario AS id_cliente FROM proposta p INNER JOIN orcamento o ON o.id_proposta = p.id_proposta WHERE o.id_proposta = ?",
+            this.conexao.query("SELECT *, o.id_usuario AS id_pro, p.id_usuario AS id_cliente FROM proposta p INNER JOIN orcamento o ON o.id_proposta = p.id_proposta WHERE o.id_orcamento = ?",
                 [orcamento],
                 function (error, elements) {
                     if (error) {
@@ -41,23 +43,84 @@ module.exports = class OrcamentoDal{
                 });
         });
     }
+    GetPropostaById(id_usuario){
+        return new Promise((resolve, reject) => {
+            this.conexao.query("SELECT * FROM orcamento o INNER JOIN proposta p ON o.id_proposta =  p.id_proposta WHERE o.id_usuario = ?",
+                [id_usuario],
+                function (error, elements) {
+                    if (error) {
+                        return reject(error);
+                    }
+                     return resolve(elements);
+                });
+        });
+    }
+
+    GetPropostaByUsuario(id_usuario, id_tipo){
+        return new Promise((resolve, reject) => {
+                           
+            if(id_tipo == 1){
+                this.conexao.query("SELECT * FROM proposta where id_usuario = ?",
+                id_usuario,
+                function (error, elements) {
+                    if (error) {
+                        return reject(error);
+                    }
+                     return resolve(elements);
+                });
+            }else{
+                this.conexao.query("SELECT * FROM orcamento AS orc INNER JOIN proposta AS prop ON orc.id_proposta = prop.id_proposta WHERE orc.id_usuario = ?",
+                [id_usuario],
+                function (error, elements) {
+                    if (error) {
+                        return reject(error);
+                    }
+                     return resolve(elements);
+                });
+            }
+
+
+
+        })
+    
+    }
 
 
     DeleteOrcamento(id_proposta){
+        const conexao = this.conexao;
+        return new Promise((resolve, reject) => {
+            conexao.query("DELETE FROM orcamento WHERE id_orcamento = ?",
+                [id_proposta],
+                function (error) {
+                    if (error) {
+                        return reject(error);
+                    }
+                    if(error){
+                        return reject(error);
+                    }
+                     return resolve("OK");
+                });
+        });
+    }
+
+    
+    DeleteByProposta(id_proposta){
         const conexao = this.conexao;
         return new Promise((resolve, reject) => {
             conexao.query("DELETE FROM orcamento WHERE id_proposta = ?",
                 [id_proposta],
                 function (error) {
                     if (error) {
-                        return reject(error);
+                        return reject(false);
                     }
-                    conexao.query("delete from proposta WHERE id_proposta = ?"),
-                    id_proposta;
-                    if(error){
-                        return reject(error);
-                    }
-                     return resolve();
+                 conexao.query("DELETE FROM proposta WHERE id_proposta = ?",
+                    [id_proposta],
+                    function (error) {
+                        if (error) {
+                            return reject(false);
+                        }
+                         return resolve(true);
+                    });
                 });
         });
     }

@@ -47,23 +47,30 @@
                 
             </div>
 
-            <% for(var i = 0; i < proposta.length; i++){%>
-                <section class="container">
+            
+            <% if(proposta.length < 1){
+ 
+                %> <section class="container">
+                    <img src="img/paula/variações logo/manequim 511555.svg" alt="adicionar img">
+                  <div>
+                      <p id="resposta"> Aguardando proposta </p>
+                     
+                  </div>
+              </section>
+              <%
 
-
-                    <img src="img/fotos_propostas/<%= proposta[i].foto_proposta %>" alt="adicionar img">
-    
+            }else{
+                for(var i = 0; i < proposta.length; i++){%>
+                   <section class="container">
+                      <img src="img/fotos_propostas/<%= proposta[i].foto_proposta %>" alt="adicionar img">
                     <div>
-    
                         <p id="resposta"> Aguardando proposta </p>
-    
                         <a href="/46_Propostas_em_andamento?id=<%= proposta[i].id_proposta %>"> ver mais </a>
-    
                     </div>
-    
                 </section>
 
-           <% } %>
+           <% } 
+              }%>
             
         
         </main>

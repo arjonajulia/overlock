@@ -65,10 +65,16 @@
                 <li><%= proposta[i].telefone %></li>
                 <li><%= proposta[i].email %></li>
                 <li><%= proposta[i].valor_orcamento %></li>
-                <li><a href="/SalvarPedido?id_orc=<%= proposta[i].id_proposta %>">Salvar</a>
-                    <a href="/RecusarPedido?id_orc=<%= proposta[i].id_proposta %>">Recusar</a></li>
-                </hr><br/>
-            <%}
+                <% if(id_tipo == 1){%>
+                    <li><a href="/SalvarPedido?id_orc=<%= proposta[i].id_orcamento %>">Salvar</a>
+                        <a href="/RecusarPedido?id_orc=<%= proposta[i].id_orcamento %>">Recusar</a></li>
+                    </hr><br/>
+                <%}else{%>
+                    <li><a href="/RecusarPedido?id_orc=<%= proposta[i].id_arcamento %>">Recusar</a></li>
+                    </hr><br/>
+               <%}
+
+            }
         }else{%>
             <li>SEM ORÇAMENTOS DISPONÍVEIS</li>
             <%}%>
