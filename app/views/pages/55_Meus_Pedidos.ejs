@@ -68,11 +68,11 @@
                 <li><%= pedido[i].email %></li>
                 <li><%= pedido[i].valor_pedido %></li>
                 <% if(id_tipo == 1){%>
-                    <li><a href="/SalvarPedido?id_orc=<%= pedido[i].id_orcamento %>">Salvar</a>
-                        <a href="/RecusarPedido?id_orc=<%= pedido[i].id_orcamento %>">Recusar</a></li>
+                    <li><a>Em processo</a>
+                   </li>
                     </hr><br/>
                 <%}else{%>
-                    <li><a href="/RecusarPedido?id_orc=<%= pedido[i].id_arcamento %>">Recusar</a></li>
+                    <li><a href="/Finalizar Pedido">Finalizar</a></li>
                     </hr><br/>
                <%}
 
