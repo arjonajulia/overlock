@@ -65,76 +65,78 @@
     
                 </section>
 
-                <h2> Estilo do item: <br> <span id="Item"> Nenhum item selecionado </span></h2>
+                <h2> Estilo do item: <br> 
+                    <input type="button" id="Item" onclick="LimparSelecao()" value="Nenhum item selecionado"/></h2>
 
                <section id="tipos">
 
                     <div class="ips ips2">
-                        <input type="radio" onclick="EnviarItem(1)"  id="Camisa">
+                        <input type="radio" name="tipos" onclick="EnviarItem(1)"  id="Camisa">
                         <label for="Camisa"> Camisa </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio" onclick="EnviarItem(2)"  id="Calça">
+                        <input type="radio"  name="tipos" onclick="EnviarItem(2)"  id="Calça">
                         <label for="Calça"> Calça </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio" onclick="EnviarItem(3)"  id="Blusa">
+                        <input type="radio"  name="tipos" onclick="EnviarItem(3)"  id="Blusa">
                         <label for="Blusa"> Blusa </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio"  onclick="EnviarItem(4)"  id="Bolsa">
+                        <input type="radio"  name="tipos"  onclick="EnviarItem(4)"  id="Bolsa">
                         <label for="Bolsa"> Bolsa </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio"  onclick="EnviarItem(5)"  id="Tenis">
+                        <input type="radio"  name="tipos"  onclick="EnviarItem(5)"  id="Tenis">
                         <label for="Tenis"> Tênis </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio"  onclick="EnviarItem(6)"  id="Camiseta">
+                        <input type="radio"  name="tipos"  onclick="EnviarItem(6)"  id="Camiseta">
                         <label for="Camiseta"> Camiseta </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio"  onclick="EnviarItem(7)"  id="Short">
+                        <input type="radio"  name="tipos"  onclick="EnviarItem(7)"  id="Short">
                         <label for="Short"> Short </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio"  onclick="EnviarItem(8)" id="Jaqueta">
+                        <input type="radio"  name="tipos"  onclick="EnviarItem(8)" id="Jaqueta">
                         <label for="Jaqueta"> Jaqueta </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio"  onclick="EnviarItem(9)"  id="Vestido">
+                        <input type="radio"   name="tipos" onclick="EnviarItem(9)"  id="Vestido">
                         <label for="Vestido"> Vestido </label>
                     </div>
 
                     <div class="ips ips2">
-                        <input type="radio"  onclick="EnviarItem(10)"  id="Crooped">
+                        <input type="radio"  name="tipos"  onclick="EnviarItem(10)"  id="Crooped">
                         <label for="Crooped"> Crooped </label>
                     </div>
 
                </section>
 
-                <h2> Desejo Fazer: <br> <span id="fazer"> Nenhum serviço selecionado</span></h2>
+                <h2> Desejo Fazer: <br> 
+                    <input type="button" onclick="LimparSelecaoServicos()" id="fazer" value="Nenhum serviço selecionado"/> </h2>
             
                 <div class="ips">
-                    <input type="radio" onclick="EnviarFazer(1)"   id="Ajuste">
+                    <input type="radio" onclick="EnviarFazer(1)" name="servico"  id="Ajuste">
                     <label for="Ajuste"> Ajuste </label>
                 </div>
 
                 <div class="ips">
-                    <input type="radio" onclick="EnviarFazer(2)"  id="Personalização">
+                    <input type="radio" onclick="EnviarFazer(2)" name="servico"  id="Personalização">
                     <label for="Personalização"> Personalização </label>
                 </div>
 
                 <div class="ips">
-                    <input type="radio" onclick="EnviarFazer(3)" id="Criação">
+                    <input type="radio" onclick="EnviarFazer(3)" name="servico" id="Criação">
                     <label for="Criação"> Criação </label>
                 </div>
 

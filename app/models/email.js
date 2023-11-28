@@ -4,13 +4,13 @@ const { promises } = require('nodemailer/lib/xoauth2');
 module.exports = class email {
 
     constructor() {
-        this.email =  "overlock-tcc@hotmail.com";
+        this.email =  "overlock.site@gmail.com";
         
         this.transporter = nodemailer.createTransport({
           service: 'Hotmail',
             auth: {
-              user: 'overlock-tcc@hotmail.com',
-              pass: '1234abc@@'
+              user: 'overlock.site@gmail.com',
+              pass: 'overlock12345'
             }
         });
     }

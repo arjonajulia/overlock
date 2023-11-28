@@ -544,7 +544,7 @@ router.post(
         let resutado = media / (1000*60*60*24);
         if (resutado >= 6574) {
           await usuarioDAL.SalvarProfissional(dadosForm);
-          return res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: { "user_login": "", "senha_login": "" } });
+          return res.render("pages/101_Pagina_do_parabens");
 
           //return res.render("pages/Cadastro_Profissional_mais_18", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}})
         } else {

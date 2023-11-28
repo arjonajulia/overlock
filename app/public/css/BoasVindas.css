@@ -1766,5 +1766,7 @@ transition-duration: 0.2s;
         margin-top: 20px;
         margin-left: 10px;
     }
-
+    #msn_login{
+        color: rgb(243, 5, 5);
+    }
 }

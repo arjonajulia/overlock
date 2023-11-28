@@ -63,14 +63,39 @@ voltar.addEventListener('click', function() {
 });
 
 function EnviarItem(id){
-     document.getElementById('tipo_item').value = id;
+     
+    document.getElementById('tipo_item').value = id;
+    const btn = document.getElementById('Item');
+    btn.value = "Limpar Seleção de Itens";
+    
 }
 
 function EnviarFazer(id){
     document.getElementById('tipo_fazer').value = id;
+    const btn = document.getElementById('fazer');
+    btn.value = "Limpar Seleção de Serviços";
 }
 
+function LimparSelecaoServicos(){
+    const grupo_itens = document.getElementsByName('servico');
+    let cont = 0;
+    grupo_itens.forEach((item)=>{
+        if(item.checked){
+            item.checked = false;
+        }
+    });
+    document.getElementById('fazer').value = 'Nenhum serviço selecionado';
+}
 
+function LimparSelecao(){
+    const grupo_itens = document.getElementsByName('tipos');
+    let cont = 0;
+    grupo_itens.forEach((item)=>{
+        item.checked = false;
+    });
+    document.getElementById('Item').value = 'Nenhum item selecionado';
+    
+}
 
 
 
