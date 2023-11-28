@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" action="/login" id="login_x">
-
+   
+      
 
         <div class="fund">
 
@@ -27,9 +27,17 @@
             <label for="senha">senha</label> <br>
             <input type="password" name="senha" id="senha" placeholder="   digite sua senha" > <br>
 
-            <a id="email2" href="mailto:">esqueceu a senha ?</a> <br>
+              <div class="modal">
+                Erro! Senha e / ou usuário
+              </div>   
+                        
 
-            <input type="submit" name="enviar" id="enviar">
+
+
+            <a id="email2" href="mailto:">esqueceu a senha ?</a> <br>
+           
+
+            <input type="button" onclick="loginDados('val_arjona','1234')" name="enviar" id="enviar">
 
             <div class="hr2"></div>
 
@@ -38,7 +46,7 @@
 
         </div>
 
-    </form>
+   
     
 </body>
 </html>

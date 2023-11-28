@@ -41,6 +41,22 @@ module.exports = class ProjetoDAL{
         });
     }
 
+    GetPropostas(id_usuario){
+        return new Promise((resolve, reject) => {
+            this.conexao.query("SELECT p.*," 
+                +"(SELECT o.valor_orcamento FROM orcamento AS o WHERE o.id_proposta = p.id_proposta AND o.id_usuario = ?  ORDER BY o.id_orcamento DESC LIMIT 1 )" 
+                + " AS orc FROM proposta AS p;", [id_usuario],
+             function (error, elements) {
+                if (error) {
+                    return reject(error);
+                }
+                 return resolve(elements);
+            });
+        });
+    }
+
+
+
     GetProposta(id){
         return new Promise((resolve, reject) => {
             this.conexao.query("SELECT * FROM orcamento WHERE id_usuario = ?",

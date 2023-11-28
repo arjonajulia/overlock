@@ -42,6 +42,7 @@
 
             <main>
 
+       
                 <nav id="menu">
 
                     <ul>
@@ -66,23 +67,6 @@
 
                 </nav>
 
-                <% 
-                    let avisoErro = {"user_login":"", "senha_login":""}
-                    let msgErro =   {"user_login":"", "senha_login":""}
-                        if(listaErros){
-                            listaErros.errors.forEach(function(itemErro){
-                                if(itemErro.path == "user_login"){
-                                    avisoErro.user_login = "erro";
-                                    msgErro.user_login = itemErro.msg
-                                }
-                                if(itemErro.path == "senha_login"){
-                                    avisoErro.senha_login = "erro";
-                                    msgErro.senha_login = itemErro.msg
-                                }
-                            })
-                        }
-                %>
-                
                 <form method="post" action="/login" id="login_x">
 
                     <div class="fund">
@@ -100,24 +84,27 @@
 
                         <br>
 
-    
+                    
+
+
                         <label for="user_login">user name</label> <br>
-                        <input type="text" name="user_login" id="email" placeholder="   digite seu user name"
-                            class="<%= avisoErro.user_login %>" ><br>
-                        <span>
-                            <%= msgErro.user_login %>
-                        <span>
-    
+                        <input type="text" name="user_login" id="email" placeholder="   digite seu user name"/>
+                            
+   
                         <label for="senha_login">senha</label> <br>
-                        <input type="password" name="senha_login" id="senha" placeholder="   digite sua senha"
-                            class="<%= avisoErro.senha_login %>" ><br>
-                        <span>
-                            <%= msgErro.senha_login %>
-                        <span>
-    
+                        <input type="password" name="senha_login" id="senha" placeholder="   digite sua senha"/>
+                        
+                            <div id="modal" style="display: none;" class="modal modal-conteudo">
+                                <h3>Erro!</h3>
+                            <hr/>
+                                <br/>
+                                <h4>Usuario ou Senha Invalido</h4>
+                            </div>
+                        
+                             
                         <a id="email2" href="mailto:">esqueceu a senha ?</a> <br>
     
-                        <input type="submit" name="enviar" id="enviar">
+                        <input type="button" onclick="loginDados()" value="Enviar" name="enviar" id="enviar">
     
                         <div class="hr2"></div>
     

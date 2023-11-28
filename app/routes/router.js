@@ -10,7 +10,8 @@ const path = require("path");
 
 var UsuarioDAL = require("../models/UsuarioDAL");
 var usuarioDAL = new UsuarioDAL(conexao);
-
+var Email = require("../models/email");
+var email = new Email();
 var ProjetoDAL = require("../models/ProjetoDAL");
 var projetoDal = new ProjetoDAL(conexao);
 var OrcamentoDal = require("../models/OrcamentoDal");
@@ -36,14 +37,14 @@ const { isObject } = require("appjs/lib/utils");
 
 router.get("/", function (req, res) {
   res.locals.erroLogin = null
-  res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: { "user_login": "", "senha_login": "" } });
+  res.render("pages/index", {erro:"erro"} );
 });
 
 // "user_login":"", "senha_login":""
 
 router.get("/index", function (req, res) {
   res.locals.erroLogin = null
-  res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: { "user_login": "", "senha_login": "" } });
+  res.render("pages/index", {erro:"erro"} );
 });
 
 
@@ -200,8 +201,8 @@ router.get("/43_Publicacao", function (req, res) {
   res.render("pages/43_Publicacao");
 });
 router.get("/44_Pagina_inicial_feed", async function (req, res) {
-
-  const proposta = await projetoDal.GetPropostas();
+  const id_usuario = req.session.id_u;
+  const proposta = await projetoDal.GetPropostas(parseInt(id_usuario));
 
   res.render("pages/44_Pagina_inicial_feed", { proposta: proposta });
 });
@@ -241,7 +242,20 @@ router.get("/53_Notificacao_geral", function (req, res) {
 router.get("/54_Pagina_inicial_feed", function (req, res) {
   res.render("pages/54_Pagina_inicial_feed");
 });
-
+router.get("/55_Meus_Pedidos", async function (req, res) {
+  const id_user = req.session.id_u;
+  const tipo_usuario = req.session.id_tipo_usuario;
+  const id_pedido = parseInt(req.query.id); 
+  var pedido = ""
+  if(tipo_usuario == 2){
+       pedido = await pedidoDal.GetPedidoByUser(id_user, tipo_usuario);
+  }
+  if(tipo_usuario == 1){
+       pedido = await pedidoDal.GetPedidoByPedido(id_pedido);
+  }
+  
+  res.render("pages/55_Meus_Pedidos", {pedido});
+})
 router.get("/Administracao", async function (req, res) {
   const usAdmin = JSON.stringify(await usuarioDAL.AdmUsuarios(parseInt(req.session.id_u)));
   res.render("pages/Administracao", { usAdmin: usAdmin });
@@ -396,12 +410,14 @@ router.post("/SalvarOrcamento", async function (req, res) {
   const id_usuario = req.session.id_u;
   const preco = parseFloat(req.body.preco);
   const id_proposta = parseInt(req.body.id_proposta);
+  const usuario = await usuarioDAL.GetUsuarioByProposta(id_proposta);
   const orc = {
     valor_orcamento: preco,
     id_usuario,
     id_proposta
   }
   const retorno = await orcamentoDal.Add(orc)
+  await email.EnviarEmail(usuario[0].email, "Novo Orçamento", preco);
   res.redirect("/44_Pagina_inicial_feed")
 })
 
@@ -525,16 +541,14 @@ router.post(
         let hoje = new Date()
         let dataFinal = new Date(req.body.dataNaci)
         let media = hoje - dataFinal
-        let convercao = 365 * 24 * 60 * 60;
-        let final = media / convercao
-        final.toFixed(2)
-        let resutado = final.toFixed(2).slice(0, 2)
-        if (resutado >= 18) {
+        let resutado = media / (1000*60*60*24);
+        if (resutado >= 6574) {
           await usuarioDAL.SalvarProfissional(dadosForm);
           return res.render("pages/index", { listaErros: null, dadosNotificacao: null, valores: { "user_login": "", "senha_login": "" } });
 
           //return res.render("pages/Cadastro_Profissional_mais_18", { listaErros:null, dadosNotificacao: null, valores: {"user_login":"", "senha_login":""}})
-        } else if (resutado < 18) {
+        } else {
+          req.session.dados = dadosForm;
           return res.render("pages/Cadastro_profissional_menos_18")
         }
       }
@@ -544,18 +558,14 @@ router.post(
         let media = hoje - dataFinal
         let convercao = 365 * 24 * 60 * 60;
         let final = media / convercao
-        final.toFixed(2)
-        let resutado = final.toFixed(2).slice(0, 2)
-        if (resutado >= 18) {
+        let resutado = media / (1000*60*60*24);
+        if (resutado >= 6574) {
           req.session.dados = dadosForm;
           res.render("pages/Cadastro_Profissional_mais_18");
-        } else if (resutado < 18) {
+        } else {
+          req.session.dados = dadosForm;
           return res.render("pages/Cadastro_profissional_menos_18")
         }
-
-
-
-
       }
 
 
@@ -570,6 +580,16 @@ router.post(
     }
 
   })
+
+router.post("/CadastrarMenor_18", function(req, res){
+
+   const dados = req.session.dados;
+   const arquivo = req.body.file;
+
+
+
+})
+
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -633,36 +653,48 @@ router.post("/Tipo_Usuario", (req, res) => {
 // login
 
 router.post("/login", async (req, res) => {
+  const erro = "";
 
-  const user = req.body;
+  //const user = req.body;
+ 
+  const usuario_login = (req.body.user).split("-");
+  
+  const user = {
+    user_login : usuario_login[0],
+    user_senha : usuario_login[1].split('=')[1]
+  }
+  
   if (!user.user_login == '' || user.user_senha == '') {
-    const senha = bcrypt.hashSync(req.body.senha_login, salt);
+    const senha = bcrypt.hashSync(user.user_senha, salt);
     const erros = validationResult(req);
 
     var usuario;
 
-    usuario = await usuarioDAL.authUser(req.body.user_login);
+    usuario = await usuarioDAL.authUser(user.user_login);
     us = JSON.stringify(usuario);
     uss = JSON.parse(us);
     if (us == '[]') {
       //{ listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" }}
-      return res.redirect("/index?erro=error")
+      return res.send()
     }
     var id_user = uss[0].id_usuario;
 
-    if (bcrypt.compareSync(req.body.senha_login, uss[0].senha)) {
+    if (bcrypt.compareSync(user.user_senha, uss[0].senha)) {
       req.session.id_u = id_user;
       req.session.id_tipo_usuario = parseInt(uss[0].id_tipo_usuario);
       req.session.adm = parseInt(uss[0].id_tipo_usuario) == 3 ? true : false;
       //res.render("pages/11_Pagina_inicial_feed", {uss} );
-      res.redirect("/11_Pagina_inicial_feed?perfil=" + uss[0].foto_perfil_pasta);
+      res.send(usuario)
+      //redirect("/11_Pagina_inicial_feed?perfil=" + uss[0].foto_perfil_pasta);
 
 
     } else {
-      return res.redirect("/index?erro=error")
+      res.send()
+      //return res.redirect("/login?erro=error")
     }
   } else {
-    return res.redirect("/index?erro=error")
+    res.send()
+    //return res.redirect("/index?erro=error")
   }
 
   /*

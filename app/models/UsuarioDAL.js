@@ -254,6 +254,22 @@ module.exports = class UsuarioDAL {
         });
     }
 
+    GetUsuarioByProposta(proposta)  {
+        return new Promise((resolve, reject) =>{
+            this.conexao.query("SELECT u.* FROM proposta p INNER JOIN usuario u ON p.id_usuario = u.id_usuario WHERE p.id_proposta = ? LIMIT 1",
+            [proposta],
+            function(error, elements){
+                if(error){
+                    console.log(reject)
+                }
+                return resolve(elements);
+            });
+        })
+    }
+
+    
+
+
 
 }
 

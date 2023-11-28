@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="css/Editar_perfil_home.css">
+        <link rel="stylesheet" href="css/Administracao.css">
+        <link rel="stylesheet" href="css/Perfil.css">
+        <script src="js/script.js" defer ></script>
+        <script src="js/Administrar.js" defer ></script>
+        <title> Editar Perfil </title>
+
+    </head>
+
+    <body>
+
+        <!--Inicio-->
+
+        <header>
+
+            <div id="submenu">
+                
+                <img src="img/paula/menu.svg" id="menuA" onclick="menu()">
+                <img src="img/paula/letra-x.svg" id="menuF" onclick="menu()">
+
+                <a onclick.window.location="/index">
+                                
+                    <img src="img/paula/variações logo/overlock BD81F3.svg" id="logo">
+
+                </a>
+
+            </div>
+
+        </header>
+
+        <main>
+            
+         <%- include('menu') %>
+         <% itens = ["Ajsutes", "Personalização", "Criação"]
+            tipos = ["Camisa", "Calça", "Blusa", "Bolsa", "Tenis", "Camiseta", "Short", "Jaqueta", "Vestido", "Crooped" ] %>
+        <!--Fim-->
+       
+        <br/><br/>
+       <img id="imagemExibida2" src="img/fotos_propostas/<%= pedido[0].foto_proposta %>" alt="Imagem Exibida">
+       <br/>
+       <div id="detalhe">
+        
+        <ul id="detalhePerfil">
+            <li style="text-align: center;"><h4 style="font-weight: bold;"><%= pedido[0].nomeuc %></h4></li>
+            <li>Telefone: <%= pedido[0].telefoneUc %></li>
+            <li>e-mail : <%= pedido[0].emailUc %></li>
+            <li>Categoria: <%= itens[parseInt(pedido[0].categoria ) -1] %> </li>
+            <li>Tipos de Roupas: <%= tipos[parseInt(pedido[0].tipo_roupa ) -1] %> </li>
+            <li>Descrição: <%= pedido[0].descricao %></li>
+        </hr><br/>
+        <% if(pedido[0].id_pedido){
+             for(var i = 0; i < pedido.length; i++){ %>
+                <li><%= pedido[i].nome %></li>
+                <li><%= pedido[i].telefone %></li>
+                <li><%= pedido[i].email %></li>
+                <li><%= pedido[i].valor_pedido %></li>
+                <% if(id_tipo == 1){%>
+                    <li><a href="/SalvarPedido?id_orc=<%= pedido[i].id_orcamento %>">Salvar</a>
+                        <a href="/RecusarPedido?id_orc=<%= pedido[i].id_orcamento %>">Recusar</a></li>
+                    </hr><br/>
+                <%}else{%>
+                    <li><a href="/RecusarPedido?id_orc=<%= pedido[i].id_arcamento %>">Recusar</a></li>
+                    </hr><br/>
+               <%}
+
+            }
+        }else{%>
+            <li>SEM ORÇAMENTOS DISPONÍVEIS</li>
+            <%}%>
+        </ul>
+        <br/>
+     
+    </div>
+
+
+
+</main>
+
+</div>
+        
+
+        <!--Inicio-->
+
+   
+        <!--Fim-->
+
+    </body>
+</html>

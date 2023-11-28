@@ -1,6 +1,6 @@
 function login() {
 
-    if(document.getElementById("login_x")) {
+    if (document.getElementById("login_x")) {
 
         document.getElementById("login_x").id = "login"
 
@@ -9,12 +9,12 @@ function login() {
         document.getElementById("login").id = "login_x"
 
     }
-    
+
 }
 
 function menu() {
-    if(document.getElementById("menuA")) {
-        
+    if (document.getElementById("menuA")) {
+
         document.getElementById('menuA').id = 'menuAx'
         document.getElementById('menuF').id = 'menuFx'
 
@@ -88,50 +88,50 @@ function validacaoProficional() {
     let convercao = 365 * 24 * 60 * 60;
     let final = media / convercao
     final.toFixed(2)
-    let resutado = final.toFixed(2).slice(0,2)
+    let resutado = final.toFixed(2).slice(0, 2)
 
-    if( nome == "" || dataNaci == "" || tel == "" || endereco == "" || city == "" || nul == "" || cep == "" || cpf =="" || email === "" || senha == "" || consenha == "" ){
-        if ( nome == "" ){
+    if (nome == "" || dataNaci == "" || tel == "" || endereco == "" || city == "" || nul == "" || cep == "" || cpf == "" || email === "" || senha == "" || consenha == "") {
+        if (nome == "") {
             alert(" Nome nao preenchido completamente ")
-        } else if ( dataNaci == "" ){
+        } else if (dataNaci == "") {
             alert(" data nao preenchido completamente  ")
-        } else if ( tel == "" ){
+        } else if (tel == "") {
             alert(" telefone nao preenchido completamente  ")
-        } else if ( endereco == "" ){
+        } else if (endereco == "") {
             alert(" endereco nao preenchido completamente  ")
-        } else if ( city == "" ){
+        } else if (city == "") {
             alert(" cidade nao preenchido completamente  ")
-        } else if ( nul == "" ){
+        } else if (nul == "") {
             alert(" numero nao preenchido completamente  ")
-        } else if ( cep == "" ){
+        } else if (cep == "") {
             alert(" cep nao preenchido completamente  ")
-        } else if ( cpf == "" ){
+        } else if (cpf == "") {
             alert(" cpf nao preenchido completamente  ")
-        } else if ( email === "" ){
+        } else if (email === "") {
             alert(" email nao preenchido completamente  ")
-        } else if ( senha == "" ){
+        } else if (senha == "") {
             alert(" senha nao preenchido completamente  ")
-        } else if ( consenha == "" ){
+        } else if (consenha == "") {
             alert(" confirme a senha nao preenchido completamente  ")
         }
-    } else if( senha === consenha ){
+    } else if (senha === consenha) {
 
-        if( resutado >= 18 ){
+        if (resutado >= 18) {
 
             window.location = "/Cadastro_Proficional+18"
-    
-        } else if( resutado < 18 ){
-    
-            window.location ="/Cadastro_proficional-18"
-    
+
+        } else if (resutado < 18) {
+
+            window.location = "/Cadastro_proficional-18"
+
         }
 
-    } else if( senha != consenha ){
+    } else if (senha != consenha) {
 
         alert("Senhas nao exatas")
-    
+
     }
-        
+
 }
 function validacaoCliente() {
 
@@ -155,54 +155,54 @@ function validacaoCliente() {
     let convercao = 365 * 24 * 60 * 60;
     let final = media / convercao
     final.toFixed(2)
-    let resutado = final.toFixed(2).slice(0,2)
+    let resutado = final.toFixed(2).slice(0, 2)
 
-    if( nome == "" || dataNaci == "" || tel == "" || endereco == "" || city == "" || nul == "" || cep == "" || cpf =="" || email === "" || senha == "" || consenha == "" ){
-        if ( nome == "" ){
+    if (nome == "" || dataNaci == "" || tel == "" || endereco == "" || city == "" || nul == "" || cep == "" || cpf == "" || email === "" || senha == "" || consenha == "") {
+        if (nome == "") {
             alert(" Nome nao preenchido completamente ")
-        } else if ( dataNaci == "" ){
+        } else if (dataNaci == "") {
             alert(" data nao preenchido completamente  ")
-        } else if ( tel == "" ){
+        } else if (tel == "") {
             alert(" telefone nao preenchido completamente  ")
-        } else if ( endereco == "" ){
+        } else if (endereco == "") {
             alert(" endereco nao preenchido completamente  ")
-        } else if ( city == "" ){
+        } else if (city == "") {
             alert(" cidade nao preenchido completamente  ")
-        } else if ( nul == "" ){
+        } else if (nul == "") {
             alert(" numero nao preenchido completamente  ")
-        } else if ( cep == "" ){
+        } else if (cep == "") {
             alert(" cep nao preenchido completamente  ")
-        } else if ( cpf == "" ){
+        } else if (cpf == "") {
             alert(" cpf nao preenchido completamente  ")
-        } else if ( email === "" ){
+        } else if (email === "") {
             alert(" email nao preenchido completamente  ")
-        } else if ( senha == "" ){
+        } else if (senha == "") {
             alert(" senha nao preenchido completamente  ")
-        } else if ( consenha == "" ){
+        } else if (consenha == "") {
             alert(" confirme a senha nao preenchido completamente  ")
         }
-    } else if( senha === consenha ){
+    } else if (senha === consenha) {
 
-        if( resutado >= 18 ){
+        if (resutado >= 18) {
 
             window.location.href = "/app/view/Cadastro_Cliente+18.html"
-    
-        } else if( resutado < 18 ){
-    
+
+        } else if (resutado < 18) {
+
             window.location.href = "/app/view/Cadastro_Cliente-18.html"
-    
+
         }
 
-    } else if( senha != consenha ){
+    } else if (senha != consenha) {
 
         alert("Senhas nao exatas")
-    
+
     }
-        
+
 }
 
 
-function BemVindoProficional(){
+function BemVindoProficional() {
 
     let nivel = 0 + 1
     nivel
@@ -220,7 +220,7 @@ function BemVindoProficional(){
 
 }
 
-function BemVindoCliente(){
+function BemVindoCliente() {
 
     let nivel = 0
     nivel
@@ -255,4 +255,38 @@ const mascaraDinheiro = (value) => {
     const result = number.toFixed(2)
 
     return result
+}
+
+async function loginDados() {
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+    let xhr = new XMLHttpRequest();
+    const url = window.location.origin + '/login';
+    const user = {
+         "user":email,
+         "passwd":senha
+        };
+    
+    xhr.open("POST",url,false);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("user=" + email + "-" + "passwd =" + senha);
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var dados_usuario = xhr.response;
+        if(dados_usuario.length < 1){
+            document.getElementById('modal').style.display = "block"
+            senha.value = "";
+            await sleep(5000)
+            document.getElementById('modal').style.display = "none"
+        }else{
+            window.location.href = window.location.origin + ("/11_Pagina_inicial_feed?perfil");
+            document.getElementById('FotoPerfil').src = window.location.href + "/img/perfil/" + dados_usuario.foto_perfil_pasta;
+        }
+ 
+       }else{
+        
+    }
+    function sleep(milliseconds) {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+    
 }

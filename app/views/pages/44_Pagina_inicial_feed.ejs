@@ -63,10 +63,20 @@
                 for(var i = 0; i < proposta.length; i++){%>
                    <section class="container">
                       <img src="img/fotos_propostas/<%= proposta[i].foto_proposta %>" alt="adicionar img">
-                    <div>
+                    <div class="proposta">
                         <p id="resposta"> Aguardando proposta </p>
-                        <a href="/46_Propostas_em_andamento?id=<%= proposta[i].id_proposta %>"> ver mais </a>
+                        
+                        <div  style="width: 100%;">
+                            <a href="/46_Propostas_em_andamento?id=<%= proposta[i].id_proposta %>" style="width: 40%; float:left"> ver mais </a>
+                            <%if(proposta[i].orc > 0){%>
+                                <div id="orcamento">
+                                    <span> Última Proposta realizada, R$ <%=proposta[i].orc%></span>
+                                </div>
+                                
+                            <%}%>
+                        </div>
                     </div>
+                    
                 </section>
 
            <% } 

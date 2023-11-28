@@ -60,7 +60,7 @@ module.exports = class OrcamentoDal{
         return new Promise((resolve, reject) => {
                            
             if(id_tipo == 1){
-                this.conexao.query("SELECT * FROM proposta where id_usuario = ?",
+                this.conexao.query("SELECT * FROM proposta where id_usuario = ? Order By id_proposta desc",
                 id_usuario,
                 function (error, elements) {
                     if (error) {
