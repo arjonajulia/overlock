@@ -792,7 +792,10 @@ footer h3 {
   border-radius: 50%;
   padding: auto;
 }
-
+.logFoto{
+  border-radius: 50%;
+  padding: auto;
+}
 .btn {
   width: 60vw;
   margin: 0 auto;

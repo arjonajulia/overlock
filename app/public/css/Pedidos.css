@@ -208,7 +208,10 @@ html {
       margin: 10px 7%;
       border-radius: 15px;
     }
-
+    .logFoto{
+      border-radius: 50%;
+      padding: auto;
+    }
     #resposta {
       width: 50vw;
       padding: 4%;

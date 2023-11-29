@@ -267,7 +267,10 @@ html {
         position: relative;
         top: -25px;
       }
-  
+      .logFoto{
+        border-radius: 50%;
+        padding: auto;
+      }
       footer h3 {
         margin: 3%;
         color: #CFA2F6;

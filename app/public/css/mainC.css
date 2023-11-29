@@ -1033,7 +1033,10 @@ html {
   
 }
 
-
+.logFoto{
+  border-radius: 50%;
+  padding: auto;
+}
 
 
 

@@ -37,12 +37,7 @@
             
             <!-- <img src="img/paula/icone login.svg" id="log" onclick="login()"> -->
             <span id="log" class="logFoto">
-                
-                <% if(foto_painel == undefined){console.log(foto_painel)%>
-                    <img id="FotoPerfil" src="img/perfil/foto_perfil.svg" alt='imagem de perfil' class= 'logFoto'    width='60' height='60'/>
-
-                <%}%>
-               <img src="img/perfil/<%- foto_painel %>" alt='imagem de perfil' class= 'logFoto    width='60' height='60'/>  
+                <img src="<%= foto_painel %>" alt='imagem de perfil' class= 'logFoto    width='60' height='60'/>  
             </span>
 
             

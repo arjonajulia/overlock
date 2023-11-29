@@ -102,9 +102,9 @@ router.get("/10_Perfil", async function (req, res) {
 router.get("/11_Pagina_inicial_feed", async function (req, res) {
 
   const cam = await usuarioDAL.GetUsuario(req.session.id_u);
-  let caminho = cam.foto_perfil_pasta;
+  let caminho = cam[0].foto_perfil_pasta;
   const propostas = JSON.stringify(await projetoDal.GetPropostas());
-  req.session.foto_painel = caminho;
+  req.session.foto_painel = "img/perfil/" + caminho;
 
   res.render("pages/11_Pagina_inicial_feed", { img: "<img src=img/" + caminho + " alt='imagem de perfil' class= 'logFoto    width='60' height='60' />", propostas: propostas });
 });
@@ -682,6 +682,7 @@ router.post("/login", async (req, res) => {
     if (bcrypt.compareSync(user.user_senha, uss[0].senha)) {
       req.session.id_u = id_user;
       req.session.id_tipo_usuario = parseInt(uss[0].id_tipo_usuario);
+      req.session.foto_painel = "img/perfil/" + uss[0].foto_perfil_pasta;
       req.session.adm = parseInt(uss[0].id_tipo_usuario) == 3 ? true : false;
       //res.render("pages/11_Pagina_inicial_feed", {uss} );
       res.send(usuario)

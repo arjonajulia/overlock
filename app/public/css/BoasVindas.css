@@ -1769,4 +1769,8 @@ transition-duration: 0.2s;
     #msn_login{
         color: rgb(243, 5, 5);
     }
+    .logFoto{
+        border-radius: 50%;
+        padding: auto;
+      }
 }
