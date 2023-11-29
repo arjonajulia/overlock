@@ -90,7 +90,7 @@ router.get("/9_Editar_perfil_form", async function (req, res) {
 router.get("/10_Perfil", async function (req, res) {
   const id = parseInt(req.query.id || req.session.id_u);
   const us = await usuarioDAL.GetUsuario(id);
-  req.session.foto_painel = us.foto_perfil_pasta;
+  //req.session.foto_painel = us.foto_perfil_pasta;
   const usuario = us;
 
 
@@ -102,11 +102,11 @@ router.get("/10_Perfil", async function (req, res) {
 router.get("/11_Pagina_inicial_feed", async function (req, res) {
 
   const cam = await usuarioDAL.GetUsuario(req.session.id_u);
-  let caminho = cam[0].foto_perfil_pasta;
+  //let caminho = cam[0].foto_perfil_pasta;
   const propostas = JSON.stringify(await projetoDal.GetPropostas());
-  req.session.foto_painel = "img/perfil/" + caminho;
+  //req.session.foto_painel = "img/perfil/" + caminho;
 
-  res.render("pages/11_Pagina_inicial_feed", { img: "<img src=img/" + caminho + " alt='imagem de perfil' class= 'logFoto    width='60' height='60' />", propostas: propostas });
+  res.render("pages/11_Pagina_inicial_feed",{propostas: propostas });
 });
 router.get("/12_Novo_projeto", function (req, res) {
   res.render("pages/12_Novo_projeto");
