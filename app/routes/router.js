@@ -417,7 +417,7 @@ router.post("/SalvarOrcamento", async function (req, res) {
     id_proposta
   }
   const retorno = await orcamentoDal.Add(orc)
-  await email.EnviarEmail(usuario[0].email, "Novo Orçamento", preco);
+  // await email.EnviarEmail(usuario[0].email, "Novo Orçamento", preco);
   res.redirect("/44_Pagina_inicial_feed")
 })
 

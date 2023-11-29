@@ -52,7 +52,7 @@
 
                 </a>
                 <span id="log" class="logFoto">
-                    <img src="img/perfil/<%= foto_painel %>" alt='imagem de perfil' class= 'logFoto'    width="60" height="60"/>  
+                    <img src="../img/perfil/<%= foto_painel %>" alt='imagem de perfil' class= 'logFoto'    width="60" height="60"/>  
                  </span>
 
             </div>
@@ -67,7 +67,7 @@
                 <form method="post" action="/Editar_Perfil" id="cadastro_Cliente">
 
                     <% const usuario = JSON.parse(valores)[0] %>
-                    console.log(usuario)
+            
                     <div class="container">
     
                         <h1> CADASTRO </h1>
@@ -103,7 +103,7 @@
                         </button>
                         -->
     
-                        <input required type="submit" value="cadastrar" id="cadastrar">
+                        <input required type="submit" value="Enviar" id="cadastrar">
     
                     </div>
     
@@ -112,33 +112,16 @@
 
             </article>
 
-                <h5> Preferência de roupas </h5>
-
-                <div class="ips pli">
-                    <input type="checkbox" name="aju" id="aju">
-                    <label for="aju"> Feminina </label>
-                </div>
-
-                <div class="ips">
-                    <input type="checkbox" name="personalização" id="per">
-                    <label for="per"> Masculino </label>
-                </div>
-
-                <div class="ips">
-                    <input type="checkbox" name="criação" id="cri">
-                    <label for="cri"> Infantil </label>
-                </div>
-                <!-- onclick="window.location='/inicial_feed'" -->
-
+               
+               <% if(id_tipo > 3){%>
                 <div id="btn-a-inital-grid">
-                    <a href="/inicial_feed" id="certo" class="btn-a-inital">
-                        carregar
-                     </a>
-                     <a href="/DeletarPerfil?id=<%= usuario.id_usuario %>" id="delete" class="btn-a-inital">
+                    <a href="/DeletarPerfil?id=<%= usuario.id_usuario %>" id="delete" class="btn-a-inital">
                         Deletar
                      </a>
      
                 </div>
+               <%}%>    
+
                 
             </form>
 
