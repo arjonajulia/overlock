@@ -25,11 +25,11 @@ module.exports = class PedidoDal{
             if(id_tipo == 1){
                 sql_string = "SELECT u.*, p.*, uc.nome AS nomeuc, uc.telefone AS telefoneUc, uc.email AS emailUc from pedido AS p "
                            + "INNER JOIN usuario AS u ON u.id_usuario = p.id_usuario_prof "
-                           + "INNER JOIN usuario AS uc ON uc.id_usuario = p.id_usuario WHERE p.id_usuario = ? p.status <> 0";
+                           + "INNER JOIN usuario AS uc ON uc.id_usuario = p.id_usuario WHERE p.id_usuario = ? AND p.status_pedido <> 0";
             }else{
                 sql_string = "SELECT u.*, p.*, uc.nome AS nomeuc, uc.telefone AS telefoneUc, uc.email AS emailUc from pedido AS p "
                            + "INNER JOIN usuario AS u ON u.id_usuario = p.id_usuario_prof "
-                           + "INNER JOIN usuario AS uc ON uc.id_usuario = p.id_usuario WHERE p.id_usuario_prof = ? AND p.status <> 0";
+                           + "INNER JOIN usuario AS uc ON uc.id_usuario = p.id_usuario WHERE p.id_usuario_prof = ? AND p.status_pedido <> 0";
             }
 
             if(id_tipo == 3){
@@ -51,7 +51,7 @@ module.exports = class PedidoDal{
     GetPedidoByPedido(id_pedido){
         const sql = "SELECT u.*, p.*, uc.nome AS nomeuc, uc.telefone AS telefoneUc, uc.email AS emailuc from pedido AS p"
                   + " INNER JOIN usuario AS u ON u.id_usuario = p.id_usuario_prof"
-                  + " INNER JOIN usuario AS uc ON uc.id_usuario = p.id_usuario WHERE p.id_pedido = ? AND p.status <> 0" 
+                  + " INNER JOIN usuario AS uc ON uc.id_usuario = p.id_usuario WHERE p.id_pedido = ? AND p.status_pedido <> 0" 
         
         
         return new Promise((resolve, reject) => {
@@ -65,7 +65,7 @@ module.exports = class PedidoDal{
     }
     
     FinalizaPedido(id_pedido){
-        const sql = "UPDATE pedido SET status = 0 WHERE id_pedido = ?"
+        const sql = "UPDATE pedido SET status_pedido = 0 WHERE id_pedido = ?"
         
         
         return new Promise((resolve, reject) => {

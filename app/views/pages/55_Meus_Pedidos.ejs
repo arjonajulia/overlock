@@ -56,8 +56,7 @@
        <div id="detalhe">
         <form action="56_Finalizar_Pedido" method="post">
         
-            <input type="text" id="id_pedido" name="id_pedido" value="<%=pedido[0].id_pedido %>"/>    
-      
+            <input type="hidden" id="id_pedido" name="id_pedido" value="<%=pedido[0].id_pedido %>"/>          
         <ul id="detalhePerfil">
             <li style="text-align: center;"><h4 style="font-weight: bold;"><%= pedido[0].nomeuc %></h4></li>
             <li>Telefone: <%= pedido[0].telefoneUc %></li>

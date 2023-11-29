@@ -130,7 +130,6 @@ module.exports = class UsuarioDAL {
                     if (error) {
                         return reject(error);
                     }
-
                     return resolve(elements);
                 });
         });

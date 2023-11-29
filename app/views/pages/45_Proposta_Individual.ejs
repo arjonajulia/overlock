@@ -50,6 +50,10 @@
             tipos = ["Camisa", "Calça", "Blusa", "Bolsa", "Tenis", "Camiseta", "Short", "Jaqueta", "Vestido", "Crooped" ] %>
         <!--Fim-->
        
+        <div id="msn" class="Notify msn" style="display: none;">
+            PEDIDO ENVIADO COM SUCESSO !
+        </div>
+
         <br/><br/>
        <img id="imagemExibida2" src="img/fotos_propostas/<%= proposta[0].foto_proposta %>" alt="Imagem Exibida">
        <br/>
@@ -69,10 +73,10 @@
                 <li><%= proposta[i].valor_orcamento %></li>
                 <% if(id_tipo == 1){%>
                     <li><a href="/SalvarPedido?id_orc=<%= proposta[i].id_proposta %>">Salvar</a>
-                        <a href="/RecusarPedido?id_orc=<%= proposta[i].id_proposta %>">Recusar</a></li>
+                        <a href="/RecusarPedido?id_orc=<%= proposta[i].id_proposta %>&valor=<%= proposta[i].valor_orcamento %>">Recusar</a></li>
                     </hr><br/>
                 <%}else{%>
-                    <li><a href="/RecusarPedido?id_orc=<%= proposta[i].id_proposta %>">Recusar</a></li>
+                       <li><a href="/RecusarPedido?id_orc=<%= proposta[i].id_proposta %>&valor=<%= proposta[i].valor_orcamento %>">Recusar</a></li>
                     </hr><br/>
                <%}
 

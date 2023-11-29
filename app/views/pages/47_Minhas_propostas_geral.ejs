@@ -13,8 +13,10 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/Pedidos_propostas.css">
+    <link rel="stylesheet" href="css/geral.css">
     <script src="js/script.js" defer></script>
     <script src="js/Default.js" defer></script>
+    <script src="js/orcamento.js" defer></script>
     <title> Minhas Propostas </title>
 
 </head>
@@ -51,7 +53,9 @@
             <h2> Minhas propostas </h2>
            
         </div>
-
+        <div id="msn" class="Notify msn" style="display: none;">
+            PEDIDO ENVIADO COM SUCESSO !
+        </div>
         <% const proposta=JSON.parse(propostas) %>
 
         <% if(proposta.length != 0){

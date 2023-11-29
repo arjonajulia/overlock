@@ -2,7 +2,19 @@ window.onload = function(){
     let url = window.location.href.split('?')
     msn = url[1].split('=')
     if(msn[1] == 'msn'){
+        document.getElementById('mensagem').innerHTML = "ORÇAMENTO ENVIADO COM SUCESSO !"
         document.getElementById('msn').style.display = 'Block'
+        document.getElementById('msn').style.paddingTop = '20px';
+        document.getElementById('msn').style.height = '150px';
+        
+        
+        OffMSn();
+    }
+    if(msn[1] == 'msn-email'){
+        document.getElementById('mensagem').innerHTML = "PROPOSTA FINALIZADA, CLIENTE E PROFISSIONAL NOTIFICADOS"
+        document.getElementById('msn').style.display = 'Block'
+        document.getElementById('msn').style.paddingTop = '10px';
+        document.getElementById('msn').style.height = '180px';
         OffMSn();
     }
 }
