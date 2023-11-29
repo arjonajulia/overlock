@@ -203,9 +203,10 @@ router.get("/43_Publicacao", function (req, res) {
 router.get("/44_Pagina_inicial_feed", async function (req, res) {
   const id_usuario = req.session.id_u;
   const proposta = await projetoDal.GetPropostas(parseInt(id_usuario));
-
-  res.render("pages/44_Pagina_inicial_feed", { proposta: proposta });
+  const resposta = "Erros"
+  res.render("pages/44_Pagina_inicial_feed", { proposta: proposta});
 });
+
 
 router.get("/45_Proposta_Individual", async function (req, res) {
   const proposta = (await orcamentoDal.GetPropostasOrcamentos(parseInt(req.query.id)));
@@ -312,7 +313,8 @@ router.get("/SalvarPedido", async function (req, res) {
     foto_proposta: pp.foto_proposta,
     valor_pedido: pp.valor_orcamento,
     id_usuario: pp.id_cliente,
-    id_usuario_prof: pp.id_pro
+    id_usuario_prof: pp.id_pro,
+    status : 1
   }
   const pedidoRetorno = await pedidoDal.Add(pedido);
   if (pedidoRetorno > 1) {
@@ -328,9 +330,10 @@ router.get("/SalvarPedido", async function (req, res) {
 
 })
 router.get("/RecusarPedido", async function (req, res) {
-
-  const id_orc = parseInt(req.query.id_orc);
-  const ret = await orcamentoDal.DeleteOrcamento(id_orc);
+ 
+  const id_orc = await orcamentoDal.GetByPropostas(parseInt(req.query.id_orc));
+  const id_usuario = req.session.id_u;
+  const ret = await orcamentoDal.DeleteOrcamento(id_orc, id_usuario);
   res.redirect("/47_Minhas_propostas_geral")
 
 
@@ -404,7 +407,11 @@ router.post("/EditarFoto", async function (req, res) {
   await usuarioDAL.update(usuario[0], id);
 
 })
-
+router.post("/56_Finalizar_Pedido", async function(req, res){
+     const id_pedido = req.body.id_pedido;
+     const proposta = pedidoDal.FinalizaPedido(parseInt(id_pedido));
+     res.redirect("/44_Pagina_inicial_feed");
+})
 router.post("/SalvarOrcamento", async function (req, res) {
 
   const id_usuario = req.session.id_u;
@@ -418,7 +425,8 @@ router.post("/SalvarOrcamento", async function (req, res) {
   }
   const retorno = await orcamentoDal.Add(orc)
   // await email.EnviarEmail(usuario[0].email, "Novo Orçamento", preco);
-  res.redirect("/44_Pagina_inicial_feed")
+   
+  res.redirect("/44_Pagina_inicial_feed?id=msn");
 })
 
 router.post("/31_Pacotes_geral", function (req, res) {

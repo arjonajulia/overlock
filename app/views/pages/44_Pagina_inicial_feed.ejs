@@ -11,7 +11,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Quicksand&display=swap" rel="stylesheet"> 
 
         <link rel="stylesheet" href="css/Pedidos.css">
+        <link rel="stylesheet" href="css/geral.css">
         <script src="js/script.js" defer ></script>
+        <script src="js/orcamento.js" defer></script>
         <title> Propostas </title>
 
     </head>
@@ -48,7 +50,10 @@
                 <h1> Propostas </h1>
                 
             </div>
-
+         
+            <div id="msn" class="Notify msn" style="display: none;">
+                ORÇAMENTO ENVIADO COM SUCESSO !
+             </div>
             
             <% if(proposta.length < 1){
  
@@ -83,7 +88,14 @@
 
            <% } 
               }%>
+ 
             
+              
+           
+
+              
+
+
         
         </main>
         

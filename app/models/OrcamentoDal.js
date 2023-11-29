@@ -85,6 +85,19 @@ module.exports = class OrcamentoDal{
     
     }
 
+    GetIdOrcamento(id_proposta, id_usuario){
+        return new Promisse((resolve, reject) =>{
+             this.conexao.query("SELECT id_orcamento FROM orcamento WHERE id_proposta = ? AND id_usuario = ?", 
+             [id_proposta, id_usuario],
+             function (error, elements) {
+                 if(error){
+                    return reject(error);
+                }
+                 return resolve(elements);
+            });
+             
+        });
+    }
 
     DeleteOrcamento(id_proposta){
         const conexao = this.conexao;
