@@ -13,8 +13,11 @@
 
         <link rel="stylesheet" href="css/Editar_perfil_home.css">
         <link rel="stylesheet" href="css/Administracao.css">
+        <link rel="stylesheet" href="css/geral.css">
         <script src="js/script.js" defer ></script>
         <script src="js/Administrar.js" defer ></script>
+        <script src="js/orcamento.js" defer></script>
+
         <title> Editar Perfil </title>
 
     </head>
@@ -52,7 +55,11 @@
 <% const us = JSON.parse(usAdmin) %>
 
 
+
 <div id="tabela">
+    <div id="msn" class="Notify msn" style="display: none;">
+        <p id="mensagem">ORÇAMENTO ENVIADO COM SUCESSO !</p>
+     </div>
     <% for(var i=0; i<us.length; i++){ %>
         <input type="hidden" value="<%= us[i].id_usuario %>">
         <ul class="quadro">

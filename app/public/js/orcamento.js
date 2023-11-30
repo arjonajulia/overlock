@@ -17,6 +17,14 @@ window.onload = function(){
         document.getElementById('msn').style.height = '180px';
         OffMSn();
     }
+    if(msn[1] == 'msn-delete-perfil'){
+        document.getElementById('mensagem').innerHTML = "USUÁRIO DELETADO COM SUCESSO !"
+        document.getElementById('msn').style.display = 'Block'
+        document.getElementById('msn').style.paddingTop = '20px';
+        document.getElementById('msn').style.height = '150px';
+        document.getElementById('msn').style.marginTop = '30px';
+        OffMSn();
+    }
 }
 
 function OffMSn(){

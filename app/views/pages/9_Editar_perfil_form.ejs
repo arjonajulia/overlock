@@ -67,7 +67,7 @@
                 <form method="post" action="/Editar_Perfil" id="cadastro_Cliente">
 
                     <% const usuario = JSON.parse(valores)[0] %>
-            
+                    
                     <div class="container">
     
                         <h1> CADASTRO </h1>
@@ -113,7 +113,7 @@
             </article>
 
                
-               <% if(id_tipo > 3){%>
+               <% if(id_tipo = 3){%>
                 <div id="btn-a-inital-grid">
                     <a href="/DeletarPerfil?id=<%= usuario.id_usuario %>" id="delete" class="btn-a-inital">
                         Deletar

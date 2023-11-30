@@ -258,7 +258,7 @@ router.get("/55_Meus_Pedidos", async function (req, res) {
   res.render("pages/55_Meus_Pedidos", {pedido});
 })
 router.get("/Administracao", async function (req, res) {
-  const usAdmin = JSON.stringify(await usuarioDAL.AdmUsuarios(parseInt(req.session.id_u)));
+  const usAdmin = JSON.stringify(await usuarioDAL.AdmUsuarios(req.session.id_tipo_usuario));
   res.render("pages/Administracao", { usAdmin: usAdmin });
 });
 router.get("/ExcluirUsuario", function (req, res) {
@@ -368,7 +368,7 @@ router.get("/DeletarPerfil", async function (req, res) {
       req.session.destroy();
       res.redirect("/index");
     } else {
-      res.redirect("/Administracao?r=" + retorno);
+      res.redirect("/Administracao?id=msn-delete-perfil");
     }
 
   } else {
@@ -536,7 +536,7 @@ router.post(
       email: req.body.email,
       senha: bcrypt.hashSync(req.body.senha, salt),
       status_usuario: 1,
-      foto_perfil_pasta: "perfil/" + req.body.cpf,
+      foto_perfil_pasta: "perfil/",
       id_planos: 1
 
     }

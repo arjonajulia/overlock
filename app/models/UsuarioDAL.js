@@ -22,9 +22,9 @@ module.exports = class UsuarioDAL {
         });
     };
 
-    AdmUsuarios(id){
-        const tipo_usuario = this.conexao.query("SELECT id_tipo_usuario FROM usuario WHERE id_usuario = ? and status_usuario <> 0  ", parseInt(id));
-        if(tipo_usuario.values == 3){
+    AdmUsuarios(tipo_usuario){
+        //const tipo_usuario = this.conexao.query("SELECT id_tipo_usuario FROM usuario WHERE id_usuario = ? and status_usuario <> 0  ", parseInt(id));
+        if(tipo_usuario == 3){
             return new Promise((resolve, reject) =>{
                   this.conexao.query("SELECT id_usuario, foto_perfil_pasta, user_name, nome, cpf, tu.nome_tipo FROM usuario AS u " +
                   "INNER JOIN tipo_usuario AS tu ON tu.id_tipo_usuario = u.id_tipo_usuario", 
